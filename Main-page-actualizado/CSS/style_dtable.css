@@ -1,0 +1,62 @@
+body{
+    width:fit-content;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    color: #101010;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+*{
+    user-select: none;
+}
+
+table{
+    margin: 0 10px;
+    background-color: #fff;
+    width: min-content;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+td, th{
+    padding: 10px 5px;
+    border: 1px solid;
+}
+
+table tr td a{
+    color: #101010;
+}
+
+thead{
+    background-color: #006f9e;
+    position: sticky;
+    top: 65px;
+}
+
+th{
+    color: #fff;
+}
+
+tr:nth-child(even){
+    background-color: #ddd;
+}
+
+tr:hover td{
+    background-color: #2b9ccc;
+    color: #fff;
+    border-color: #2b9ccc;
+}
+
+tr:hover > table tr td a i{
+    color: #fff;
+}
+
+/* Estilos para el label que muestra la cantidad de registros de la tabla */
+#btnAgregarCliente{
+    position: sticky;
+    display: inline-block;
+    left: 50vw;
+    padding-top: 12px;
+}

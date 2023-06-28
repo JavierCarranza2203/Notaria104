@@ -1,0 +1,96 @@
+.client-form-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.client-form-container_title {
+    position: relative;
+    color: #004f71;
+    font-size: 1.8em;
+    padding: 5px 25px;
+    border-bottom: 2px solid #217da5;
+    padding-bottom: 10px;
+}
+
+.client-form-container_group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.client-form-container_group_control {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+
+.client-form-container_group_control input {
+    position: relative;
+    background-color: transparent;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    display: block;
+    padding: 10px 2px 5px 2px;
+    transition: 0.3s ease-in-out all;
+}
+
+.client-form-container_group_control label {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    pointer-events: none;
+    background: #fff;
+    padding-top: 10px;
+    padding-left: 5px;
+    border-radius: 4px;
+    transition: width 2s;
+    transition-delay: 100ms;
+}
+
+.client-form-container_group_control input:focus + label,
+.client-form-container_group_control input:valid + label {
+    height: unset;
+    width: unset;
+    top: 10px;
+    left: 5px;
+    background: #fff;
+    color: #004f71;
+    padding: 0 5px;
+    font-size: 12px;
+    transform: translateY(-15px);
+}
+
+.client-form-container_group_control input:focus,
+.client-form-container_group_control input:valid {
+    border: 2px solid #0f7ead;
+}
+
+.client-form-container_group_control input[type="email"]:not(:focus):not(:placeholder-shown):invalid + label {
+    transform: translateY(-15px);
+    font-size: 12px;
+    color: red;
+}
+
+.client-form-container_group_control input[type="email"]:not(:focus):not(:placeholder-shown):invalid ~ .client-form-container_group_control_underline {
+    background: red;
+}
+
+.client-form-container_cta {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}

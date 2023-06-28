@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="CSS/estilos_login.css">
+    <link rel="stylesheet" href="../main-page-actualizado/CSS/normalize.css">
+
+    <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="login-container">
+        <form class="login-container__form" method="post" action="PHP/login-query.php">
+            <div class="login-container__form-left">
+                <i class="fa-solid fa-gavel login-container__form-left-icon"></i>
+                <h2>Notaría 104</h2>
+                <p>Sistema de registro de documentos</p>
+            </div>
+            <div class="login-container__form-right">
+
+                <div class="login-container__form-right-title">
+                    <p>Iniciar sesión</p>
+                </div>
+
+                <div class="login-container__form-right-control">
+                    <p>Usuario:</p><input type="text" name="txtUsuario" id="txtUsuario" class="login-container__form-right-txt">
+                    <p>Contraseña:</p><input type="password" name="txtPassword" id="txtPassword" class="login-container__form-right-txt">
+                    <a href="recuperar-password.html">¿Olvidó su contraseña?</a>
+                </div>
+        
+                <input type="submit" value="Iniciar sesión" id="btn" class="login-container__form-right-button">
+            </div>
+
+            <a href="#" rel="noopener noreferrer" class="login-container__help" id="btnAyuda">¿Necesita ayuda?</a>
+        </form>
+
+        <img src="SRC/IMG/3094352.jpg" alt="">
+    </section>
+
+
+    <div class="help-container" id="help-container">
+        <div class="help-container__close">
+            <p>Ayuda</p>
+            <i class="fa-solid fa-xmark" id="help-container__close-btn"></i>
+        </div>
+
+        <div class="help-container__information-container">
+            <p>Si tiene algún problema para iniciar sesión o tiene alguna duda sobre el programa. Por favor, contáctenos a alguno de los siguientes enlaces.</p>
+
+            <div class="help-container__icons-container">
+                <a href="#" target="_blank" rel="noopener noreferrer"><img src="SRC/IMG/Logo_de_Facebook.png" alt="Facebook">Pagina de facebook.</a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><img src="SRC/IMG/Logo-wp.png" alt="Whatsapp">Whatsapp.</a>
+                <a href="#" target="_blank" rel="noopener noreferrer"><img src="../main-page-actualizado/SRC/IMG/ti-logo.jpg" alt="Facebook">Pagina de Ti.</a>
+            </div>
+        </div>
+    </div>
+    <script src="JS/login-main.js"></script>
+</body>
+</html>
