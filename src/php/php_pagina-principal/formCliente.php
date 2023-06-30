@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de clientes</title>
+    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_error-page.css">
 </head>
 <body>
     <!--Mensaje de error-->
@@ -23,7 +24,7 @@
 <?php
 // Verifica si hay datos enviados del formulario
 if ($_POST) {
-    include 'conection.php';
+    include '../conection.php';
 
     #region Variables del formulario
     $nombreDePila = $_POST["nombreDePila"];
@@ -77,7 +78,7 @@ if ($_POST) {
         $result = mysqli_query($conection, $query);
         // Si se ejecuto, regresar al inicio
         if ($result) {
-            header("Location: ../index.html");
+            header("Location: ../../../Pagina principal/index.html");
         }
     }
 }
