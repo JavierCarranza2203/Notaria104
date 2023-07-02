@@ -127,6 +127,8 @@ svg {
     fill: currentColor;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 /* (Probándolo, no usar en producción) En el caso de añadir una  */
 /* p svg{
 display: inline;
@@ -135,8 +137,8 @@ width: initial;
 /* Configuramos la tipografía para toda la web */
 body {
     min-height: 100vh;
-    font-size: 100%;
-    font-family: var(--tipo-principal);
+    font-size: 16px;
+    font-family: 'Poppins', arial;
     color: var(--negro);
     /* opcional */
     line-height: 1.4em;

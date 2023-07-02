@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notaría 104 | Página principal</title>
 
-    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/style-reset.css">
     <link rel="stylesheet" href="../css/estilos_pagina-principal/style_pagina-principal.css">
     <link rel="stylesheet" href="../css/style-error-page.css">
     
@@ -36,18 +36,19 @@
         }
     ?>
 
-    <header class="header-container">
-        <h2>Registro de documentos</h2>
-    </header>
-    
-    <nav class="menu-container" id="menu-container">
-        <button class="menu-container__button" id="my-documents">Mis documentos</button>
-        <button class="menu-container__button active" id="new-document">Nuevo documento</button>
-        <a href="clientes/agregar-cliente.html" class="menu-container__button">Registrar cliente</a>
-        <a href="clientes/tabla-clientes.php" class="menu-container__button">Tabla de clientes</a>
-    </nav>
+    <header class="header">
+        <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
+        <nav class="header__navbar" id="menu-container">
+            <a class="header__link" id="my-documents"><i class="fa-solid fa-file-pen"></i> Mis documentos</a>
+            <a class="header__link" id="new-document"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
+            <a href="clientes/agregar-cliente.html" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
+            <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-address-card"></i> Tabla de clientes</a>
+        </nav>
 
-    <section class="my-documents-container" id="my-documents-container">
+        <a href="../index.html" class="header__link header__link--close-sesion"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
+    </header>
+
+    <!--<section class="my-documents-container" id="my-documents-container">
         <div class="my-documents-container__filter">
             <h2>Documentos guardados</h2>
 
@@ -322,8 +323,9 @@
                 </div>
             </div>
         </section>
-    </section>
+    </section>-->
 
     <script src="../js/js_pagina-principal/main.js"></script>
+    <script src="../js/cerrar-sesion.jss"></script>
 </body>
 </html>
