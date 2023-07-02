@@ -1,10 +1,21 @@
+body{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+/*    **********************************
+ *    **    ESTILOS PARA EL HEADER    **
+ *    **********************************
+ */
 .header{
     background-color: #003366;
     height: 100vh;
     width: 300px;
     min-width: 70px;
     font-weight: bold;
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
 }
 
 .header__h1{
@@ -47,136 +58,108 @@
     background-color: rgb(204, 13, 13);
 }
 
-.my-documents-container, .new-document-container{
-    padding: 2em 2em 0;
-    width: 100%;
+.header__link--active{
+    background-color: #004386;
 }
-
-.new-document-container__filter{
-    position: sticky;
-    top: 4.5em;
-    padding-top: 1em;
-    left: 0;
+/*    *********************************************
+ *    **    FIN DE LOS ESTILOS PARA EL HEADER    **
+ *    *********************************************
+ */
+/*    ************************************
+ *    **    ESTILOS PARA LOS SECTION    **
+ *    ************************************
+ */
+.section{
     background-color: #fff;
-    border-bottom: 1px solid black;
+    color: #202020;
 }
 
-.new-document-container__filter h2{
-    user-select: none;
+.section__nav{
+    background-color: #f0f0f0;
+    position: sticky;
+    top: 0;
+    right: 0;
 }
 
-.my-documents-container__filter-list, .new-document-container__filter-list{
-    display: flex;
-    justify-content: space-evenly;
-    list-style: none;
-    padding: 1em;
-    cursor: pointer;
-    padding-bottom: 3em;
-    color: #000;
+.section__h2{
     font-size: 1.3em;
-    user-select: none;
-}
-
-.my-documents-container__filter-list-item, .new-document-container__filter-list-item{
-    text-decoration: none;
-    padding: 0.5em 3em;
-    background-color: #dfdfdf;
-    border-radius: 5px;
-}
-
-.my-documents-container__filter-list-item:hover, .new-document-container__filter-list-item:hover{
-    background-color: #c4c4c4;
-}
-
-.my-documents-container__filter-list-item a{
-    text-decoration: none;
-    color: #000;
-    font-size: 1.3em;
-}
-
-.tramites-container{
-    display: none;
-}
-
-.tramites-container__item{
-    border-top: 1px solid #7c7c7c;
-    padding: 2.5em 3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    user-select: text;
-}
-
-.tramites-container__item-form{
-    background-color: #ffffff;
-    border: 1px solid #c4c4c4;
-    border-radius: 5px;
-    padding: 1.5em 2em;
-    margin: 10px 0;
-    width: 75%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.tramites-container__item-form a{
-    text-decoration: none;
-    user-select: none;
-}
-
-.tramites-container__item-form h3{
-    font-size: 1.3em;
-    font-weight: 100;
-    color: #444444;
-    user-select: none;
-}
-
-.tramites-container__item-form button{
-    padding: 1em 1em;
-    width: 9em;
-    font-size: 1.2em;
-    color: #444444;
-    background-color: #dfdfdf;
-    border: 1px solid #dfdfdf;
-    border-radius: 5px;
-}
-
-.tramites-container__item-form a{
-    padding: 1em 1em;
-    width: 9em;
-    font-size: 1.2em;
-    color: #444444;
-    background-color: #dfdfdf;
-    border: 1px solid #dfdfdf;
-    border-radius: 5px;
+    padding: 0.5em 1em;
     text-align: center;
 }
 
-.tramites-container__item-form button i{
-    padding-right: 5px;
+.section__ul{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
 }
 
-.tramites-container__item-form button:hover{
-    background-color: #c2c2c2;
+.section__li{
+    padding: 0.5em;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
 }
 
-.show-container{
-    display: block;
+.section__li:hover{
+    background-color: #e0e0e0;
+}
+/*    ***********************************************
+ *    **    FIN DE LOS ESTILOS PARA LOS SECTION    **
+ *    ***********************************************
+ */
+/*    *************************************
+ *    **    ESTILOS PARA NEW-DOCUMENT    **
+ *    *************************************
+ */
+.new-document__wrapper{
+    width: 100%;
+    padding: 24px 5px;
+    gap: 10px;
+    display: grid;
+    grid-auto-rows: 250px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
-.active{
-    background-color: #004f71;
-    color: #fff
+.new-document__item{
+    background-color: #f5f5f5;
+    width: 250px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0 10px;
+    justify-content: space-between;
+    box-shadow: 0 0 2px #202020;
 }
 
-.active a{
-    color: #cecece;
-}
-.active:hover{
-    background-color: #004f71;
+.new-document__item > i{
+    font-size: 5em;
+    color: #3a3a3a;
 }
 
-.hide-menu-container{
-    display: none !important;
+.new-document__item > h3{
+    padding: 5px 5px;
+    text-align: center;
 }
+
+.new-document__item > a{
+    background-color: #003366;
+    padding: 0.5em 1.5em;
+    color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.new-document__item:hover{
+    box-shadow: 0 0 5px #202020;
+}
+
+.new-document__item > a:hover{
+    background-color: #004386;
+}
+
+.new-document__wrapper--hidden{
+    display: none;
+}
+/*    ************************************************
+ *    **    FIN DE LOS ESTILOS PARA NEW-DOCUMENT    **
+ *    ************************************************
+ */

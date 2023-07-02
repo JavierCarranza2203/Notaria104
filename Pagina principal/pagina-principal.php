@@ -39,10 +39,10 @@
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
         <nav class="header__navbar" id="menu-container">
-            <a class="header__link" id="my-documents"><i class="fa-solid fa-file-pen"></i> Mis documentos</a>
+            <a class="header__link" id="my-documents"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
             <a class="header__link" id="new-document"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
             <a href="clientes/agregar-cliente.html" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
-            <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-address-card"></i> Tabla de clientes</a>
+            <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
 
         <a href="../index.html" class="header__link header__link--close-sesion"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
@@ -76,256 +76,260 @@
                 </li>
             </ul>
         </div>
-    </section>
-
-    <section class="new-document-container" id="new-document-container">
-        <div class="new-document-container__filter">
-            <h2>Nuevo documento</h2>
-
-            <ul class="new-document-container__filter-list">
-                <li class="new-document-container__filter-list-item " id="Actas">
-                    Actas
-                </li>
-                <li class="new-document-container__filter-list-item" id="Cartas">
-                    Cartas
-                </li>
-                <li class="new-document-container__filter-list-item" id="Contratos">
-                    Contratos
-                </li>
-                <li class="new-document-container__filter-list-item" id="Donaciones">
-                    Donaciones
-                </li>
-                <li class="new-document-container__filter-list-item" id="Protocolizaciones">
-                    Protocolizaciones
-                </li>
-                <li class="new-document-container__filter-list-item" id="Otros">
-                    Otros
-                </li>
-            </ul>
-        </div>
-
-        <section class="tramites-container hide-container" id="Contenedor-Contratos">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de compraventa</h3>
-                    <a href="nuevo-documento/documento.php?documento=CCV">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de compraventa con reserva de dominio</h3>
-                    <a href="nuevo-documento/documento.php?documento=CCVCRD">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de arrendamiento</h3>
-                    <a href="nuevo-documento/documento.php?documento=CoA">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de comodato</h3>
-                    <a href="nuevo-documento/documento.php?documento=CCD">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de compra venta a plazos</h3>
-                    <a href="nuevo-documento/documento.php?documento=CCVP">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de servidumbre de paso</h3>
-                    <a href="nuevo-documento/documento.php?documento=CSP">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Contrato de reconocimiento de adeudo con intereses y garantía hipotecaria</h3>
-                    <a href="nuevo-documento/documento.php?documento=CRAIGH">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="tramites-container hide-container" id="Contenedor-Cartas">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Carta de autorización</h3>
-                    <a href="nuevo-documento/documento.php?documento=CaA">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Carta responsiva</h3>
-                    <a href="nuevo-documento/documento.php?documento=CR">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="tramites-container hide-container" id="Contenedor-Protocolizaciones">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Protocolización de acta de asamblea</h3>
-                    <a href="nuevo-documento/documento.php?documento=PAA">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Protocolización de juicio sucesorio</h3>
-                    <a href="nuevo-documento/documento.php?documento=PJS">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Protocolización de subdivisión o fusión</h3>
-                    <a href="nuevo-documento/documento.php?documento=PSoF">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="tramites-container " id="Contenedor-Actas">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Acta constitutiva</h3>
-                    <a href="nuevo-documento/documento.php?documento=AC">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Acta notarial</h3>
-                    <a href="nuevo-documento/documento.php?documento=AN">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="tramites-container hide-container" id="Contenedor-Donaciones">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Donación gratuita pura y simple</h3>
-                    <a href="nuevo-documento/documento.php?documento=DGPS">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Donación gratuita pura y simple con reserva de usufructo vitalicio</h3>
-                    <a href="nuevo-documento/documento.php?documento=DGPSRUV">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="tramites-container hide-container" id="Contenedor-Otros">
-            <div class="tramites-container__item">
-                <div class="tramites-container__item-form">
-                    <h3>Testamento público abierto sencillo</h3>
-                    <a href="nuevo-documento/documento.php?documento=TPAS">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Testamento público abierto con legados</h3>
-                    <a href="nuevo-documento/documento.php?documento=TPAL">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Usufructo vitalicio</h3>
-                    <a href="nuevo-documento/documento.php?documento=UV">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Convenio de transmisión de propiedad, en extinción parcial de fideicomiso</h3>
-                    <a href="nuevo-documento/documento.php?documento=CTPEPF">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Declaración testimonial sobre el nombre</h3>
-                    <a href="nuevo-documento/documento.php?documento=DTSN">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Declaración testimonial sobre el estado civil</h3>
-                    <a href="nuevo-documento/documento.php?documento=DTSEC">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-    
-                <div class="tramites-container__item-form">
-                    <h3>Cancelación de reserva de dominio</h3>
-                    <a href="nuevo-documento/documento.php?documento=CRD">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-    
-                <div class="tramites-container__item-form">
-                    <h3>Poder especial y/o general</h3>
-                    <a href="nuevo-documento/documento.php?documento=PEyoG">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Cesión de derechos</h3>
-                    <a href="nuevo-documento/documento.php?documento=CD">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Escrito aclaratorio (Superficie)</h3>
-                    <a href="nuevo-documento/documento.php?documento=EAS">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Escrito aclaratorio (Nombre)</h3>
-                    <a href="nuevo-documento/documento.php?documento=EAN">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-
-                <div class="tramites-container__item-form">
-                    <h3>Escrito aclaratorio (Estado civil)</h3>
-                    <a href="nuevo-documento/documento.php?documento=EAEC">
-                        <i class="fa-regular fa-pen-to-square"></i> Llenar
-                    </a>
-                </div>
-            </div>
-        </section>
     </section>-->
 
+    
+    <section class="section new-document" id="new-document-container">
+        <nav class="section__nav">
+            <h2 class="section__h2">Crear nuevo documento</h2>
+
+            <ul class="section__ul">
+                <li class="section__li " id="Actas">Actas</li>
+                <li class="section__li" id="Cartas">Escritos</li>
+                <li class="section__li" id="Contratos">Contratos</li>
+                <li class="section__li" id="Donaciones">Donaciones</li>
+                <li class="section__li" id="Protocolizaciones">Protocolizaciones</li>
+                <li class="section__li" id="Otros">Otros</li>
+            </ul>
+        </nav>
+
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Contratos">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de compraventa</h3>
+                <a href="nuevo-documento/documento.php?documento=CCV">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de compraventa con reserva de dominio</h3>
+                <a href="nuevo-documento/documento.php?documento=CCVCRD">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de arrendamiento</h3>
+                <a href="nuevo-documento/documento.php?documento=CoA">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de comodato</h3>
+                <a href="nuevo-documento/documento.php?documento=CCD">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de compra venta a plazos</h3>
+                <a href="nuevo-documento/documento.php?documento=CCVP">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de servidumbre de paso</h3>
+                <a href="nuevo-documento/documento.php?documento=CSP">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Contrato de reconocimiento de adeudo con intereses y garantía hipotecaria</h3>
+                <a href="nuevo-documento/documento.php?documento=CRAIGH">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Cartas">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Escrito aclaratorio (Superficie)</h3>
+                <a href="nuevo-documento/documento.php?documento=EAS">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Escrito aclaratorio (Nombre)</h3>
+                <a href="nuevo-documento/documento.php?documento=EAN">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Escrito aclaratorio (Estado civil)</h3>
+                <a href="nuevo-documento/documento.php?documento=EAEC">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Protocolizaciones">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Protocolización de acta de asamblea</h3>
+                <a href="nuevo-documento/documento.php?documento=PAA">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Protocolización de juicio sucesorio</h3>
+                <a href="nuevo-documento/documento.php?documento=PJS">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Protocolización de subdivisión o fusión</h3>
+                <a href="nuevo-documento/documento.php?documento=PSoF">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Actas">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Acta constitutiva</h3>
+                <a href="nuevo-documento/documento.php?documento=AC">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Acta notarial</h3>
+                <a href="nuevo-documento/documento.php?documento=AN">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Donaciones">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Donación gratuita pura y simple</h3>
+                <a href="nuevo-documento/documento.php?documento=DGPS">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Donación gratuita pura y simple con reserva de usufructo vitalicio</h3>
+                <a href="nuevo-documento/documento.php?documento=DGPSRUV">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+
+        <article class="new-document__wrapper" id="Contenedor-Otros">
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Testamento público abierto sencillo</h3>
+                <a href="nuevo-documento/documento.php?documento=TPAS">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Testamento público abierto con legados</h3>
+                <a href="nuevo-documento/documento.php?documento=TPAL">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Usufructo vitalicio</h3>
+                <a href="nuevo-documento/documento.php?documento=UV">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Convenio de transmisión de propiedad, en extinción parcial de fideicomiso</h3>
+                <a href="nuevo-documento/documento.php?documento=CTPEPF">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Declaración testimonial sobre el nombre</h3>
+                <a href="nuevo-documento/documento.php?documento=DTSN">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Declaración testimonial sobre el estado civil</h3>
+                <a href="nuevo-documento/documento.php?documento=DTSEC">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Cancelación de reserva de dominio</h3>
+                <a href="nuevo-documento/documento.php?documento=CRD">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Poder especial y/o general</h3>
+                <a href="nuevo-documento/documento.php?documento=PEyoG">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Cesión de derechos</h3>
+                <a href="nuevo-documento/documento.php?documento=CD">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Carta de autorización</h3>
+                <a href="nuevo-documento/documento.php?documento=CaA">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+
+            <div class="new-document__item">
+                <i class="fa-solid fa-file"></i>
+                <h3>Carta responsiva</h3>
+                <a href="nuevo-documento/documento.php?documento=CR">
+                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                </a>
+            </div>
+        </article>
+    </section>
+
     <script src="../js/js_pagina-principal/main.js"></script>
-    <script src="../js/cerrar-sesion.jss"></script>
+    <script src="../js/cerrar-sesion.jsz"></script>
 </body>
 </html>
