@@ -1,0 +1,33 @@
+.error-container{
+    font-size: 20px;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.error-container__content-container{
+    background-color: #fff;
+    color: #202020;
+    width: fit-content;
+    text-align: center;
+    box-shadow: 0 0 5px #202020;
+}
+
+.error-container__h1{
+    padding: 2em;
+}
+
+.error-container__icon{
+    font-size: 70px;
+}
+
+.error-container__back{
+    margin:2em;
+    padding: 0.5em;
+    background-color: #003366;
+    color: #fff;
+    border-radius: 10px;
+}

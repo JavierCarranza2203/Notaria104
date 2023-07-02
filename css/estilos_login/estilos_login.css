@@ -1,64 +1,59 @@
 body{
     font-size: 16px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
+}
+
+.title-container{
+    width: 40%;
+    font-size: 2em;
+    text-align: center;
+    padding: 1em 0;
+    color: #2b2b2b;
+    font-weight: bolder;
+    position: absolute;
+    top: 0;
+    min-width: 360px;
+}
+
+.title-container__h1 > i{
+    padding: 8px;
+    border: 2px solid #202020;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .form{
     background-color: #fff;
-    width: 65%;
+    width: 40%;
     height: 400px;
-    display: grid;
-    grid-template-columns:40% 60%;
-}
-
-.form__div{
+    color: #202020;
     padding: 24px;
+    box-shadow: 0px 0px 5px #202020;
+    position: relative;
+    min-width: 360px;
 }
 
-.form__div--ladoIzquierdo{
-    background-color: #003366;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 15px 0px 0px 15px;
-}
-
-.form__div--ladoIzquierdo > .form__h1{
-    font-size: 2em;
-}
-
-.form__div--ladoIzquierdo > .form__icon{
-    font-size: 5em;
-    width: 120px;
-    border: 2px solid #fff;
-    padding: 20px;
-    border-radius: 50%;
-}
-
-.form__div--ladoIzquierdo > .form__p, .form__div--ladoDerecho > .form__p{
+.form__h2{
     font-size: 1.5em;
-}
-
-.form__div--ladoDerecho{
-    border: 1px solid #003366;
-    color: #424242;
-    border-radius: 0px 15px 15px 0px;
-}
-
-.form__div--ladoDerecho > .form__p{
     font-weight: bold;
-    text-align: center;
-    padding: 1em 0 2em;
+    padding: 10px 5px 15px;
+    margin-left: 5%;
+}
+
+.form__p{
+    font-size: 1.3em;
+    margin-left: 5%;
+    padding: 0 5px 1.3em;
 }
 
 .form__field{ 
     width: 90%; 
-    margin: 1em auto;
+    margin: 1.3em auto;
+    display: block;
 }
 
 .form__field label{
@@ -85,8 +80,8 @@ body{
 .form__field span{
 	color: #424242;
 	display: inline-block;
-	left: 0px;
-	padding: 5px;
+	left: 8px;
+	padding: 5px 2px;
 	position: absolute;
 	transition: 0.25s;
 	top: 8px;
@@ -96,7 +91,8 @@ body{
 .form__field span.reubicar{
 	color: #424242;
 	font-size: 14px;
-	top: -22px;
+	top: -14px;
+    background-color: #fff;
 }
 
 .form__button{
@@ -104,9 +100,10 @@ body{
     color: #fff;
     width: 250px;
     height: 35px;
-    margin: 0 auto;
     border-radius: 10px;
-    margin-top: 32px;
+    position: absolute;
+    bottom: 24px;
+    left: calc(50% - 125px);
 }
 
 .form__button:hover{

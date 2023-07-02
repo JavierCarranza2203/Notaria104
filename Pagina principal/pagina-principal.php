@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Notaría 104 | Página principal</title>
 
-    <link rel="stylesheet" href="../src/css/estilos_pagina-principal/style_pagina-principal.css">
-    <link rel="stylesheet" href="../src/css/normalize.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/estilos_pagina-principal/style_pagina-principal.css">
+    <link rel="stylesheet" href="../css/style-error-page.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +16,26 @@
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
+    <?php
+        session_start();
+        $usuario = $_SESSION['usuario'];
+
+        if($usuario = null || $usuario == '')
+        {
+    ?>
+            <div class=error-container>
+                <div class="error-container__content-container">
+                <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
+                <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>
+                <a href="../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
+                </div>
+            </div>
+    <?php  
+            die();
+        }
+    ?>
+
     <header class="header-container">
         <h2>Registro de documentos</h2>
     </header>
@@ -305,8 +324,6 @@
         </section>
     </section>
 
-    <script src="../src/js/js_pagina-principal/main.js"></script>
-    <script src="../src/js/js_pagina-principal/validarCliente.js"></script>
+    <script src="../js/js_pagina-principal/main.js"></script>
 </body>
-
 </html>

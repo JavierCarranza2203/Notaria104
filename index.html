@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notaria 104 | Iniciar sesión</title>
+    <link rel="stylesheet" href="css/estilos_login/estilos_login.css">
+    <link rel="stylesheet" href="css/style-reset.css">
+
+    <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="title-container">
+        <h1 class="title-container__h1"><i class="fa-solid fa-gavel"></i>Notaría 104</h1>
+    </div>
+
+    <form class="form" method="post" action="php/php_login/login-query.php">
+        <h2 class="form__h2">Registro de documentos</h2>
+
+        <p class="form__p">Ingrese sus datos</p>
+
+        <!--==== Campo para el nombre ====-->
+        <div class="form__field">
+            <label>
+                <span>Usuario:</span>
+                <input type="text" name="txtNombre" autocomplete="off" id="txtNombre" required maxlength="20">
+            </label>
+        </div>
+
+        <!--==== Campo para el nombre ====-->
+        <div class="form__field">
+            <label>
+                <span>Contraseña:</span>
+                <input type="password" name="txtContrasenia" autocomplete="off" id="txtContrasenia" required maxlength="10">
+            </label>
+        </div>
+
+        <input type="submit" value="Iniciar sesión" id="btnIniciarSesion" class="form__button">
+    </form>
+
+    <script src="js/js_login/login-main.js"></script>
+</body>
+</html>

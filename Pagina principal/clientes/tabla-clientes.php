@@ -1,6 +1,6 @@
 <?php
 
-    include '../../src/php/conection.php';
+    include '../../php/conection.php';
 
 ?>
 
@@ -12,22 +12,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla de clientes</title>
 
-    <link rel="stylesheet" href="../../src/css/normalize.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_tabla-clientes.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_tabla-clientes.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 
-    <script src="../../src/js/js_pagina-principal/buscarCliente.js"></script>
+    <script src="../../js/js_pagina-principal/buscarCliente.js"></script>
 </head>
 <body>
     <header class="header-container">
         <h2>Clientes</h2>
 
         <div class="back">
-            <a href="../index.html">Regresar</a>
+            <a href="../pagina-principal.php">Regresar</a>
         </div>
     </header>
 

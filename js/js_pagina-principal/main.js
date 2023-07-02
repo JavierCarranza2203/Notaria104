@@ -13,6 +13,7 @@ window.addEventListener("load", function()
     FiltrarElementos();
 })
 
+
 function CambiarMenu()
 {
     const content = document.getElementById("menu-container");

@@ -1,5 +1,5 @@
 <?php
-    include '../../src/php/conection.php';
+    include '../../php/conection.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar clientes</title>
 
-    <link rel="stylesheet" href="../../src/css/normalize.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_formulario-cliente.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_error-page.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_formulario-cliente.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_error-page.css">
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
-    <script src="../../src/js/js_pagina-principal/mostrarError.js"></script>
+    <script src="../../js/js_pagina-principal/mostrarError.js"></script>
 </head>
 <body>
     <!--Mensaje de error-->
@@ -38,7 +38,7 @@
         <h2>Clientes</h2>
 
         <div class="back">
-            <a href="../index.html">Regresar</a>
+            <a href="../pagina-principal.php">Regresar</a>
         </div>
     </header>
 
@@ -58,7 +58,7 @@
 
             while($mostrar = mysqli_fetch_assoc($result)) {
             ?>
-            <form action="PHP/guardarCambios.php" enctype="multipart/form-data" method="post" id="formCliente">
+            <form action="../../php/php_pagina-principal/guardarCambios.php" enctype="multipart/form-data" method="post" id="formCliente">
                     <!--ID, NOMBRE COMPLETO-->
                     <div class="client-form-container__row">
                         <div class="client-form-container__row__group short">
@@ -371,8 +371,8 @@
         }
     ?>
 </section>
-    <script src="../../src/js/js_pagina-principal/main.js"></script>
-    <script src="../../src/js/js_pagina-principal/validarCliente.js"></script>
+    <script src="../../js/js_pagina-principal/main.js"></script>
+    <script src="../../js/js_pagina-principal/validarCliente.js"></script>
 
     <script>
         document.getElementById('CancelarClienteEditar').addEventListener('click', () => {

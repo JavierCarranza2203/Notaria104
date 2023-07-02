@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuevo documento</title>
 
-    <link rel="stylesheet" href="../../src/css/normalize.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_pagina-principal.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_nuevo-documento.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_error-page.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_pagina-principal.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_nuevo-documento.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_error-page.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
         <h2>Nuevo documento: <b id="NombreDocumento"></b></h2>
 
         <div class="seeting-container">
-            <a href="../index.html" class="return">Regresar</a>
+            <a href="../pagina-principal.php" class="return">Regresar</a>
         </div>
     </header>
 
@@ -1038,9 +1038,9 @@
         </div>
     </div>
 
-    <script src="../../src/js/js_pagina-principal/mostrarError.js"></script>
-    <script src="../../src/js/js_pagina-principal/mostrarControles.js"></script>
-    <script src="../../src/js/js_pagina-principal/documento.js"></script>
+    <script src="../../js/js_pagina-principal/mostrarError.js"></script>
+    <script src="../../js/js_pagina-principal/mostrarControles.js"></script>
+    <script src="../../js/js_pagina-principal/documento.js"></script>
 </body>
 
 </html>

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notaría 104 - Registrar Cliente</title>
 
-    <link rel="stylesheet" href="../../src/css/normalize.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_pagina-principal.css">
-    <link rel="stylesheet" href="../../src/css/estilos_pagina-principal/style_formulario-cliente.css">
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_pagina-principal.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_formulario-cliente.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
     </header>
     
     <nav class="menu-container" id="menu-container">
-        <a href="../index.html" class="menu-container__button" id="back">Inicio</a>
+        <a href="../pagina-principal.php" class="menu-container__button" id="back">Inicio</a>
         <button class="menu-container__button active" id="client-form">Registrar cliente</button>
         <a href="tabla-clientes.php" class="menu-container__button">Tabla de clientes</a>
     </nav>
@@ -33,7 +33,7 @@
             Registrar un nuevo cliente
         </h1>
 
-        <form action="../../src/php/php_pagina-principal/formCliente.php" method="post" id="formCliente">
+        <form action="../../php/php_pagina-principal/formCliente.php" method="post" id="formCliente">
             <!--ID, NOMBRE COMPLETO, CURP-->
             <div class="client-form-container__row">
                 <!--ID-->
@@ -350,8 +350,8 @@
 
     </section>
 
-    <script src="../../src/js/js_pagina-principal/main.js"></script>
-    <script src="../../src/js/js_pagina-principal/validarCliente.js"></script>
+    <script src="../../js/js_pagina-principal/main.js"></script>
+    <script src="../../js/js_pagina-principal/validarCliente.js"></script>
     <script>
         document.getElementById('CancelarClienteIndex').addEventListener('click', () => {
             location.reload()
