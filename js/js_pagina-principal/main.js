@@ -1,73 +1,41 @@
-window.addEventListener("load", function()
-{
-    document.getElementById("Actas").classList.add("active");
-    document.getElementById("Contenedor-Actas").classList.add("show-container");
-    
-    document.getElementById("my-documents-container").classList.add("hide-menu-container");
+/*    ************************************************
+ *    **    DECLARACIÓN DE CONSTANTES Y VARIABLES   **
+ *    ************************************************
+ */
 
+//Botones del menu de "new document"
+const btnActas = document.getElementById("btnActas");
+const btnEscritos = document.getElementById("btnEscritos");
+const btnContratos = document.getElementById("btnContratos");
+const btnDonaciones = document.getElementById("btnDonaciones");
+const btnProtocolizaciones = document.getElementById("btnProtocolizaciones");
+const btnOtros = document.getElementById("btnOtros");
 
-    CambiarMenu();
-    FiltrarElementos();document.getElementById("Actas").classList.add("active");
-    document.getElementById("Contenedor-Actas").classList.add("show-container");
+//Contenedores de la sección "new document"
+const todosLosContenedores = document.getElementsByClassName("new-document__wrapper");
+const contenedorContratos = document.getElementById("contenedorContratos");
+const contenedorEscritos = document.getElementById("contenedorEscritos");
+const contenedorProtocolizaciones = document.getElementById("contenedorProtocolizaciones");
+const contenedorActas = document.getElementById("contenedorActas");
+const contenedorDonaciones = document.getElementById("contenedorDonaciones");
 
-    FiltrarElementos();
-})
+/*    ***********************************************************
+ *    **    FIN DE LA DECLARACIÓN DE CONSTANTES Y VARIABLES    **
+ *    ***********************************************************
+ */
+/*    ****************************************************************
+ *    **    FUNCIONAMIENTO DEL MENU DE LA SECCIÓN "NEW DOCUMENT"    **
+ *    ****************************************************************
+ */
 
-
-function CambiarMenu()
-{
-    const content = document.getElementById("menu-container");
-    content.addEventListener("click", (e) =>
-    {
-        if(e.target && e.target.classList.contains("menu-container__button"))
-        {
-            var idbtn = document.getElementById(e.target.id).id;
-
-            document.getElementById("my-documents").classList.remove("active");
-            document.getElementById("new-document").classList.remove("active");
-
-            document.getElementById(e.target.id).classList.add("active");
-
-            document.getElementById("my-documents-container").classList.add("hide-menu-container");
-            document.getElementById("new-document-container").classList.add("hide-menu-container");
-
-            document.getElementById(idbtn+"-container").classList.remove("hide-menu-container");
-        }
+function OcultarContenedores(){
+    todosLosContenedores.forEach(contenedor => ()=>{
+        this.classList.add("new-document__wrapper--hidden");
     });
 }
 
-function FiltrarElementos()
-{
-    const content = document.getElementById("new-document-container");
-    content.addEventListener("click", (e) =>
-    {
-        if(e.target && e.target.classList.contains("new-document-container__filter-list-item")){
-            var idbtn = document.getElementById(e.target.id).id;
-            
-            document.getElementById("Contenedor-Contratos").classList.remove("show-container");
-            document.getElementById("Contenedor-Actas").classList.remove("show-container");
-            document.getElementById("Contenedor-Cartas").classList.remove("show-container");
-            document.getElementById("Contenedor-Donaciones").classList.remove("show-container");
-            document.getElementById("Contenedor-Protocolizaciones").classList.remove("show-container");
-            document.getElementById("Contenedor-Otros").classList.remove("show-container");
-
-            document.getElementById("Contenedor-"+idbtn).classList.add("show-container");
-
-
-            document.getElementById("Contratos").classList.remove("active");
-            document.getElementById("Actas").classList.remove("active");
-            document.getElementById("Cartas").classList.remove("active");
-            document.getElementById("Donaciones").classList.remove("active");
-            document.getElementById("Protocolizaciones").classList.remove("active");
-            document.getElementById("Otros").classList.remove("active");
-
-            document.getElementById(e.target.id).classList.add("active");
-        }
-    })
-}
-
-// Efectos para inputs en formulario cliente
-const arrLabels = document.querySelectorAll('.client-form-container__row__group__controls__control label')
-arrLabels.forEach((label) => {
-    label.innerHTML = label.innerText.split("").map((letter, index) => `<span style="transition-delay: ${index * 35}ms">${letter}</span>`).join("")
-})
+OcultarContenedores();
+/*    ************************************************************************
+ *    **    FIN DEL FUNCIONAMIENTO DEL MENU DE LA SECCIÓN "NEW DOCUMENT"    **
+ *    ************************************************************************
+ */

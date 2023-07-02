@@ -39,13 +39,13 @@
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
         <nav class="header__navbar" id="menu-container">
-            <a class="header__link" id="my-documents"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
-            <a class="header__link" id="new-document"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
+            <a class="header__link" id="btnMyDocuments"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
+            <a class="header__link" id="btnNewDocument"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
             <a href="clientes/agregar-cliente.html" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
             <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
 
-        <a href="../index.html" class="header__link header__link--close-sesion"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
+        <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
     <!--<section class="my-documents-container" id="my-documents-container">
@@ -84,16 +84,16 @@
             <h2 class="section__h2">Crear nuevo documento</h2>
 
             <ul class="section__ul">
-                <li class="section__li " id="Actas">Actas</li>
-                <li class="section__li" id="Cartas">Escritos</li>
-                <li class="section__li" id="Contratos">Contratos</li>
-                <li class="section__li" id="Donaciones">Donaciones</li>
-                <li class="section__li" id="Protocolizaciones">Protocolizaciones</li>
-                <li class="section__li" id="Otros">Otros</li>
+                <li class="section__li section__li--active" id="btnActas">Actas</li>
+                <li class="section__li" id="btnEscrito">Escritos</li>
+                <li class="section__li" id="btnContratos">Contratos</li>
+                <li class="section__li" id="btnDonaciones">Donaciones</li>
+                <li class="section__li" id="btnProtocolizaciones">Protocolizaciones</li>
+                <li class="section__li" id="btnOtros">Otros</li>
             </ul>
         </nav>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Contratos">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorContratos">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de compraventa</h3>
@@ -151,7 +151,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Cartas">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorEscritos">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Escrito aclaratorio (Superficie)</h3>
@@ -177,7 +177,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Protocolizaciones">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorProtocolizaciones">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Protocolización de acta de asamblea</h3>
@@ -203,7 +203,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Actas">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorActas">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Acta constitutiva</h3>
@@ -221,7 +221,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="Contenedor-Donaciones">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorDonaciones">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Donación gratuita pura y simple</h3>

@@ -222,3 +222,9 @@ btnGuardarCliente.addEventListener('click', () => {
             }, 3000);
         }
 })
+
+// Efectos para inputs en formulario cliente
+const arrLabels = document.querySelectorAll('.client-form-container__row__group__controls__control label')
+arrLabels.forEach((label) => {
+    label.innerHTML = label.innerText.split("").map((letter, index) => `<span style="transition-delay: ${index * 35}ms">${letter}</span>`).join("")
+})
