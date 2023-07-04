@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="../../css/style-reset.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_formulario-cliente.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_message-box.css">
+    <link rel="stylesheet" href="../../css/style-error-page.css">
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 </head>
@@ -23,7 +25,7 @@
                 <div class="error-container__content-container">
                 <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
                 <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>
-                <a href="../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
+                <a href="../../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
                 </div>
             </div>
     <?php  
@@ -34,11 +36,11 @@
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
         <nav class="header__navbar" id="menu-container">
             <a href="../pagina-principal.php" class="header__link"><i class="fa-solid fa-house-chimney"></i> Página principal</a>
-            <a href="clientes/agregar-cliente.php" class="header__link header__link--active"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
-            <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
+            <a class="header__link header__link--active"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
+            <a href="tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
 
-        <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
+        <a href="../../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
     <section class="section" id="contenedorMisDocumentos">
@@ -97,7 +99,7 @@
             <div class="form__field">
                 <label>
                     <span>Correo electrónico:</span>
-                    <input type="email" name="txtCorreoElectronico" autocomplete="off" id="txtCorreoElectronico" required>
+                    <input type="email" name="txtCorreoElectronico" autocomplete="off" id="txtCorreoElectronico">
                     <i class="fa-regular form__icon"></i>
                 </label>
             </div>
@@ -156,11 +158,20 @@
                 </label>
             </div>
 
-            <input type="submit" value="Guardar cliente" class="form__button">
+            <button class="form__button" id="btnGuardar">Guardar cliente</button>
         </form>
     </section>
 
+    <div class="message-box" id="messageBox">
+        <div class="message-box__container">
+            <i class="fa-solid fa-circle-xmark message-box__i--close" id="messageBoxIconClose"></i>
+            <i class="fa-solid message-box__i" id="messageBoxIcon"></i>
+            <h2 class="message-box__h2" id="messageBoxMessage"></h2>
+        </div>
+    </div>
+
     <script src="../../js/js_login/login-main.js"></script>
     <script src="../../js/js_pagina-principal/validarCliente.js"></script>
+    <script src="../../js/cerrar-sesion_v2.js"></script>
 </body>
 </html>

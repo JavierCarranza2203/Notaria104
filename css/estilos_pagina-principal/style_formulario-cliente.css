@@ -130,6 +130,9 @@ body{
     height: 45px;
     border-radius: 10px;
     grid-column: 3/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .form__button:hover, .form__button:focus{

@@ -3,30 +3,58 @@
 }
 
 body{
-    width:fit-content;
-    font-size: 15px;
-    font-family: 'Raleway', sans-serif;
-    color: #101010;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    overflow: hidden;
 }
 
-*{
-    user-select: none;
+.section{
+    color: #202020;
+    overflow: scroll;
+    display: grid;
+    grid-template-rows: 105px 1fr;
+}
+
+.section__header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #f0f0f0;
+    max-width: calc(100vw - 307px);
+}
+
+.section__h2{
+    font-size: 1.3em;
+    padding: 0.5em 1em;
+    text-align: center;
+}
+
+.section__h3{
+    padding: 0.5em;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    font-weight: bold;
+    height: 60px;
+}
+
+.section__table-container{
+    padding: 13px;
 }
 
 table{
-    margin: 0 10px;
     background-color: #fff;
-    width: min-content;
     border-collapse: collapse;
     text-align: center;
+    color: #202020;
+    width: 1500px;
 }
 
 td, th{
     padding: 10px 5px;
     border: 1px solid;
+    text-align: center;
+    vertical-align: middle;
 }
 
 table tr td a{
@@ -34,13 +62,11 @@ table tr td a{
 }
 
 thead{
-    background-color: #006f9e;
-    position: sticky;
-    top: 65px;
+    background-color: #003366;
 }
 
 th{
-    color: #fff;
+    color: #f0f0f0;
 }
 
 tr:nth-child(even){
@@ -48,9 +74,9 @@ tr:nth-child(even){
 }
 
 tr:hover td{
-    background-color: #2b9ccc;
+    background-color: #004386;
     color: #fff;
-    border-color: #2b9ccc;
+    border-color: #004386;
 }
 
 tr:hover > table tr td a i{
@@ -61,15 +87,22 @@ tr:hover > table tr td a i{
 #btnAgregarCliente{
     position: sticky;
     display: inline-block;
-    left: 50vw;
+    left: calc(50% - 100px);
     padding-top: 12px;
+    color: #202020;
+}
+
+#btnAgregarCliente:hover{
+    text-decoration: underline;
 }
 
 .dataTables_wrapper .dataTables_length {
     float: left;
     position: sticky;
     margin: 13px 0;
-    left: 13px;
+    left: 0px;
+    color: #202020;
+    display: none;
 }
 
 .dataTables_wrapper .dataTables_length select {
@@ -78,14 +111,17 @@ tr:hover > table tr td a i{
     padding: 5px;
     background-color: transparent;
     padding: 4px;
+    display: inline-block;
 }
 
 .dataTables_wrapper .dataTables_filter {
-    float: right;
-    text-align: right;
-    margin: 13px;
-    position: sticky;
-    right: 13px;
+    float:left;
+    text-align: left;
+    margin: 13px 0;
+    position: absolute;
+    left: 303px;
+    top: 43px;
+    color: #202020;
 }
 
 .dataTables_wrapper .dataTables_filter input {
@@ -93,7 +129,8 @@ tr:hover > table tr td a i{
     border-radius: 3px;
     padding: 5px;
     background-color: transparent;
-    margin-left: 3px;
+    margin-left: 10px;
+    display: inline-block;
 }
 
 /* Estilos para el label que muestra la cantidad de registros de la tabla */
@@ -102,7 +139,9 @@ tr:hover > table tr td a i{
     float: left;
     padding-top: 1em;
     position: sticky;
-    left: 12px;
+    left: 0px;
+    display: none;
+    color: #202020
 }
 
 /* Estilos para el div de la paginacion de la tabla */
@@ -110,8 +149,10 @@ tr:hover > table tr td a i{
     float: right;
     text-align: right;
     padding: .5em 0;
-    position: sticky;
-    right: 10px;
+    position: absolute;
+    right: 13px;
+    top: 46px;
+    color: #202020
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabla de clientes</title>
 
-    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/style-reset.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_tabla-clientes.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,105 +23,114 @@
     <script src="../../js/js_pagina-principal/buscarCliente.js"></script>
 </head>
 <body>
-    <header class="header-container">
-        <h2>Clientes</h2>
+    <header class="header">
+        <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
+        <nav class="header__navbar" id="menu-container">
+            <a href="../pagina-principal.php" class="header__link"><i class="fa-solid fa-house-chimney"></i> Página principal</a>
+            <a href="agregar-cliente.php" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
+            <a class="header__link header__link--active"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
+        </nav>
 
-        <div class="back">
-            <a href="../pagina-principal.php">Regresar</a>
-        </div>
+        <a href="../../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
-    <table class="display" id="TablaClientes">
-        <thead>
-            <tr>
-                <th>Editar</th>
-                <th>Borrar</th>
-                <th>Id</th>
-                <th>Nombre de pila</th>
-                <th>Apellido paterno</th>
-                <th>Apellido materno</th>
-                <th>Telefono particular</th>
-                <th>Telofono celular</th>
-                <th>Correo electronico</th>
-                <th>Domicilio (Calle)</th>
-                <th>Numero interior</th>
-                <th>Numero exterior</th>
-                <th>Domicilio (Colonia)</th>
-                <th>Codigo postal del domicilio</th>
-            </tr>
-        </thead>
+    <section class="section">
+        <div class="section__header">
+            <h2 class="section__h2">Tabla de clientes guardados</h2>
+            <h3 class="section__h3"></h3>
+        </div>
 
-        <?php
-            $sql = "SELECT * from cliente";
-            $result = mysqli_query($conection, $sql);
-
-            while($mostrar = mysqli_fetch_array($result))
-            {
-        ?>             
+    <div class="section__table-container">
+        <table class="display" id="TablaClientes">
+            <thead>
                 <tr>
-                    <td>
-                        <!--BOTON PARA EDITAR CLIENTE-->
-                        <label for="idCliente<?php echo $mostrar['id']; ?>">
-                            <i class="fa-solid fa-pen"></i>
-                        </label>
-                        <form action="editar-clientes.php" method="post">
-                            <input type="submit" name="idCliente<?php echo $mostrar['id']; ?>" id="idCliente<?php echo $mostrar['id']; ?>" hidden value="<?php echo $mostrar['id']; ?>">
-                            <input type="hidden" name="numero" id="numero" value="<?php echo $mostrar['id']; ?>">
-                        </form>
-                    </td>
-                    <td>
-                        <!--BOTON PARA ELIMINAR CLIENTE-->
-                        <label for="borrarIdCliente<?php echo $mostrar['id']; ?>">
-                        <i class="fas fa-times-circle"></i>
-                        </label>
-                        <form action="PHP/borrar-clientes.php" method="post" id="formBorrarCliente<?php echo $mostrar['id']; ?>">
-                            <input type="button" name="borrarIdCliente<?php echo $mostrar['id']; ?>" id="borrarIdCliente<?php echo $mostrar['id']; ?>" hidden value="<?php echo $mostrar['id']; ?>" class="btnBorrarCliente">
-                            <input type="hidden" name="numero" id="numero" value="<?php echo $mostrar['id']; ?>">
-                        </form>
-                    </td>
-                    <td><?php echo $mostrar['id'] ?></td>
-                    <td><?php echo $mostrar['nombre_de_pila'] ?></td>
-                    <td><?php echo $mostrar['apellido_paterno'] ?></td>
-                    <td><?php 
-                        if($mostrar['apellido_materno'] != null)
-                        {
-                            echo $mostrar['apellido_materno'];
-                        }
-                        else
-                        {
-                            echo "N/A";
-                        }
-                    ?></td>
-                    <td><?php 
-                        if($mostrar['telefono_particular'] != null)
-                        {
-                            echo $mostrar['telefono_particular'];
-                        }
-                        else
-                        {
-                            echo "N/A";
-                        }
-                    ?></td>
-                    <td><?php echo $mostrar['telefono_celular'] ?></td>
-                    <td><?php echo $mostrar['correo_electronico'] ?></td>
-                    <td><?php echo $mostrar['calle_domicilio'] ?></td>
-                    <td><?php 
-                        if($mostrar['numero_interior_domicilio'] != null)
-                        {
-                            echo $mostrar['numero_interior_domicilio']; 
-                        }
-                        else{
-                            echo "N/A";
-                        }
-                    ?></td>
-                    <td><?php echo $mostrar['numero_exterior_domicilio'] ?></td>
-                    <td><?php echo $mostrar['colonia_domicilio'] ?></td>
-                    <td><?php echo $mostrar['codigo_postal_domicilio'] ?></td>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                    <th>Nombre de pila</th>
+                    <th>Apellido paterno</th>
+                    <th>Apellido materno</th>
+                    <th>Telefono particular</th>
+                    <th>Telofono celular</th>
+                    <th>Correo electronico</th>
+                    <th>Domicilio (Calle)</th>
+                    <th>Numero interior</th>
+                    <th>Numero exterior</th>
+                    <th>Domicilio (Colonia)</th>
+                    <th>Codigo postal del domicilio</th>
                 </tr>
-        <?php
-            }
-        ?>
-    </table>
+            </thead>
+            <?php
+                $sql = "SELECT * from cliente";
+                $result = mysqli_query($conection, $sql);
+
+                while($mostrar = mysqli_fetch_array($result))
+                {
+            ?>             
+                    <tr>
+                        <td>
+                            <!--BOTON PARA EDITAR CLIENTE-->
+                            <label for="idCliente<?php echo $mostrar['id']; ?>">
+                                <i class="fa-solid fa-pen"></i>
+                            </label>
+                            <form action="editar-clientes.php" method="post">
+                                <input type="hidden" name="idCliente<?php echo $mostrar['id']; ?>" id="idCliente<?php echo $mostrar['id']; ?>" value="<?php echo $mostrar['id']; ?>">
+                                <input type="hidden" name="numero" id="numero" value="<?php echo $mostrar['id']; ?>">
+                            </form>
+                        </td>
+                        <td>
+                            <!--BOTON PARA ELIMINAR CLIENTE-->
+                            <label for="borrarIdCliente<?php echo $mostrar['id']; ?>">
+                            <i class="fas fa-times-circle"></i>
+                            </label>
+                            <form action="PHP/borrar-clientes.php" method="post" id="formBorrarCliente<?php echo $mostrar['id']; ?>">
+                                <input type="hidden" name="borrarIdCliente<?php echo $mostrar['id']; ?>" id="borrarIdCliente<?php echo $mostrar['id']; ?>" hidden value="<?php echo $mostrar['id']; ?>" class="btnBorrarCliente">
+                                <input type="hidden" name="numero" id="numero" value="<?php echo $mostrar['id']; ?>">
+                            </form>
+                        </td>
+                        <td><?php echo $mostrar['nombre_de_pila'] ?></td>
+                        <td><?php echo $mostrar['apellido_paterno'] ?></td>
+                        <td><?php 
+                            if($mostrar['apellido_materno'] != null)
+                            {
+                                echo $mostrar['apellido_materno'];
+                            }
+                            else
+                            {
+                                echo "N/A";
+                            }
+                        ?></td>
+                        <td><?php 
+                            if($mostrar['telefono_particular'] != null)
+                            {
+                                echo $mostrar['telefono_particular'];
+                            }
+                            else
+                            {
+                                echo "N/A";
+                            }
+                        ?></td>
+                        <td><?php echo $mostrar['telefono_celular'] ?></td>
+                        <td><?php echo $mostrar['correo_electronico'] ?></td>
+                        <td><?php echo $mostrar['calle_domicilio'] ?></td>
+                        <td><?php 
+                            if($mostrar['numero_interior_domicilio'] != null)
+                            {
+                                echo $mostrar['numero_interior_domicilio']; 
+                            }
+                            else{
+                                echo "N/A";
+                            }
+                        ?></td>
+                        <td><?php echo $mostrar['numero_exterior_domicilio'] ?></td>
+                        <td><?php echo $mostrar['colonia_domicilio'] ?></td>
+                        <td><?php echo $mostrar['codigo_postal_domicilio'] ?></td>
+                    </tr>
+            <?php
+                }
+            ?>
+        </table>
+    </div>
+    </section>
 
     <script>
         $(document).ready(function() {

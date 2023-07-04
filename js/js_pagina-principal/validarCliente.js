@@ -3,7 +3,10 @@ try{
     *    **    DECLARACIÓN DE CONSTANTES Y VARIABLES   **
     *    ************************************************
     */
+    //Obtiene el formulario
     const frmNuevoCliente = document.getElementById("frmNuevoCliente");
+
+    //Obtiene los campos de texto
     const txtNombre = document.getElementById("txtNombre");
     const txtApellidoPaterno = document.getElementById("txtApellidoPaterno");
     const txtApellidoMaterno = document.getElementById("txtApellidoMaterno");
@@ -17,15 +20,26 @@ try{
     const txtCodigoPostal = document.getElementById("txtCodigoPostal");
     const txtRFC = document.getElementById("txtRFC");
 
+    //Obtiene el boton de guardar
+    const btnGuardar = document.getElementById("btnGuardar");
+
+    //Obtiene los botones y el message box
+    const btnCerrarMessageBox = document.getElementById("messageBoxIconClose");
+    const messageBoxIcon = document.getElementById("messageBoxIcon");
+    const messageBoxMessage = document.getElementById("messageBoxMessage");
+    const messageBox = document.getElementById("messageBox");
+
+    //Define un objeto con el formato para cada uno de los campos
     const cadenaCaracteres = {
         formatoSoloNumeros:  /^\d+$/,
         formato1Nombre: /^[a-zA-Z]+\s[a-zA-Z]+$/,
         formato2Nombre: /^[a-zA-Z]+$/,
         formatoCorreo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-        formatoDomicilio: /^[a-zA-Z0-9.-]+$/,
-        formatoRFC: /^[A-Z]{4}[0-9]{6}[A-Z]{3}[A-Z0-9]{2}$/,
+        formatoDomicilio: /^[a-zA-Z0-9\s.-]+$/,
+        formatoRFC: /^[A-Z]{4}[0-9]{6}[A-Z]{2}[A-Z0-9]{1}$/,
     };
 
+    //Define un objeto para saber cuando todos los campos esten correctos
     const campos = {
         Nombre: false,
         ApellidoPaterno: false,
@@ -38,111 +52,161 @@ try{
         NumExterior: false,
         Colonia: false,
         CodigoPostal: false,
-        txtRFC: false
+        RFC: false
     };
+    /*    *********************************************************
+    *    **    FIN DE LA DECLARACIÓN DE CONSTANTES Y VARIABLES   **
+    *    **********************************************************
+    */
+    /*    *************************************************
+    *    **    FUNCIONAMIENTO DEL ENViO DEL FORMULARIO   **
+    *    **************************************************
+    */
+    //Funcion para mostrar si un campo es valido o no
+    function MostrarCampoValido(campo, validado){
+        if(validado){
+            campo.nextElementSibling.classList.remove("fa-circle-xmark");
+            campo.nextElementSibling.classList.remove("form__icon--invalid");
+            campo.nextElementSibling.classList.add("fa-circle-check");
+            campo.nextElementSibling.classList.add("form__icon--valid");
 
-    txtNombre.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formato1Nombre.test(txtNombre.value) || cadenaCaracteres.formato2Nombre.test(txtNombre.value)){
-            txtNombre.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtNombre.nextElementSibling.classList.remove("form__icon--invalid");
-            txtNombre.nextElementSibling.classList.add("fa-circle-check");
-            txtNombre.nextElementSibling.classList.add("form__icon--valid");
+            return true;
         }
         else{
-            txtNombre.nextElementSibling.classList.remove("fa-circle-check");
-            txtNombre.nextElementSibling.classList.remove("form__icon--valid");
-            txtNombre.nextElementSibling.classList.add("fa-circle-xmark");
-            txtNombre.nextElementSibling.classList.add("form__icon--invalid");
+            campo.nextElementSibling.classList.remove("fa-circle-check");
+            campo.nextElementSibling.classList.remove("form__icon--valid");
+            campo.nextElementSibling.classList.add("fa-circle-xmark");
+            campo.nextElementSibling.classList.add("form__icon--invalid");
+
+            return false
         }
+    }
+
+    //Funcion para quitar la validacion (se usa para campos opcionales)
+    function QuitarValidacion(campo){
+        campo.nextElementSibling.classList.remove("fa-circle-check");
+        campo.nextElementSibling.classList.remove("form__icon--valid");
+        campo.nextElementSibling.classList.remove("fa-circle-xmark");
+        campo.nextElementSibling.classList.remove("form__icon--invalid");
+        
+        return true;
+    }
+
+    txtNombre.addEventListener("blur", ()=>{
+        campos.Nombre = MostrarCampoValido(txtNombre, (cadenaCaracteres.formato1Nombre.test(txtNombre.value) || cadenaCaracteres.formato2Nombre.test(txtNombre.value)));
     });
 
     txtApellidoPaterno.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formato2Nombre.test(txtApellidoPaterno.value)){
-            txtApellidoPaterno.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtApellidoPaterno.nextElementSibling.classList.remove("form__icon--invalid");
-            txtApellidoPaterno.nextElementSibling.classList.add("fa-circle-check");
-            txtApellidoPaterno.nextElementSibling.classList.add("form__icon--valid");
-        }
-        else{
-            txtApellidoPaterno.nextElementSibling.classList.remove("fa-circle-check");
-            txtApellidoPaterno.nextElementSibling.classList.remove("form__icon--valid");
-            txtApellidoPaterno.nextElementSibling.classList.add("fa-circle-xmark");
-            txtApellidoPaterno.nextElementSibling.classList.add("form__icon--invalid");
-        }
+        campos.ApellidoPaterno = MostrarCampoValido(txtApellidoPaterno, cadenaCaracteres.formato2Nombre.test(txtApellidoPaterno.value));
     });
 
     txtApellidoMaterno.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formato2Nombre.test(txtApellidoMaterno.value)){
-            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--invalid");
-            txtApellidoMaterno.nextElementSibling.classList.add("fa-circle-check");
-            txtApellidoMaterno.nextElementSibling.classList.add("form__icon--valid");
-        }
-        else if(txtApellidoMaterno.value == ""){
-            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-check");
-            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--valid");
-            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--invalid");
+        if(txtApellidoMaterno.value == "" || txtApellidoMaterno.value == null){
+            campos.ApellidoMaterno = QuitarValidacion(txtApellidoMaterno);
         }
         else{
-            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-check");
-            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--valid");
-            txtApellidoMaterno.nextElementSibling.classList.add("fa-circle-xmark");
-            txtApellidoMaterno.nextElementSibling.classList.add("form__icon--invalid");
+            campos.ApellidoMaterno = MostrarCampoValido(txtApellidoMaterno, cadenaCaracteres.formato2Nombre.test(txtApellidoMaterno.value));
         }
     });
 
     txtTelefonoParticular.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoParticular.value) && txtTelefonoParticular.value.length >= 10){
-            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--invalid");
-            txtTelefonoParticular.nextElementSibling.classList.add("fa-circle-check");
-            txtTelefonoParticular.nextElementSibling.classList.add("form__icon--valid");
-        }
-        else if(txtTelefonoParticular.value == ""){
-            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-check");
-            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--valid");
-            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--invalid");
+        if(txtTelefonoParticular.value == "" || txtTelefonoParticular.value == null){
+            campos.TelefonoParticular = QuitarValidacion(txtTelefonoParticular);
         }
         else{
-            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-check");
-            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--valid");
-            txtTelefonoParticular.nextElementSibling.classList.add("fa-circle-xmark");
-            txtTelefonoParticular.nextElementSibling.classList.add("form__icon--invalid");
+            campos.TelefonoParticular = MostrarCampoValido(txtTelefonoParticular, (cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoParticular.value) && txtTelefonoParticular.value.length >= 10));
         }
     });
 
     txtTelefonoCelular.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoCelular.value) && txtTelefonoCelular.value.length >= 10){
-            txtTelefonoCelular.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtTelefonoCelular.nextElementSibling.classList.remove("form__icon--invalid");
-            txtTelefonoCelular.nextElementSibling.classList.add("fa-circle-check");
-            txtTelefonoCelular.nextElementSibling.classList.add("form__icon--valid");
+        campos.TelefonoCelular = MostrarCampoValido(txtTelefonoCelular, (cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoCelular.value) && txtTelefonoCelular.value.length >= 10));
+    });
+
+    txtCorreoElectronico.addEventListener("blur", ()=>{
+        if(txtCorreoElectronico.value == "" || txtCorreoElectronico.value == null){
+            campos.CorreoElectronico = QuitarValidacion(txtCorreoElectronico);
         }
         else{
-            txtTelefonoCelular.nextElementSibling.classList.remove("fa-circle-check");
-            txtTelefonoCelular.nextElementSibling.classList.remove("form__icon--valid");
-            txtTelefonoCelular.nextElementSibling.classList.add("fa-circle-xmark");
-            txtTelefonoCelular.nextElementSibling.classList.add("form__icon--invalid");
+            campos.CorreoElectronico = MostrarCampoValido(txtCorreoElectronico, cadenaCaracteres.formatoCorreo.test(txtCorreoElectronico.value));
         }
     });
 
     txtCalle.addEventListener("blur", ()=>{
-        if(cadenaCaracteres.formatoDomicilio.test(txtCalle.value)){
-            txtCalle.nextElementSibling.classList.remove("fa-circle-xmark");
-            txtCalle.nextElementSibling.classList.remove("form__icon--invalid");
-            txtCalle.nextElementSibling.classList.add("fa-circle-check");
-            txtCalle.nextElementSibling.classList.add("form__icon--valid");
+        campos.Calle = MostrarCampoValido(txtCalle, cadenaCaracteres.formatoDomicilio.test(txtCalle.value));
+    });
+
+    txtNumInterior.addEventListener("blur", ()=>{
+        if(txtNumInterior.value == "" || txtNumInterior.value == null){
+            campos.NumInterior = QuitarValidacion(txtNumInterior);
         }
         else{
-            txtCalle.nextElementSibling.classList.remove("fa-circle-check");
-            txtCalle.nextElementSibling.classList.remove("form__icon--valid");
-            txtCalle.nextElementSibling.classList.add("fa-circle-xmark");
-            txtCalle.nextElementSibling.classList.add("form__icon--invalid");
+            campos.NumInterior = MostrarCampoValido(txtNumInterior, cadenaCaracteres.formatoDomicilio.test(txtNumInterior.value));
         }
     });
 
+    txtNumExterior.addEventListener("blur", ()=>{
+        campos.NumExterior = MostrarCampoValido(txtNumExterior, cadenaCaracteres.formatoSoloNumeros.test(txtNumExterior.value));
+    });
+
+    txtColonia.addEventListener("blur", ()=>{
+        campos.Colonia = MostrarCampoValido(txtColonia, cadenaCaracteres.formatoDomicilio.test(txtColonia.value));
+    });
+
+    txtCodigoPostal.addEventListener("blur", ()=>{
+        campos.CodigoPostal = MostrarCampoValido(txtCodigoPostal, cadenaCaracteres.formatoSoloNumeros.test(txtCodigoPostal.value));
+    });
+
+    txtRFC.addEventListener("blur", ()=>{
+        campos.RFC = MostrarCampoValido(txtRFC, cadenaCaracteres.formatoRFC.test(txtRFC.value));
+    });
+
+    frmNuevoCliente.addEventListener("submit", function(event){
+        event.preventDefault();
+
+        if(MessageBoxShow((campos.Nombre == true &&
+            campos.ApellidoPaterno == true &&
+            campos.ApellidoMaterno == true &&
+            campos.TelefonoParticular == true &&
+            campos.TelefonoCelular == true &&
+            campos.CorreoElectronico == true &&
+            campos.Calle == true &&
+            campos.NumInterior == true &&
+            campos.NumExterior == true &&
+            campos.Colonia == true &&
+            campos.CodigoPostal == true &&
+            campos.RFC == true))){
+                frmNuevoCliente.submit();
+            };
+    });
+    /*    *********************************************************
+    *    **    FIN DEL FUNCIONAMIENTO DEL ENViO DEL FORMULARIO   **
+    *    **********************************************************
+    */
+    function MessageBoxShow(validado){
+        messageBox.classList.add("message-box--show");
+        if(validado){
+            messageBox.classList.add("message-box--correct");
+            messageBoxIcon.classList.add("fa-user-check");
+            messageBoxMessage.textContent = "El cliente se ha agregado correctamente";
+
+            return true;
+        }
+        else{
+            messageBox.classList.add("message-box--incorrect");
+            messageBoxIcon.classList.add("fa-user-xmark");
+            messageBoxMessage.textContent = "Hubo un error, por favor verifique los datos";
+
+            return false;
+        }
+    }
+
+    btnCerrarMessageBox.addEventListener("click", ()=>{
+        messageBox.classList.remove("message-box--show");
+        messageBox.classList.remove("message-box--correct");
+        messageBox.classList.remove("message-box--incorrect");
+        messageBoxIcon.classList.remove("fa-user-check");
+        messageBoxIcon.classList.remove("fa-user-xmark");
+    });
 }
 catch(exception){
     alert(exception);

@@ -50,7 +50,7 @@
 
     <section class="section section--hidden" id="contenedorMisDocumentos">
             <nav class="section__nav">
-                <h2 class="section__h2">Crear nuevo documento</h2>
+                <h2 class="section__h2">Documentos guardados</h2>
 
                 <ul class="section__ul">
                     <li class="section__li section__li--active" id="btnActass">Actas</li>
@@ -315,6 +315,6 @@
     </section>
 
     <script src="../js/js_pagina-principal/app_pagina-principal.js"></script>
-    <script src="../js/cerrar-sesion.jsz"></script>
+    <script src="../js/cerrar-sesion.js"></script>
 </body>
 </html>
