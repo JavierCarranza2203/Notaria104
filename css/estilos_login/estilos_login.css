@@ -105,6 +105,6 @@ body{
     left: calc(50% - 125px);
 }
 
-.form__button:hover{
-    background-color: #336699;
+.form__button:hover, .form__button:focus{
+    background-color: #004386;;
 }

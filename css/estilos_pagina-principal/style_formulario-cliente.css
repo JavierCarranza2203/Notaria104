@@ -1,292 +1,161 @@
-.client-form-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    min-width: 500px;
-    width: 80%;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 0;
-    min-height: 100vh;
+*{
+    user-select: none;
 }
 
-.client-form-container form {
-    position: relative;
-    width: 100%;
+body{
+    display: grid;
+    grid-template-columns: 290px 1fr;
+}
+/*    ***********************************
+ *    **    ESTILOS PARA EL SECTION    **
+ *    ***********************************
+ */
+.section{
+    color: #202020;
 }
 
-.client-form-container > h2 {
-    margin-bottom: 10px;
+.section__header{
+    background-color: #f0f0f0;
 }
 
-.client-form-container__title {
-    position: relative;
-    color: #004f71;
-    font-size: 1.8em;
-    padding: 5px 25px;
-    border-bottom: 2px solid #217da5;
-    padding-bottom: 10px;
-    margin-bottom: 35px;
+.section__h2{
+    font-size: 1.3em;
+    padding: 0.5em 1em;
+    text-align: center;
 }
 
-.client-form-container__row {
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    gap: 10px;
-    padding: 5px;
-}
-
-.client-form-container__row__group {
-    position: relative;
-    display: flex;
-    flex-flow: column nowrap;
-    border: 2px solid #cccccc;
-    padding: 5px;
-    border-radius: 5px;
-    flex: 1 0 10px;
-}
-
-.client-form-container__row__group.long {
-    flex: 3 0 10px;
-}
-
-.client-form-container__row__group.short {
-    flex: 1 0 60px;
-}
-
-.client-form-container__row__group__title {
-    padding: 0 5px;
-    font-size: 16px;
+.section__h3{
+    padding: 0.5em;
+    text-align: center;
+    border: 1px solid #ccc;
     font-weight: bold;
-    background: #fff;
-    margin-bottom: 10px;
 }
-
-.client-form-container__row__group__controls {
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    gap: 15px 5px;
-    justify-content: start;
-    align-items: start;
-    height: auto;
-}
-
-.client-form-container__row__group__controls__control {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    flex: 2 0 100px;
-}
-
-.client-form-container__row__group__controls__control.number {
-    flex: 1 0 50px;
-}
-
-.client-form-container__row__group.long .client-form-container__row__group__controls__control {
-    flex: 1 0 50px;
-}
-
-.client-form-container__row__group.short .client-form-container__row__group__controls__control {
-    width: 50px;
-    flex: 1 0 10px;
-}
-
-.client-form-container__row__group__controls__control input {
-    position: relative;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    display: block;
-    padding: 10px 2px 5px 2px;
-}
-
-.client-form-container__row__group__controls__control input[type = "date"] {
-    cursor: pointer;
-}
-
-.client-form-container__row__group__controls__control input:read-only {
-    cursor: not-allowed;
-}
-
-.client-form-container__row__group__controls__control label {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    background: #fff;
-    transition: 1s ease-in-out all;
-}
-
-.client-form-container__row__group__controls__control__underline {
-    width: 100%;
-    height: 2px;
-    background: #ccc;
-    transition: 0.3s ease-in all;
-}
-
-.client-form-container__row__group__controls__control__message {
-    display: block;
-    color: #004f71;
-    margin-top: 5px;
-    font-size: 12px;
-}
-
-.client-form-container__row__group__controls__control__message.error {
-    color: red;
-}
-
-.client-form-container__row__group__controls__control__message.success {
-    color: green;
-}
-
-.client-form-container__row__group__controls__control__message.optional {
-    color: #404040;
-}
-
-.client-form-container__row__group__controls__control__dropdown {
-    width: 100%;
-}
-
-.client-form-container__row__group__controls__control__dropdown #estadoCivil {
-    width: 100%;
-    outline: none;
-    cursor: pointer;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    padding: 4px 0;
-}
-
-.client-form-container__row__group__controls__control label span {
-    display: inline-block;
-    min-width: 2px;
-    background: #fff;
-    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265,1.55);
-}
-
-.client-form-container__row__group__controls__control input:required:focus + label,
-.client-form-container__row__group__controls__control input:required:valid + label,
-.client-form-container__row__group__controls__control input:optional:focus + label,
-.client-form-container__row__group__controls__control input:optional:not(:placeholder-shown):valid + label {
-    background: transparent;
-}
-
-/*
-Los estilos se agregan tanto a los campos requeridos como opcionales, si:
-1. El campo es requerido y tiene el foco
-2. El campo es requerido y no tiene el foco pero esta validado
-3. El campo es opcional pero tiene el foco
-4. El campo es opcional pero no tiene el foco y esta validad de modo que no se muestre el placeholder
+/*    **********************************************
+ *    **    FIN DE LOS ESTILOS PARA EL SECTION    **
+ *    **********************************************
+ */
+/*    ***********************************
+ *    **    ESTILOS PARA EL FORMULARIO    **
+ *    ***********************************
 */
-.client-form-container__row__group__controls__control input:required:focus + label span,
-.client-form-container__row__group__controls__control input:required:valid + label span,
-.client-form-container__row__group__controls__control input:optional:focus + label span,
-.client-form-container__row__group__controls__control input:optional:not(:focus):not(:placeholder-shown):valid + label span {
-    transform: translateY(-20px);
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #004f71;
-}
-
-.client-form-container__row__group__controls__control input:required:focus ~ .client-form-container__row__group__controls__control__underline,
-.client-form-container__row__group__controls__control input:required:valid ~ .client-form-container__row__group__controls__control__underline,
-.client-form-container__row__group__controls__control input:optional:focus ~ .client-form-container__row__group__controls__control__underline, 
-.client-form-container__row__group__controls__control input:optional:not(:focus):not(:placeholder-shown):valid ~ .client-form-container__row__group__controls__control__underline {
-    background: #0f7ead;
-    width: 100%;
-}
-
-.client-form-container__row__group__controls__control input[type="email"]:not(:focus):not(:placeholder-shown):invalid + label span {
-    transform: translateY(-20px);
-    font-size: 12px;
-    color: red;
-    font-weight: bold;
-}
-
-.client-form-container__row__group__controls__control input[type="email"]:not(:focus):not(:placeholder-shown):invalid + label {
-    background: transparent;
-}
-
-.client-form-container__row__group__controls__control input[type="email"]:not(:focus):not(:placeholder-shown):invalid ~ .client-form-container__row__group__controls__control__underline {
-    background: red;
-}
-
-/* Mensaje de envio del formulario */
-.client-form-container__form-message {
-    display: none;
-    justify-content: center;
+.section__form{
+    padding: 16px 8px;
+    display: grid;
+    grid-template-rows: 35px 60px 35px 60px 35px 60px 60px 35px 60px;
+    grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
+    gap: 10px;
     align-items: center;
+}
+
+.form__p{
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
     width: 100%;
-    margin: 15px 0;
-    padding: 15px;
-    border: 1px solid #4b6949;
-    border-radius: 5px;
-    background: #b6dbb3;
-    color: #4b6949;
-    box-shadow: 0 0 15px 5px rgba(182, 219, 179, 0.5);
+    grid-column: 1/5;
+    color: #424242;
+}
+
+.form__p > span{
+    height: 1px;
+    display: block;
+    width: 38%;
+    margin: 10px;
+    background-color: #6d6d6d;
+}
+
+.form__field{ 
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.form__field label{
+	border: 2px solid #6d6d6d;
+	display: inline-block;
+	padding: 10px;
+	position: relative;
+    cursor: text;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.form__field input, .form__field span{ 
+	border: none; 
+	box-sizing: border-box;
+	outline: none;
+	resize: none; 
     font-size: 16px;
-    font-weight: bold;
+    width: 100%;
+    line-height: 16px;
 }
 
-.client-form-container__form-message.error {
-    display: flex;
-    border: 1px solid #965568;
-    background: #F1C1CF;
-    color: #965568;
-    box-shadow: 0 0 15px 5px rgba(255, 162, 162, 0.5);
+.form__field span{
+	color: #6d6d6d;
+	display: inline-block;
+	left: 8px;
+	padding: 5px 2px;
+	position: absolute;
+	transition: 0.25s;
+	top: 10px;
+	width: auto;
 }
 
-/* Botones del formulario */
-.client-form-container__cta {
-    display: flex;
-    flex-direction: row;
-    gap: 1em;
-    margin-top: 10px;
+.form__field span.reubicar{
+	font-size: 14px;
+	top: -14px;
+    background-color: #fff;
 }
 
-.client-form-container__cta input[type="button"],
-.client-form-container__cta input[type="button"],
-#guardarCambios, #cancelar{
-    display: none;
+.form__icon{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 1.5em;
 }
 
-.client-form-container__cta label {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: 0.4em 1.4em;
-    border-radius: 0.5em;
-    font-size: 1.4em;
-    transition: 0.3s ease all;
-    transform: scale(0.95);
+.form__icon--valid{
+    color: #26c000;
 }
 
-.client-form-container__cta label:hover {
-    transform: scale(1);
+.form__icon--invalid{
+    color: #ff0000;
 }
 
-.client-form-container__cta label:nth-child(2) {
-    background: #B6DBB3;
-    color: #4b6949;
-    border: 1px solid #B6DBB3;
+.form__button{
+    background-color: #003366;
+    color: #fff;
+    height: 45px;
+    border-radius: 10px;
+    grid-column: 3/5;
 }
 
-.client-form-container__cta label:nth-child(4) {
-    background: #F1C1CF;
-    color: #965568;
-    border: 1px solid #F1C1CF;
+.form__button:hover, .form__button:focus{
+    background-color: #004386;;
 }
 
-.client-form-container__cta label:nth-child(2):hover {
-    border: 1px solid #4b6949;
+.form__field:nth-child(4){
+    grid-column: 3/5;
 }
 
-.client-form-container__cta label:nth-child(4):hover {
-    border: 1px solid #965568;
+.form__field:nth-child(8){
+    grid-column: 3/5;
 }
+
+.form__field:nth-child(10){
+    grid-column: 1/3;
+}
+
+.form__field:nth-child(13){
+    grid-column: 1/4;
+}
+
+.form__field:nth-child(16){
+    grid-column: 1/3;
+}
+/*    *************************************************
+ *    **    FIN DE LOS ESTILOS PARA EL FORMULARIO    **
+ *    *************************************************
+ */

@@ -40,15 +40,9 @@
                 <th>Nombre de pila</th>
                 <th>Apellido paterno</th>
                 <th>Apellido materno</th>
-                <th>Fecha de nacimiento</th>
                 <th>Telefono particular</th>
                 <th>Telofono celular</th>
                 <th>Correo electronico</th>
-                <th>Estado civil</th>
-                <th>Codigo postal de nacimiento</th>
-                <th>Municipio de nacimiento</th>
-                <th>Estado de nacimiento</th>
-                <th>Pais de nacimiento</th>
                 <th>Domicilio (Calle)</th>
                 <th>Numero interior</th>
                 <th>Numero exterior</th>
@@ -98,7 +92,6 @@
                             echo "N/A";
                         }
                     ?></td>
-                    <td><?php echo $mostrar['fecha_de_nacimiento'] ?></td>
                     <td><?php 
                         if($mostrar['telefono_particular'] != null)
                         {
@@ -111,11 +104,6 @@
                     ?></td>
                     <td><?php echo $mostrar['telefono_celular'] ?></td>
                     <td><?php echo $mostrar['correo_electronico'] ?></td>
-                    <td><?php echo $mostrar['estado_civil'] ?></td>
-                    <td><?php echo $mostrar['codigo_postal_nacimiento'] ?></td>
-                    <td><?php echo $mostrar['municipio_nacimiento'] ?></td>
-                    <td><?php echo $mostrar['estado_nacimiento'] ?></td>
-                    <td><?php echo $mostrar['pais_nacimiento'] ?></td>
                     <td><?php echo $mostrar['calle_domicilio'] ?></td>
                     <td><?php 
                         if($mostrar['numero_interior_domicilio'] != null)

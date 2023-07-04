@@ -39,60 +39,45 @@
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
         <nav class="header__navbar" id="menu-container">
-            <a class="header__link" id="btnMyDocuments"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
-            <a class="header__link" id="btnNewDocument"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
-            <a href="clientes/agregar-cliente.html" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
+            <a class="header__link" id="btnMisDocumentos"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
+            <a class="header__link header__link--active" id="btnNuevoDocumento"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
+            <a href="clientes/agregar-cliente.php" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
             <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
 
         <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
-    <!--<section class="my-documents-container" id="my-documents-container">
-        <div class="my-documents-container__filter">
-            <h2>Documentos guardados</h2>
+    <section class="section section--hidden" id="contenedorMisDocumentos">
+            <nav class="section__nav">
+                <h2 class="section__h2">Crear nuevo documento</h2>
 
-            <ul class="my-documents-container__filter-list">
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#inicio" class="header__menu-container-list-item-section">Todos</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#actas" class="header__menu-container-list-item-section">Actas</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#cartas" class="header__menu-container-list-item-section">Cartas</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#contratos" class="header__menu-container-list-item-section">Contratos</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#donaciones" class="header__menu-container-list-item-section">Donaciones</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#protocolizaciones" class="header__menu-container-list-item-section">Protocolizaciones</a>
-                </li>
-                <li class="my-documents-container__filter-list-item">
-                    <a href="#otros" class="header__menu-container-list-item-section">Otros</a>
-                </li>
-            </ul>
-        </div>
-    </section>-->
+                <ul class="section__ul">
+                    <li class="section__li section__li--active" id="btnActass">Actas</li>
+                    <li class="section__li" id="btnEscritoss">Escritos</li>
+                    <li class="section__li" id="btnContratoss">Contratos</li>
+                    <li class="section__li" id="btnDonacioness">Donaciones</li>
+                    <li class="section__li" id="btnProtocolizacioness">Protocolizaciones</li>
+                    <li class="section__li" id="btnOtross">Otros</li>
+                </ul>
+            </nav>
+    </section>
 
     
-    <section class="section new-document" id="new-document-container">
+    <section class="section new-document" id="contenedorNuevoDocumento">
         <nav class="section__nav">
             <h2 class="section__h2">Crear nuevo documento</h2>
 
             <ul class="section__ul">
                 <li class="section__li section__li--active" id="btnActas">Actas</li>
-                <li class="section__li" id="btnEscrito">Escritos</li>
+                <li class="section__li" id="btnEscritos">Escritos</li>
                 <li class="section__li" id="btnContratos">Contratos</li>
                 <li class="section__li" id="btnDonaciones">Donaciones</li>
                 <li class="section__li" id="btnProtocolizaciones">Protocolizaciones</li>
                 <li class="section__li" id="btnOtros">Otros</li>
             </ul>
         </nav>
-
+        
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorContratos">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
@@ -203,7 +188,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorActas">
+        <article class="new-document__wrapper" id="contenedorActas">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Acta constitutiva</h3>
@@ -239,7 +224,7 @@
             </div>
         </article>
 
-        <article class="new-document__wrapper" id="Contenedor-Otros">
+        <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorOtros">
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Testamento público abierto sencillo</h3>
@@ -329,7 +314,7 @@
         </article>
     </section>
 
-    <script src="../js/js_pagina-principal/main.js"></script>
+    <script src="../js/js_pagina-principal/app_pagina-principal.js"></script>
     <script src="../js/cerrar-sesion.jsz"></script>
 </body>
 </html>

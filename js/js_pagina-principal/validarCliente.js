@@ -1,230 +1,149 @@
-const form = document.getElementById('formCliente')
-const arrInputs = document.querySelectorAll('#formCliente input')
-const select = document.getElementById('estadoCivil')
-const btnGuardarCliente = document.getElementById('guardarCliente')
-const mssgForm = document.querySelector('.client-form-container__form-message')
-const inputFechaNacimiento = document.getElementById('fechaNacimiento')
-const labelFechaNacimiento = document.querySelector('.message-fechaNacimiento')
+try{
+    /*    ************************************************
+    *    **    DECLARACIÓN DE CONSTANTES Y VARIABLES   **
+    *    ************************************************
+    */
+    const frmNuevoCliente = document.getElementById("frmNuevoCliente");
+    const txtNombre = document.getElementById("txtNombre");
+    const txtApellidoPaterno = document.getElementById("txtApellidoPaterno");
+    const txtApellidoMaterno = document.getElementById("txtApellidoMaterno");
+    const txtTelefonoParticular = document.getElementById("txtTelefonoParticular");
+    const txtTelefonoCelular = document.getElementById("txtTelefonoCelular");
+    const txtCorreoElectronico = document.getElementById("txtCorreoElectronico");
+    const txtCalle = document.getElementById("txtCalle");
+    const txtNumInterior = document.getElementById("txtNumInterior");
+    const txtNumExterior = document.getElementById("txtNumExterior");
+    const txtColonia = document.getElementById("txtColonia");
+    const txtCodigoPostal = document.getElementById("txtCodigoPostal");
+    const txtRFC = document.getElementById("txtRFC");
 
-const expresiones = {
-    letras: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-    letrasNumeros: /^[a-zA-ZÀ-ÿ0-9-.\s]{1,40}$/,
-    curp: /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
-    telefono: /^\d{10,13}$/,
-    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-    codigoPostal: /^\d{4,6}$/,
-    numeroIntExt: /^[a-zA-ÿ0-9-.\s]{1,4}$/
-}
+    const cadenaCaracteres = {
+        formatoSoloNumeros:  /^\d+$/,
+        formato1Nombre: /^[a-zA-Z]+\s[a-zA-Z]+$/,
+        formato2Nombre: /^[a-zA-Z]+$/,
+        formatoCorreo: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        formatoDomicilio: /^[a-zA-Z0-9.-]+$/,
+        formatoRFC: /^[A-Z]{4}[0-9]{6}[A-Z]{3}[A-Z0-9]{2}$/,
+    };
 
-const campos = {
-    nombreDePila: false,
-    apellidoPaterno: false,
-    apellidoMaterno: true,
-    CURPCliente: false,
-    fechaNacimiento: false,
-    telefonoParticular: true,
-    telefonoCelular: false,
-    correoElectronico: false,
-    estadoCivil: false,
-    codigoPostalNacimiento: false,
-    municipioNacimiento: false,
-    estadoNacimiento: false,
-    paisNacimiento: false,
-    calleDomicilio: false,
-    numeroInteriorDomicilio: true,
-    numeroExteriorDomicilio: false,
-    coloniaDomicilio: false,
-    codigoPostalDomicilio: false
-}
+    const campos = {
+        Nombre: false,
+        ApellidoPaterno: false,
+        ApellidoMaterno: true,
+        TelefonoParticular: true,
+        TelefonoCelular: false,
+        CorreoElectronico: true,
+        Calle: false,
+        NumInterior: true,
+        NumExterior: false,
+        Colonia: false,
+        CodigoPostal: false,
+        txtRFC: false
+    };
 
-const validarForm = (e) => {
-    switch (e.target.name) {
-        // Campos nombre completo
-        case "nombreDePila":
-            validarCampo(expresiones.letras, e.target, 'nombreDePila')
-            break
-        case "apellidoPaterno":
-            validarCampo(expresiones.letras, e.target, 'apellidoPaterno')
-            break
-        case "apellidoMaterno":
-            validarCampo(expresiones.letras, e.target, 'apellidoMaterno')
-            break
-        // Campo curp
-        case "CURPCliente":
-            validarCampo(expresiones.curp, e.target, 'CURPCliente')
-            break
-        // Campos telefono
-        case "telefonoParticular":
-            validarCampo(expresiones.telefono, e.target, 'telefonoParticular')
-            break
-        case "telefonoCelular":
-            validarCampo(expresiones.telefono, e.target, 'telefonoCelular')
-            break
-        // Campo correo electronico
-        case "correoElectronico":
-            validarCampo(expresiones.correo, e.target, 'correoElectronico')
-            break
-        // Campo seleccion estado civil
-        case "estadoCivil":
-            validarCampo(expresiones.letras, e.target, 'estadoCivil')
-            break
-        // Campos de lugar de nacimiento
-        case "codigoPostalNacimiento":
-            validarCampo(expresiones.codigoPostal, e.target, 'codigoPostalNacimiento')
-            break
-        case "municipioNacimiento":
-            validarCampo(expresiones.letras, e.target, 'municipioNacimiento')
-            break
-        case "estadoNacimiento":
-            validarCampo(expresiones.letras, e.target, 'estadoNacimiento')
-            break
-        case "paisNacimiento":
-            validarCampo(expresiones.letras, e.target, 'paisNacimiento')
-            break
-        // Campos de domicilio
-        case "calleDomicilio":
-            validarCampo(expresiones.letrasNumeros, e.target, 'calleDomicilio')
-            break
-        case "numeroInteriorDomicilio":
-            validarCampo(expresiones.numeroIntExt, e.target, 'numeroInteriorDomicilio')
-            break
-        case "numeroExteriorDomicilio":
-            validarCampo(expresiones.numeroIntExt, e.target, 'numeroExteriorDomicilio')
-            break
-        case "coloniaDomicilio":
-            validarCampo(expresiones.letrasNumeros, e.target, 'coloniaDomicilio')
-            break
-        case "codigoPostalDomicilio":
-            validarCampo(expresiones.codigoPostal, e.target, 'codigoPostalDomicilio')
-            break
-        // Ninguno de los anteriores
-        default:
-            break
-    }
-}
-
-const validarCadena = (e) => {
-    // Obtiene la cadena y elimina espacios al inicio y al final
-    textoSinEspacios = e.target.value.replace(/\s+/g, " ").trim()
-    e.target.value = textoSinEspacios
-}
-
-const validarCampo = (expresion, input, campo) => {
-    // Verifica que no haya seleccionado la opcion por default
-    if (input.name == 'estadoCivil' && input.selectedIndex == 0) {
-        document.querySelector(`.message-${campo}`).classList.remove('success')
-        document.querySelector(`.message-${campo}`).classList.add('error')
-        document.querySelector(`.message-${campo}`).innerHTML = '<i class="fas fa-exclamation-circle"></i> Informacion invalida'
-        campos[campo] = false
-    }
-    // Verifica si el campo es opcional y esta vacio
-    if (input.value == '' && input.required == false) {
-        document.querySelector(`.message-${campo}`).classList.remove('error')
-        document.querySelector(`.message-${campo}`).classList.remove('success')
-        document.querySelector(`.message-${campo}`).classList.add('optional')
-        document.querySelector(`.message-${campo}`).innerHTML = 'Campo opcional'
-        campos[campo] = true
-    }
-    // Verifica si esta vacio (asumiendo que es requerido)
-    else if (input.value == '') {
-        document.querySelector(`.message-${campo}`).classList.remove('error')
-        document.querySelector(`.message-${campo}`).classList.remove('success')
-        document.querySelector(`.message-${campo}`).innerHTML = 'Campo obligatorio'
-        campos[campo] = false
-    }
-    // Evalua el valor con la expresion regular
-    else if (expresion.test(input.value)) {
-        document.querySelector(`.message-${campo}`).classList.remove('optional')
-        document.querySelector(`.message-${campo}`).classList.remove('error')
-        document.querySelector(`.message-${campo}`).classList.add('success')
-        document.querySelector(`.message-${campo}`).innerHTML = '<i class="fas fa-check-circle"></i> Informacion valida'
-        campos[campo] = true
-    }
-    // No cumple las anteriores excepciones ni la expresion regular
-    else {
-        document.querySelector(`.message-${campo}`).classList.remove('optional')
-        document.querySelector(`.message-${campo}`).classList.remove('success')
-        document.querySelector(`.message-${campo}`).classList.add('error')
-        document.querySelector(`.message-${campo}`).innerHTML = '<i class="fas fa-exclamation-circle"></i> Informacion invalida'
-        campos[campo] = false
-    }
-}
-
-const validarFecha = () => {
-    if (inputFechaNacimiento.value != '' && inputFechaNacimiento.value >= inputFechaNacimiento.min && inputFechaNacimiento.value <= inputFechaNacimiento.max) {
-        labelFechaNacimiento.classList.remove('error')
-        labelFechaNacimiento.classList.add('success')
-        labelFechaNacimiento.innerHTML = '<i class="fas fa-check-circle"></i> Fecha valida'
-        campos.fechaNacimiento = true
-    }
-    else {
-        labelFechaNacimiento.classList.remove('success')
-        labelFechaNacimiento.classList.add('error')
-        labelFechaNacimiento.innerHTML = '<i class="fas fa-exclamation-circle"></i> Fecha invalida'
-        campos.fechaNacimiento = false
-    }
-}
-
-arrInputs.forEach((input) => {
-    input.addEventListener('keyup', validarForm)
-    input.addEventListener('blur', validarForm)
-    input.addEventListener('blur', validarCadena)
-})
-
-select.addEventListener('change', validarForm)
-inputFechaNacimiento.addEventListener('change', validarFecha)
-inputFechaNacimiento.addEventListener('blur', validarFecha)
-
-// Detecta el click en el boton para guardar
-btnGuardarCliente.addEventListener('click', () => {
-    // Verifica si todos los campos estan validados
-    if (campos.nombreDePila &&
-        campos.apellidoPaterno &&
-        campos.apellidoMaterno &&
-        campos.fechaNacimiento &&
-        campos.telefonoParticular &&
-        campos.telefonoCelular &&
-        campos.correoElectronico &&
-        campos.estadoCivil &&
-        campos.codigoPostalNacimiento &&
-        campos.municipioNacimiento &&
-        campos.estadoNacimiento &&
-        campos.paisNacimiento &&
-        campos.calleDomicilio &&
-        campos.numeroInteriorDomicilio &&
-        campos.numeroExteriorDomicilio &&
-        campos.coloniaDomicilio &&
-        campos.codigoPostalDomicilio) {
-            // Muestra el mensaje de envio del formulario
-            document.querySelector('.client-form-container__form-message').classList.remove('error')
-            document.querySelector('.client-form-container__form-message').innerText = 'Datos correctos. Validando la informacion...'
-            document.querySelector('.client-form-container__form-message').style.display = 'flex'
-            // Hace scroll para que aparezca en pantalla
-            mssgForm.scrollIntoView({behavior: 'smooth', block: 'start'})
-            // Espera 5 segundos para desaparecer el mensaje de envio del formulario
-            setTimeout(() => {
-                document.querySelector('.client-form-container__form-message').style.display = 'none'
-                document.querySelector('.client-form-container__form-message').classList.remove('error')
-                // Envia 
-                form.submit()
-            }, 2500);
+    txtNombre.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formato1Nombre.test(txtNombre.value) || cadenaCaracteres.formato2Nombre.test(txtNombre.value)){
+            txtNombre.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtNombre.nextElementSibling.classList.remove("form__icon--invalid");
+            txtNombre.nextElementSibling.classList.add("fa-circle-check");
+            txtNombre.nextElementSibling.classList.add("form__icon--valid");
         }
-        // Hay algun campo invalido
-        else {
-            document.querySelector('.client-form-container__form-message').classList.add('error')
-            document.querySelector('.client-form-container__form-message').innerText = 'Verifique correctamente los campos.'
-            document.querySelector('.client-form-container__form-message').style.display = 'flex'
-            // Hace scroll para que aparezca en pantalla
-            mssgForm.scrollIntoView({behavior: 'smooth', block: 'start'})
-            setTimeout(() => {
-                document.querySelector('.client-form-container__form-message').style.display = 'none'
-                document.querySelector('.client-form-container__form-message').classList.remove('error')
-            }, 3000);
+        else{
+            txtNombre.nextElementSibling.classList.remove("fa-circle-check");
+            txtNombre.nextElementSibling.classList.remove("form__icon--valid");
+            txtNombre.nextElementSibling.classList.add("fa-circle-xmark");
+            txtNombre.nextElementSibling.classList.add("form__icon--invalid");
         }
-})
+    });
 
-// Efectos para inputs en formulario cliente
-const arrLabels = document.querySelectorAll('.client-form-container__row__group__controls__control label')
-arrLabels.forEach((label) => {
-    label.innerHTML = label.innerText.split("").map((letter, index) => `<span style="transition-delay: ${index * 35}ms">${letter}</span>`).join("")
-})
+    txtApellidoPaterno.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formato2Nombre.test(txtApellidoPaterno.value)){
+            txtApellidoPaterno.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtApellidoPaterno.nextElementSibling.classList.remove("form__icon--invalid");
+            txtApellidoPaterno.nextElementSibling.classList.add("fa-circle-check");
+            txtApellidoPaterno.nextElementSibling.classList.add("form__icon--valid");
+        }
+        else{
+            txtApellidoPaterno.nextElementSibling.classList.remove("fa-circle-check");
+            txtApellidoPaterno.nextElementSibling.classList.remove("form__icon--valid");
+            txtApellidoPaterno.nextElementSibling.classList.add("fa-circle-xmark");
+            txtApellidoPaterno.nextElementSibling.classList.add("form__icon--invalid");
+        }
+    });
+
+    txtApellidoMaterno.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formato2Nombre.test(txtApellidoMaterno.value)){
+            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--invalid");
+            txtApellidoMaterno.nextElementSibling.classList.add("fa-circle-check");
+            txtApellidoMaterno.nextElementSibling.classList.add("form__icon--valid");
+        }
+        else if(txtApellidoMaterno.value == ""){
+            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-check");
+            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--valid");
+            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--invalid");
+        }
+        else{
+            txtApellidoMaterno.nextElementSibling.classList.remove("fa-circle-check");
+            txtApellidoMaterno.nextElementSibling.classList.remove("form__icon--valid");
+            txtApellidoMaterno.nextElementSibling.classList.add("fa-circle-xmark");
+            txtApellidoMaterno.nextElementSibling.classList.add("form__icon--invalid");
+        }
+    });
+
+    txtTelefonoParticular.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoParticular.value) && txtTelefonoParticular.value.length >= 10){
+            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--invalid");
+            txtTelefonoParticular.nextElementSibling.classList.add("fa-circle-check");
+            txtTelefonoParticular.nextElementSibling.classList.add("form__icon--valid");
+        }
+        else if(txtTelefonoParticular.value == ""){
+            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-check");
+            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--valid");
+            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--invalid");
+        }
+        else{
+            txtTelefonoParticular.nextElementSibling.classList.remove("fa-circle-check");
+            txtTelefonoParticular.nextElementSibling.classList.remove("form__icon--valid");
+            txtTelefonoParticular.nextElementSibling.classList.add("fa-circle-xmark");
+            txtTelefonoParticular.nextElementSibling.classList.add("form__icon--invalid");
+        }
+    });
+
+    txtTelefonoCelular.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formatoSoloNumeros.test(txtTelefonoCelular.value) && txtTelefonoCelular.value.length >= 10){
+            txtTelefonoCelular.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtTelefonoCelular.nextElementSibling.classList.remove("form__icon--invalid");
+            txtTelefonoCelular.nextElementSibling.classList.add("fa-circle-check");
+            txtTelefonoCelular.nextElementSibling.classList.add("form__icon--valid");
+        }
+        else{
+            txtTelefonoCelular.nextElementSibling.classList.remove("fa-circle-check");
+            txtTelefonoCelular.nextElementSibling.classList.remove("form__icon--valid");
+            txtTelefonoCelular.nextElementSibling.classList.add("fa-circle-xmark");
+            txtTelefonoCelular.nextElementSibling.classList.add("form__icon--invalid");
+        }
+    });
+
+    txtCalle.addEventListener("blur", ()=>{
+        if(cadenaCaracteres.formatoDomicilio.test(txtCalle.value)){
+            txtCalle.nextElementSibling.classList.remove("fa-circle-xmark");
+            txtCalle.nextElementSibling.classList.remove("form__icon--invalid");
+            txtCalle.nextElementSibling.classList.add("fa-circle-check");
+            txtCalle.nextElementSibling.classList.add("form__icon--valid");
+        }
+        else{
+            txtCalle.nextElementSibling.classList.remove("fa-circle-check");
+            txtCalle.nextElementSibling.classList.remove("form__icon--valid");
+            txtCalle.nextElementSibling.classList.add("fa-circle-xmark");
+            txtCalle.nextElementSibling.classList.add("form__icon--invalid");
+        }
+    });
+
+}
+catch(exception){
+    alert(exception);
+}

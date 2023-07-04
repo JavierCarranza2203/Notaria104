@@ -153,3 +153,63 @@ body {
     /* opcional */
     -moz-osx-font-smoothing: grayscale;
 }
+
+/*    **********************************
+ *    **    ESTILOS PARA EL HEADER    **
+ *    **********************************
+ */
+.header{
+    background-color: #003366;
+    height: 100vh;
+    width: 290px;
+    min-width: 70px;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.header__h1{
+    font-size: 1.5em;
+    padding: 1em;
+    text-align: center;
+}
+
+.header__navbar{
+    padding: 1.5em 0;
+}
+
+.header__link{
+    padding: 1em 1.5em;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.header__link > i{
+    padding-right: 15px;
+    font-size: 1.2em;
+}
+
+.header__link:hover, .header__link--active{
+    background-color: #004386;
+}
+
+.header__link--close-sesion{
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(175, 14, 14);
+}
+
+.header__link--close-sesion:hover{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(204, 13, 13);
+}
+
+/*    *********************************************
+ *    **    FIN DE LOS ESTILOS PARA EL HEADER    **
+ *    *********************************************
+ */
