@@ -19,6 +19,7 @@ try{
     const txtColonia = document.getElementById("txtColonia");
     const txtCodigoPostal = document.getElementById("txtCodigoPostal");
     const txtRFC = document.getElementById("txtRFC");
+    const camposConPrimerLetraMayuscula = [txtNombre, txtApellidoPaterno, txtApellidoMaterno];
 
     //Obtiene el boton de guardar
     const btnGuardar = document.getElementById("btnGuardar");
@@ -132,6 +133,8 @@ try{
     });
 
     txtCalle.addEventListener("blur", ()=>{
+        let texto = txtCalle.value;
+        txtCalle.value = texto.charAt(0).toUpperCase() + texto.slice(1);
         campos.Calle = MostrarCampoValido(txtCalle, cadenaCaracteres.formatoDomicilio.test(txtCalle.value));
     });
 
@@ -149,6 +152,8 @@ try{
     });
 
     txtColonia.addEventListener("blur", ()=>{
+        let texto = txtColonia.value;
+        txtColonia.value = texto.charAt(0).toUpperCase() + texto.slice(1);
         campos.Colonia = MostrarCampoValido(txtColonia, cadenaCaracteres.formatoDomicilio.test(txtColonia.value));
     });
 
@@ -157,7 +162,19 @@ try{
     });
 
     txtRFC.addEventListener("blur", ()=>{
+        txtRFC.value = txtRFC.value.toUpperCase();
         campos.RFC = MostrarCampoValido(txtRFC, cadenaCaracteres.formatoRFC.test(txtRFC.value));
+    });
+
+    camposConPrimerLetraMayuscula.forEach(input =>{
+        input.addEventListener("keyup", ()=>{
+            let palabras = input.value.split(" ");
+            for(let i = 0; i < palabras.length; i++){
+                palabras[i] = palabras[i].charAt(0).toUpperCase() + palabras[i].slice(1);
+            }
+
+            input.value = palabras.join(" ");
+        });
     });
 
     frmNuevoCliente.addEventListener("submit", function(event){

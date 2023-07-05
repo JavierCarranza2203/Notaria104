@@ -14,15 +14,31 @@
 
     <link rel="stylesheet" href="../../css/style-reset.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_tabla-clientes.css">
+    <link rel="stylesheet" href="../../css/style-error-page.css">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 
     <script src="../../js/js_pagina-principal/buscarCliente.js"></script>
 </head>
 <body>
+    <?php
+        session_start();
+        $usuario = $_SESSION['usuario'];
+
+        if($usuario = null || $usuario == '')
+        {
+    ?>
+            <div class=error-container>
+                <div class="error-container__content-container">
+                <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
+                <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>
+                <a href="../../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
+                </div>
+            </div>
+    <?php  
+            die();
+        }
+    ?>
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
         <nav class="header__navbar" id="menu-container">
