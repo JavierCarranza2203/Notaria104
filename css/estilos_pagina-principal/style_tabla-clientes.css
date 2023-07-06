@@ -7,7 +7,10 @@ body{
     grid-template-columns: 290px 1fr;
     overflow: hidden;
 }
-
+/*    ***********************************
+ *    **    ESTILOS PARA EL SECTION    **
+ *    ***********************************
+ */
 .section{
     color: #202020;
     overflow: scroll;
@@ -37,83 +40,112 @@ body{
     font-weight: bold;
     height: 60px;
 }
-
+/*    **********************************************
+ *    **    FIN DE LOS ESTILOS PARA EL SECTION    **
+ *    **********************************************
+ */
+/*    **************************************
+ *    **    ESTILOS PARA PARA LA TABLA    **
+ *    **************************************
+ */
 .section__table-container{
     padding: 13px;
 }
 
-table{
+.section__table{
     background-color: #fff;
+    border: 1px solid #202020;
     border-collapse: collapse;
     text-align: center;
     color: #202020;
-    width: 1500px;
+    min-width: 100%;
 }
 
-td, th{
+.section__table-header{
+    background-color: #003366;
+}
+
+.section__table-cell, .section__table-header-cell{
     padding: 10px 5px;
     border: 1px solid;
     text-align: center;
     vertical-align: middle;
+    width: 220px;
 }
 
-table tr td a{
-    color: #101010;
-}
-
-thead{
-    background-color: #003366;
-}
-
-th{
-    color: #f0f0f0;
-}
-
-tr:nth-child(even){
-    background-color: #ddd;
-}
-
-tr:hover td{
-    background-color: #004386;
-    color: #fff;
-    border-color: #004386;
-}
-
-tr:hover > table tr td a i{
+.section__table-header-cell{
     color: #fff;
 }
 
-/* Estilos para el label que muestra la cantidad de registros de la tabla */
-#btnAgregarCliente{
-    position: sticky;
-    display: inline-block;
-    left: calc(50% - 100px);
-    padding-top: 12px;
-    color: #202020;
+.section__table-row:nth-child(even){
+    background-color: #e8e8e8;
 }
 
-#btnAgregarCliente:hover{
+.section__table-row:hover > .section__table-cell{
+    background-color: #7f9ebd;
+    border-color: #7f9ebd;
+    color: #fff;
+}
+
+.section__table-button{
+    width: 100%;
+}
+
+.section__table-button:hover{
     text-decoration: underline;
+    font-weight: bold;
+    transition: all 0.2s ease-in;
 }
 
-.dataTables_wrapper .dataTables_length {
-    float: left;
-    position: sticky;
-    margin: 13px 0;
-    left: 0px;
-    color: #202020;
-    display: none;
-}
-
-.dataTables_wrapper .dataTables_length select {
-    border: 1px solid #aaa;
-    border-radius: 3px;
-    padding: 5px;
-    background-color: transparent;
-    padding: 4px;
+.section__add-client{
+    position: absolute;
     display: inline-block;
+    left: 700px;
+    top: 52px;
+    color: #fff;
+    padding: 10px 16px;
+    background-color: #003366;
+    border-radius: 8px;
 }
 
+.section__add-client:hover{
+    background-color: #004386;
+}
+/*    ********************************************
+ *    **    FIN DE LOS ESTILOS PARA LA TABLA    **
+ *    ********************************************
+ */
+/*    *****************************
+ *    **    ESTILOS DEL MODAL    **
+ *    *****************************
+ */
+.modal-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #004386;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-container__modal{
+    color: #202020;
+    font-size: 2em;
+    width: max-content;
+    height: 500px;
+    background-color: #fafafa;
+}
+/*    *****************************
+ *    **    ESTILOS DEL MODAL    **
+ *    *****************************
+ */
+/*    ********************************
+ *    **    ESTILOS DE DATATABLE    **
+ *    ********************************
+ */
 .dataTables_wrapper .dataTables_filter {
     float:left;
     text-align: left;
@@ -131,17 +163,7 @@ tr:hover > table tr td a i{
     background-color: transparent;
     margin-left: 10px;
     display: inline-block;
-}
-
-/* Estilos para el label que muestra la cantidad de registros de la tabla */
-.dataTables_wrapper .dataTables_info {
-    clear: both;
-    float: left;
-    padding-top: 1em;
-    position: sticky;
-    left: 0px;
-    display: none;
-    color: #202020
+    outline: none;
 }
 
 /* Estilos para el div de la paginacion de la tabla */
@@ -199,6 +221,14 @@ tr:hover > table tr td a i{
     box-shadow: inset 0 0 3px #111
 }
 
+.dataTables_wrapper .dataTables_info {
+    display: none;
+}
+
+.dataTables_wrapper .dataTables_length {
+    display: none;
+}
+
 @media screen and (max-width: 767px) {
 
     .dataTables_wrapper .dataTables_info,
@@ -224,3 +254,7 @@ tr:hover > table tr td a i{
         margin-top: .5em
     }
 }
+/*    *******************************************
+ *    **    FIN DE LOS ESTILOS DE DATATABLE    **
+ *    *******************************************
+ */
