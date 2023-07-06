@@ -192,6 +192,7 @@ try{
             campos.Colonia == true &&
             campos.CodigoPostal == true &&
             campos.RFC == true))){
+                
                 frmNuevoCliente.submit();
             };
     });

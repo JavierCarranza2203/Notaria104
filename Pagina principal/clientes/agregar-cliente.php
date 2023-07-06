@@ -49,7 +49,7 @@
             <h3 class="section__h3">Nota: Los campos marcados con * son obligatorios</h3>
         </div>
 
-        <form action="" class="section__form" id="frmNuevoCliente">
+        <form action="../../php/php_pagina-principal/formCliente.php" class="section__form" id="frmNuevoCliente" method="POST">
             <p class="form__p"><span></span>Datos de identificación<span></span></p>
 
             <!--==== Campo para el nombre ====-->

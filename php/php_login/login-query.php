@@ -19,7 +19,7 @@
         $nombre = $_POST["txtNombre"];
         $password = $_POST["txtContrasenia"];
 
-        $query = mysqli_query($conection, "SELECT*FROM usuarios WHERE nombre = '".$nombre."' and contrasenia = '".$password."'");
+        $query = mysqli_query($conection, "SELECT*FROM usuario WHERE nombre = '".$nombre."' and contrasenia = '".$password."'");
         
         $nr = mysqli_num_rows($query);
 

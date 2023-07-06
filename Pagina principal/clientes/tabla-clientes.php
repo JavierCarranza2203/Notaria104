@@ -73,7 +73,7 @@
                     {
                 ?>             
                         <tr class="section__table-row">
-                            <td class="section__table-cell"><?php echo $mostrar['nombre_de_pila'] ?></td>
+                            <td class="section__table-cell"><?php echo $mostrar['nombre'] ?></td>
                             <td class="section__table-cell"><?php echo $mostrar['apellido_paterno'] ?></td>
                             <td class="section__table-cell"><?php 
                                 if($mostrar['apellido_materno'] != null)
@@ -95,20 +95,33 @@
         </div>
     </section>
 
-    <section class="modal-container">
+    <section class="modal-container" id="modal">
         <div class="modal-container__modal">
-            <i class="fa-solid fa-user-large modal-container__icon"></i>
+            <i class="fa-solid fa-circle-xmark modal-container__icon" id="btnCloseModal"></i>
             <ul class="modal-container__ul">
-                <li class="modal-container__li" id="idCliente"></li>
-                <li class="modal-container__li" id="nombreCliente"></li>
-                <li class="modal-container__li" id="apellidoPaternoCliente"></li>
-                <li class="modal-container__li" id="apellidoMaternoCliente"></li>
-                <li class="modal-container__li" id="curpCliente"></li>
-                <li class="modal-container__li" id="fechaNacimientoCliente"></li>
+                <li><b>Folio: </b><span id="folioCliente"></span></li>
+                <li><b>Nombre: </b><span id="nombreCliente"></span></li>
+                <li><b>Apellido paterno: </b><span id="apellidoPaternoCliente"></span></li>
+                <li><b>Apellido materno: </b><span id="apellidoMaternoCliente"></span></li>
+                <li><b>Correo: </b><span id="correoCliente"></span></li>
+                <li><b>Teléfono particular: </b><span id="telefonoParticularCliente"></span></li>
+                <li><b>Teléfono celular: </b><span id="telefonoCelularCliente"></span></li>
+                <li><b>Calle: </b><span id="calleCliente"></span></li>
+                <li><b>Número interior: </b><span id="numIntCliente"></span></li>
+                <li><b>Número exterior: </b><span id="numExtCliente"></span></li>
+                <li><b>Colonia: </b><span id="coloniaCliente"></span></li>
+                <li><b>Código postal: </b><span id="codigoPostalCliente"></span></li>
+                <li><b>RFC: </b><span id="rfcCliente"></span></li>
             </ul>
+            <div class="modal-container__button-container">
+            <button class="modal-container__button"><i class="fa-solid fa-user-pen"></i> Editar datos</button>
+            <button class="modal-container__button modal-container__button--delete"><i class="fa-solid fa-user-xmark"></i> Borrar cliente</button>
+            </div>
         </div>
     </section>
 
+    <script src="../../js/cerrar-sesion_v2.js"></script>
+    <script src="../../js/js_pagina-principal/app_tabla-clientes.js"></script>
     <script>
         $(document).ready(function() {
             let table = $('#TablaClientes').DataTable( { ordering:false } );
@@ -117,7 +130,7 @@
                 let info = table.page.info();
                 if (info.recordsDisplay === 0 && !linkAdded) {
                     // No se encontraron resultados y el enlace no se ha agregado previamente
-                    let message = '<a href="agregar-cliente.html" class="section__add-client">¿Desea agregar al cliente?</a>';
+                    let message = '<a href="agregar-cliente.php" class="section__add-client">¿Desea agregar al cliente?</a>';
                     $('#TablaClientes').parent().append(message);
                     linkAdded = true;
                 } else if (info.recordsDisplay > 0 && linkAdded) {
@@ -128,7 +141,5 @@
             });
         });
     </script>
-    <script src="../../js/cerrar-sesion_v2.js"></script>
-    <script src="../../js/js_pagina-principal/app_tabla-clientes.js"></script>
 </body>
 </html>
