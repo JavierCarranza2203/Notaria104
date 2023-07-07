@@ -180,26 +180,23 @@ try{
     frmNuevoCliente.addEventListener("submit", function(event){
         event.preventDefault();
 
-        if(MessageBoxShow((campos.Nombre == true &&
-            campos.ApellidoPaterno == true &&
-            campos.ApellidoMaterno == true &&
-            campos.TelefonoParticular == true &&
-            campos.TelefonoCelular == true &&
-            campos.CorreoElectronico == true &&
-            campos.Calle == true &&
-            campos.NumInterior == true &&
-            campos.NumExterior == true &&
-            campos.Colonia == true &&
-            campos.CodigoPostal == true &&
-            campos.RFC == true))){
-                
-                frmNuevoCliente.submit();
+        if(MessageBoxShow((campos.Nombre == true && campos.ApellidoPaterno == true &&
+            campos.ApellidoMaterno == true && campos.TelefonoParticular == true && 
+            campos.TelefonoCelular == true && campos.CorreoElectronico == true && 
+            campos.Calle == true && campos.NumInterior == true &&
+            campos.NumExterior == true && campos.Colonia == true &&
+            campos.CodigoPostal == true && campos.RFC == true))){
+                setTimeout(()=>{
+                    frmNuevoCliente.submit();
+                }, 3000)
             };
     });
     /*    *********************************************************
     *    **    FIN DEL FUNCIONAMIENTO DEL ENViO DEL FORMULARIO   **
     *    **********************************************************
     */
+
+    //Funcion para mostrar el message-box
     function MessageBoxShow(validado){
         messageBox.classList.add("message-box--show");
         if(validado){
@@ -218,6 +215,7 @@ try{
         }
     }
 
+    //Evento "click" del boton para cerrar el message-box
     btnCerrarMessageBox.addEventListener("click", ()=>{
         messageBox.classList.remove("message-box--show");
         messageBox.classList.remove("message-box--correct");

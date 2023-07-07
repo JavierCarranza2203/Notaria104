@@ -31,7 +31,6 @@
             </h3>
             <h3 class="error-container__info-error-code" id="CodigoError">Ocurrió un error desconocido</h3>
         </div>
-
     </div>
 
     <header class="header-container">

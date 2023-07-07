@@ -1,3 +1,38 @@
+// Obtiene todos los elementos del tipo input con dicha clase
+const arrFileUpload = document.querySelectorAll('.fileUpload')
+
+// Para cada uno de los inputs realiza la siguiente rutina
+arrFileUpload.forEach(fileUpload => {
+    // Se obtienen los elementos anterior y posterior a la etiqueta del tipo input,
+    // que, por la estructura del HTML, son un span y un label, respectivamente
+    let fileValue = fileUpload.previousElementSibling 
+    let label = fileUpload.nextElementSibling
+    // Establece el valor predeterminado de la etiqueta
+    let labelValue = 'No se ha seleccionado ningún archivo'
+    // Cada que se seleccione un nuevo archivo:
+    fileUpload.addEventListener('change', (e) => {
+        let fileName = ''
+        // En caso de que se seleccione mas de uno:
+        if (this.files && this.files.length > 1) {
+            fileName = ( this.getAttribute('data-multiple-caption') || '').replace( '{count}', this.files.length )
+        }
+        // Recorta la ruta obtenida, dejando solo el nombre del archivo
+        else {
+            fileName = e.target.value.split('\\').pop()
+        }
+        // De obtenerse un archivo, se agrega el nombre a la etiqueta
+        if (fileName) {
+            fileValue.innerHTML = fileName
+            fileValue.classList.add('valid')
+        }
+        // Si no se obtiene un archivo, restablece la etiqueta a su estado inicial
+        else {
+            fileValue.innerHTML = labelValue
+            fileValue.classList.remove('valid')
+        }
+    })
+});
+
 try{
     //Rescata el URL
     const valores = window.location.search;
@@ -56,7 +91,6 @@ try{
         //Acta Constitutiva
         case "AC":
             NombreDocumento.textContent = "Acta constitutiva";
-            MostrarError("002")
             break;
         //Acta Notarial
         case "AN":
@@ -202,12 +236,10 @@ try{
             break;
         //En caso de que no encuentre el valor dado por URL
         default:
-            MostrarError("001");
             break;
     }
 }
 catch(e){
-    MostrarError("300");
     console.log("Al parecer hubo un error inesperado, el código del archivo mostrarControles.js lanzó una excepción");
     console.log(e);
     document.getElementById("solution").textContent = "Error inesperado, contacte al administrador de sistemas";

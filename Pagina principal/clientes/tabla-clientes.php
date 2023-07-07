@@ -28,7 +28,7 @@
         if($usuario = null || $usuario == '')
         {
     ?>
-            <div class=error-container>
+            <div class="error-container">
                 <div class="error-container__content-container">
                 <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
                 <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>

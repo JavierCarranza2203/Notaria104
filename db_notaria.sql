@@ -1,3 +1,13 @@
+/* fileValue.addEventListener("click", ()=>{
+        let pdfFile = fileUpload.files[0]
+        let pdfURL = URL.createObjectURL(pdfFile)
+        
+        pdfViewer.setAttribute("src", pdfURL)
+        setTimeout(()=>{
+            popupContainer.classList.remove("hide-popup")
+        }, 500)
+}) */
+
 CREATE TABLE usuario (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(35),

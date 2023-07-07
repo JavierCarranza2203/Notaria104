@@ -136,7 +136,7 @@ body{
 }
 
 .form__button:hover, .form__button:focus{
-    background-color: #004386;;
+    background-color: #004386;
 }
 
 .form__field:nth-child(4){
