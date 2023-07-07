@@ -317,7 +317,7 @@
                 <div class="check">
                     <input type="checkbox" name="ConstanciaJuzgado" id="ConstanciaJuzgado">
                     <label for="ConstanciaJuzgado">
-                        Dictamen de subdivisión
+                        Constancia expedida por el juzgado
                         <span class="asterisk">*</span>
                     </label>
                 </div>
@@ -334,7 +334,7 @@
                 <div class="check">
                     <input type="checkbox" name="DictamenDeSubdivision" id="DictamenDeSubdivision">
                     <label for="DictamenDeSubdivision">
-                        Constancia expedida por el juzgado
+                        Dictamen de subdivisión
                         <span class="asterisk">*</span>
                     </label>
                 </div>
