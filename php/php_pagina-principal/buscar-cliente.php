@@ -2,8 +2,8 @@
 include '../conection.php';
 
 // Verificar la conexión
-if ($conection->connect_error) {
-    die("Error de conexión a la base de datos: " . $conection->connect_error);
+if (!$conection) {
+    die("Error de conexión a la base de datos");
 }
 
 $id = $_GET["id"];

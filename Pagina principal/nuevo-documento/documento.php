@@ -56,6 +56,10 @@
 
         <form action="../../php/php_pagina-principal/guardar-archivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data">
             <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">    
+            <div>
+                Nombre del cliente:<input type="text" name="txtNombre" id="txtNombre" autocomplete="off">
+                <ul id="lista"></ul>
+            </div>
             <!--Escritura o antecedente-->
             <div class="simple-check-field tramites-container__item-form-container-form-document" id="Escritura">
                 <div class="check">
@@ -66,7 +70,7 @@
                     </label>
                 </div>
                 <div class="file">
-                    <span class="file-name">No se ha seleccionado ningún archivo</span></a>
+                    <span class="file-name">No se ha seleccionado ningún archivo</span>
                     <input type="file" name="escrituraArchivo" id="escrituraArchivo"  class="fileUpload" >
                     <label for="escrituraArchivo" class="archivo">
                         <i class="fa-solid fa-arrow-up-from-bracket"></i>Subir archivo
@@ -960,5 +964,6 @@
     </secton>
 
     <script src="../../js/js_pagina-principal/mostrarControles.js"></script>
+    <script src="../../js/js_pagina-principal/filtarClientes.js"></script>
 </body>
 </html>

@@ -2,10 +2,11 @@
 
 //$nombreCliente = $_POST['nombreCliente'];
 $tipoDocumento = $_POST['txtDocumento'];
+$nombreCliente = $_POST['txtNombre'];
 
 $estructuraComparecientes = ['ineComparecientesArchivo', 
 'curpComparecientesArchivo', 'rfcComparecientesArchivo', 
-'actanacComparecientesArchivo', 'actmatComparecientesArchivo', 
+'actanacComparecientesArchivo', 'actamatComparecientesArchivo', 
 'compdomicilioComparecientesArchivo', 'reciboaguaComparecientesArchivo', 
 'hojageneralesComparecientesArchivo'];
 
@@ -150,9 +151,9 @@ $estructuraDocumentos = [
         'testigos' => false
     ],
     'eas' => [
-        'documentos' => ['escrituraArchivo', 'predialArchivo']
-        //'comparecientes' => false,
-        //'testigos' => false
+        'documentos' => ['escrituraArchivo', 'predialArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
     ],
     'ean' => [
         'documentos' => ['escrituraArchivo', 'documentoIdentificacion1', 'documentoIdentificacion2', 'documentoIdentificacion3', 'hojaGeneralesArchivo'],
@@ -177,7 +178,7 @@ $estructuraDocumentos = [
 ];
 
 if (isset($estructuraDocumentos[$tipoDocumento])) {
-    $carpetaDestino = 'documentos/' . $tipoDocumento;
+    $carpetaDestino = 'documentos/' . $tipoDocumento . "_" . $nombreCliente;
 
     if (!is_dir($carpetaDestino)) {
         mkdir($carpetaDestino, 0755, true);
@@ -195,6 +196,29 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
             }
             
             move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+        }
+    }
+
+    if($estructuraDocumentos[$tipoDocumento]['comparecientes'] === true){
+        $rutaComparecientes = $carpetaDestino . '/' .'comparecientes';
+
+        if (!is_dir($rutaComparecientes)) {
+            mkdir($rutaComparecientes, 0755, true);
+        }
+
+        foreach ($estructuraComparecientes as $documentos){
+            if ($_FILES[$documentos]['error'] === UPLOAD_ERR_OK) {
+                $nombreArchivo = $_FILES[$documentos]['name'];
+                $rutaArchivo = $rutaComparecientes. '/' . $nombreArchivo;
+                // Verificar si el archivo ya existe
+                if (file_exists($rutaArchivo)) {
+                    $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                    $nombreArchivo = basename($nombreArchivo, '.' . $extension) . '_' . uniqid() . '.' . $extension;
+                    $rutaArchivo = $rutaComparecientes. '/' . $nombreArchivo;
+                }
+                
+                move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+            }
         }
     }
 }
