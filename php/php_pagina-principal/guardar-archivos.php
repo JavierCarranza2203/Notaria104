@@ -1,7 +1,7 @@
 <?php
 
-$nombreCliente = $_POST['nombreCliente'];
-$tipoDocumento = $_POST['tipoDocumento'];
+//$nombreCliente = $_POST['nombreCliente'];
+$tipoDocumento = $_POST['txtDocumento'];
 
 $estructuraComparecientes = ['ineComparecientesArchivo', 
 'curpComparecientesArchivo', 'rfcComparecientesArchivo', 
@@ -19,99 +19,183 @@ $estructuraDocumentos = [
     ],
     //Listo
     'an' => [
-        'carpeta' => 'actas_notariales',
         'documentos' => ['PoderArchivo', 'PersonalidadEmpresaArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'coa' => [
-        'carpeta' => 'contratos_arrendamiento',
         'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 
         'actnacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
         'reciboAguaArchivo', 'hojaGeneralesArchivo', 
-        'identificacionInmuebleArchivo']
+        'identificacionInmuebleArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
     ],
     //Listo
     'ccd' => [
-        'carpeta' => 'contratos_comodato',
         'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 
         'actnacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
         'reciboAguaArchivo', 'hojaGeneralesArchivo', 
-        'identificacionInmuebleArchivo']
+        'identificacionInmuebleArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
     ],
     //Listo
     'ccv' => [
-        'carpeta' => 'contratos_compraventa',
-        'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo', 'hojaGeneralesArchivo'],
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'ccvp' => [
-        'carpeta' => 'contratos_compraventa_plazos',
         'documentos' => ['escrituraArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes,
-        'testigos' => $estructuraTestigos
+        'comparecientes' => true,
+        'testigos' => true
     ],
     //Listo
     'ccvrd' => [
-        'carpeta' => 'contratos_compraventa_reserva_dominio',
         'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'craigh' => [
-        'carpeta' => 'contratos_reconocimiento_adeudo_intereses_garantia_hipotecaria',
         'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'csp' => [
-        'carpeta' => 'contratos_servidumbre_paso',
         'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'dgps' => [
-        'carpeta' => 'donaciones_gratuita_pura_simple',
         'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'dgpsruv' => [
-        'carpeta' => 'donaciones_gratuita_pura_simple_reserva_usufructo_vitalicio',
         'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'paa' => [
-        'carpeta' => 'protocolizaciones_acta_asamblea',
         'documentos' => ['PoderArchivo', 'PersonalidadEmpresaArchivo', 'ActaEmpresaArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
     //Listo
     'pjs' => [
-        'carpeta' => 'protocolizaciones_juicio_sucesorio',
         'documentos' => ['certificadoArchivo', 'predialArchivo', 'ConstanciaJuzgadoArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
+    //Listo
     'psof' => [
-        'carpeta' => 'protocolizaciones_subdivision_fusion',
         'documentos' => ['certificadoArchivo', 'predialArchivo', 'DictamenDeSubdivisionArchivo', 'PlanoArchivo'],
-        'comparecientes' => $estructuraComparecientes
+        'comparecientes' => true,
+        'testigos' => false
     ],
-    'tpas' => [],
-    'tpal' => [],
-    'uv' => [],
-    'ctpepf' => [],
-    'dtsn' => [],
-    'dtsec' => [],
-    'crd' => [],
-    'peyog' => [],
-    'cd' => [],
-    'eas' => [],
-    'ean' => [],
-    'eaec' => [],
-    'caa' => [],
-    'cr' => []
+    //Listo
+    'tpas' => [
+        'documentos' => ['actnacArchivo', 'curpArchivo', 'rfcArchivo', 'ineArchivo', 'ActaMatrimonioArchivo', 'nombresHijosArchivo']
+    ],
+    //Listo
+    'tpal' => [
+        'documentos' => ['actnacArchivo', 'curpArchivo', 'rfcArchivo', 'ineArchivo', 'ActaMatrimonioArchivo', 'nombresHijosArchivo', 'escrituraArchivo']
+    ],
+    //Listo
+    'uv' => [
+        'documentos' => 'escrituraArchivo',
+        'comparecientes' => true,
+        'testigos' => false
+    ],
+    //Listo
+    'ctpepf' => [
+        'documentos' => ['escrituraArchivo', 'certificadoArchivo', 'predialArchivo', 'poderArchivo', 'PersonalidadEmpresaArchivo', 'PersonalidadOPoderArchivo'],
+        'comparecientes' => true,
+        'testigos' => false
+    ],
+    //Listo
+    'dtsn' => [
+        'documentos' => ['documentoIdentificacion1', 'documentoIdentificacion2', 'documentoIdentificacion3', 'hojaGeneralesArchivo'],
+        'comparecientes' => false,
+        'testigos' => true
+    ],
+    //Listo
+    'dtsec' => [
+        'documentos' => ['ActaMatrimonioArchivo', 'hojaGeneralesArchivo'],
+        'comparecientes' => false,
+        'testigos' => true
+    ],
+    //Listo
+    'crd' => [
+        'documentos' => ['escrituraArchivo', 'ineArchivo', 'rfcArchivo', 'curpArchivo', 'hojaGeneralesArchivo', 'certificadoArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'peyog' => [ 
+        'documentos' => ['escrituraArchivo', 'ineArchivo', 'rfcArchivo', 'curpArchivo', 'hojaGeneralesArchivo', 'PoderanteArchivo', 'ApoderadoArchivo', 'DatosEmpresaArchivo', 'ActaConstitutivaEmpresaArchivo', 'PoderRepresentanteArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'cd' => [
+        'documentos' => ['escrituraArchivo', 'ineArchivo', 'rfcArchivo', 'curpArchivo', 'hojaGeneralesArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'eas' => [
+        'documentos' => ['escrituraArchivo', 'predialArchivo']
+        //'comparecientes' => false,
+        //'testigos' => false
+    ],
+    'ean' => [
+        'documentos' => ['escrituraArchivo', 'documentoIdentificacion1', 'documentoIdentificacion2', 'documentoIdentificacion3', 'hojaGeneralesArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'eaec' => [
+        'documentos' => ['escrituraArchivo', 'documentoIdentificacion1', 'documentoIdentificacion2', 'documentoIdentificacion3', 'hojaGeneralesArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'caa' => [
+        'documentos' => ['ActaNacimientoMenorArchivo', 'DatosGeneralesPadresArchivo', 'ActaDefuncionArchivo', 'DomicilioViviendaArchivo', 'NombrePersonaACargoArchivo'],
+        'comparecientes' => false,
+        'testigos' => false
+    ],
+    'cr' => [
+        'documentos' => ['TituloVehiculoArchivo', 'TarjetaCirculacionArchivo'],
+        'comparecientes' => true,
+        'testigos' => false
+    ]
 ];
+
+if (isset($estructuraDocumentos[$tipoDocumento])) {
+    $carpetaDestino = 'documentos/' . $tipoDocumento;
+
+    if (!is_dir($carpetaDestino)) {
+        mkdir($carpetaDestino, 0755, true);
+    }
+
+    foreach ($estructuraDocumentos[$tipoDocumento]['documentos'] as $documentos){
+        if ($_FILES[$documentos]['error'] === UPLOAD_ERR_OK) {
+            $nombreArchivo = $_FILES[$documentos]['name'];
+            $rutaArchivo = $carpetaDestino . '/' . $nombreArchivo;
+            // Verificar si el archivo ya existe
+            if (file_exists($rutaArchivo)) {
+                $extension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);
+                $nombreArchivo = basename($nombreArchivo, '.' . $extension) . '_' . uniqid() . '.' . $extension;
+                $rutaArchivo = $carpetaDestino . '/' . $nombreArchivo;
+            }
+            
+            move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+        }
+    }
+}
 ?>

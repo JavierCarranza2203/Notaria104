@@ -48,14 +48,14 @@
         <a href="../../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
     
-    <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">
     <section class="section">
         <div class="section__header">
             <h2 class="section__h2" id="NombreDocumento">Ingrese los datos del cliente</h2>
             <h3 class="section__h3">Nota: Los campos marcados con * son obligatorios</h3>
         </div>
 
-        <form action="PHP/guardarArchivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data">
+        <form action="../../php/php_pagina-principal/guardar-archivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">    
             <!--Escritura o antecedente-->
             <div class="simple-check-field tramites-container__item-form-container-form-document" id="Escritura">
                 <div class="check">
@@ -366,11 +366,14 @@
                 <div class="check">
                     <input type="checkbox" name="NombresHijos" id="NombresHijos">
                     <label for="NombresHijos">
-                        Nombres de los hijos (Uno por renglón)
+                        Nombres de los hijos
                     </label>
                 </div>
-                <div class="file">
-                    <textarea name="NombresHijosArchivo" id="NombresHijosArchivo"></textarea>
+                <div class="file"><span class="file-name">No se ha seleccionado ningún archivo</span>
+                    <input type="file" name="NombresHijosArchivo" id="NombresHijosArchivo" class="fileUpload">
+                    <label for="NombresHijosArchivo" class="archivo">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir archivo
+                    </label>
                 </div>
             </div>
             <!-- Personalidad o poder (No siempre es opcional)-->
@@ -603,8 +606,11 @@
                         <span class="asterisk">*</span>
                     </label>
                 </div>
-                <div class="file">
-                    <input type="text" name="txtNombrePersonaACargo" id="txtNombrePersonaACargo">
+                <div class="file"><span class="file-name">No se ha seleccionado ningún archivo</span>
+                    <input type="file" name="NombrePersonaACargoArchivo" id="NombrePersonaACargoArchivo" class="fileUpload" >
+                    <label for="NombrePersonaACargoArchivo" class="archivo">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir archivo
+                    </label>
                 </div>
             </div>
             <!-- Identificacion -->

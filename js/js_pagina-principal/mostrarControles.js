@@ -154,6 +154,8 @@ try{
             NombreDocumento.textContent = "Convenio de transmisión de propiedad en extinción parcial de fideicomiso";
             MostrarControles_Conjunto1();
             document.getElementById("PersonalidadEmpresa").classList.remove("tramites-container__item-form-container-form-document");
+            document.getElementById("Poder").classList.remove("tramites-container__item-form-container-form-document");
+            document.getElementById("PersonalidadOPoder").classList.remove("tramites-container__item-form-container-form-document");
             break;
         //Declaracion Testimonial sobre el Nombre
         case "DTSN":
