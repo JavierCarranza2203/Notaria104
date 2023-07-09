@@ -54,6 +54,41 @@ body{
 *    **    FIN DE LOS ESTILOS PARA EL SECTION    **
 *    **********************************************
 */
+.form__data{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 70px;
+  position: relative;
+  width: 100%;
+}
+
+.form__data > .field {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.form__data > .field input{
+  padding: 5px;
+  border: 1px solid #797979;
+  outline: none;
+  width: 100%;
+}
+
+.lista{
+  background-color: #fff;
+  position: absolute;
+  top: 75px;
+  width: 23%;
+  left: 11px;
+  padding: 5px;
+  box-shadow: 0 5px 5px #757575;
+  display: none;
+}
+
+.lista li{
+  cursor: pointer;
+}
+
 .tramites-container__item-form-container-form{
   padding: 9px 24px 10px;
   position: relative;

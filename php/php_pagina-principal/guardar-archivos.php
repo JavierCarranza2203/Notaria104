@@ -1,8 +1,17 @@
 <?php
+include '../conection.php';
 
-//$nombreCliente = $_POST['nombreCliente'];
 $tipoDocumento = $_POST['txtDocumento'];
+$folioDocumento = $_POST['txtFolio'];
 $nombreCliente = $_POST['txtNombre'];
+$volumenDocumento = $_POST['txtVolumen'];
+$instrumentoDocumento = $_POST['txtInstrumento'];
+$idCliente = $_POST['txtId'];
+
+
+$idClienteRegistrado= 0;
+$clienteRegistrado = true;
+$arrayRutas = [];
 
 $estructuraComparecientes = ['ineComparecientesArchivo', 
 'curpComparecientesArchivo', 'rfcComparecientesArchivo', 
@@ -177,8 +186,22 @@ $estructuraDocumentos = [
     ]
 ];
 
+if($idCliente === "0"){
+    $clienteRegistrado = false;
+ }
+ 
+ $idClienteRegistrado = intval(($idCliente));
+
+ $insertarDatosIdentificacion = "INSERT INTO datosIdentificacion (nombre_cliente, volumen, instrumento) VALUES ('$nombreCliente', '$volumenDocumento', '$instrumentoDocumento')";
+
+ if (mysqli_query($conection, $insertarDatosIdentificacion)) {
+     echo "Los datos se insertaron correctamente.";
+ } else {
+     echo "Error al insertar los datos: ";
+ }
+
 if (isset($estructuraDocumentos[$tipoDocumento])) {
-    $carpetaDestino = 'documentos/' . $tipoDocumento . "_" . $nombreCliente;
+    $carpetaDestino = 'documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
 
     if (!is_dir($carpetaDestino)) {
         mkdir($carpetaDestino, 0755, true);
@@ -195,6 +218,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
                 $rutaArchivo = $carpetaDestino . '/' . $nombreArchivo;
             }
             
+            array_push($arrayRutas, $rutaArchivo);
             move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
         }
     }
@@ -220,6 +244,20 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
                 move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
             }
         }
+    }
+
+    $idDatosArchivo = mysqli_insert_id($conection);
+    echo $idDatosArchivo;
+    
+    $estructuraQuerys = [
+        'eas' => "INSERT INTO eas (folio, escritura, predial, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$idCliente', '$idDatosArchivo')"
+    ];
+
+    if(mysqli_query($conection, $estructuraQuerys[$tipoDocumento])){
+        echo "Todo bien";
+    }
+    else{
+        echo "Todo mal";
     }
 }
 ?>

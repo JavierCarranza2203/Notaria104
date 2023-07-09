@@ -55,10 +55,28 @@
         </div>
 
         <form action="../../php/php_pagina-principal/guardar-archivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">    
-            <div>
-                Nombre del cliente:<input type="text" name="txtNombre" id="txtNombre" autocomplete="off">
-                <ul id="lista"></ul>
+            <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">
+            <input type="hidden" name="txtId" id="txtId" value="0">
+            <div class="form__data">
+                <p class="field">
+                    <label for="txtNombre">Cliente *:</label>
+                    <input type="text" name="txtNombre" id="txtNombre" required placeholder="Nombre del cliente" autocomplete="off">
+                </p>
+                <ul class="lista" id="lista"></ul>
+                <p class="field">
+                    <label for="txtVolumen">Volumen *:</label>
+                    <input type="text" name="txtVolumen" id="txtVolumen" required placeholder="Volumen" autocomplete="off">
+                </p>
+
+                <p class="field">
+                    <label for="txtInstrumento">Instrumento *:</label>
+                    <input type="text" name="txtInstrumento" id="txtInstrumento" required placeholder="Instrumento" autocomplete="off">
+                </p>
+
+                <p class="field">
+                    <label for="txtFolio">Folio *:</label>
+                    <input type="text" name="txtFolio" id="txtFolio" required placeholder="Num. folio" autocomplete="off">
+                </p>
             </div>
             <!--Escritura o antecedente-->
             <div class="simple-check-field tramites-container__item-form-container-form-document" id="Escritura">

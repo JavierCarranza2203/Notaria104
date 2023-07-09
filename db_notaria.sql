@@ -1,15 +1,12 @@
-/* fileValue.addEventListener("click", ()=>{
-        let pdfFile = fileUpload.files[0]
-        let pdfURL = URL.createObjectURL(pdfFile)
-        
-        pdfViewer.setAttribute("src", pdfURL)
-        setTimeout(()=>{
-            popupContainer.classList.remove("hide-popup")
-        }, 500)
-}) */
+CREATE TABLE datosIdentificacion (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	nombre_cliente VARCHAR(40),
+	volumen VARCHAR(80),
+	instrumento VARCHAR(80)
+);
 
 CREATE TABLE usuario (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	id int AUTO_INCREMENT PRIMARY KEY,
 	nombre VARCHAR(35),
 	contrasenia VARCHAR(10)
 );
@@ -27,8 +24,7 @@ CREATE TABLE cliente (
 	num_interior TINYTEXT,
 	num_exterior TINYTEXT,
 	codigo_postal TINYTEXT,
-	rfc VARCHAR(20),
-	folio VARCHAR(10)
+	rfc VARCHAR(20)
 );
 
 CREATE TABLE persona (
@@ -63,164 +59,195 @@ CREATE TABLE conjuntoArchivos1 (
 );
 
 CREATE TABLE ccvcrd (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE csp (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE craigh (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE dgps (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE dgpsruv (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
+/* Lista */
 CREATE TABLE ctpepf (
-	id INT AUTO_INCREMENT PRIMARY KEY,
+	folio VARCHAR(35) PRIMARY KEY,
 	id_conjuntoArchivos INT,
 	id_cliente INT,
 	id_comparecientes INT,
 	id_usuario INT,
+	id_datosIdentificacion INT,
 	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE ccv (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_conjuntoArchivos INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_conjuntoArchivos INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE ccd (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente INT,
-	id_persona INT,
-	identificacion_inmueble TEXT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_persona) REFERENCES persona(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+    id_persona INT,
+    identificacion_inmueble TEXT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_persona) REFERENCES persona(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE coa (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente INT,
-	id_persona INT,
-	identificacion_inmueble TEXT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_persona) REFERENCES persona(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+    id_persona INT,
+    identificacion_inmueble TEXT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_persona) REFERENCES persona(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE uv (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	escritura TEXT,
-	id_comparecientes INT,
-	id_cliente INT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    escritura TEXT,
+    id_comparecientes INT,
+    id_cliente INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE cr (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_comparecientes INT,
-	id_cliente INT,
-	tarjeta_circulacion TEXT,
-	titulo_vehiculo TEXT,
-	id_usuario INT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_comparecientes INT,
+    id_cliente INT,
+    tarjeta_circulacion TEXT,
+    titulo_vehiculo TEXT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE paa (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_comparecientes INT,
-	id_cliente INT,
-	id_usuario INT,
-	acta_empresa TEXT,
-	poder TEXT,
-	personalidad_empresa TEXT,
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id),
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_comparecientes INT,
+    id_cliente INT,
+    id_usuario INT,
+    id_datosIdentificacion INT,
+    acta_empresa TEXT,
+    poder TEXT,
+    personalidad_empresa TEXT,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE pjs (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	constancia_expedida_juzgado TEXT,
-	certificado_reserva_prioridad TEXT,
-	predial INT,
-	id_cliente INT,
-	id_comparecientes INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    constancia_expedida_juzgado TEXT,
+    certificado_reserva_prioridad TEXT,
+    predial INT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE psof (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	plano TEXT,
-	dictamen_subdivision TEXT,
-	predial TEXT,
-	certificado_reserva_prioridad TEXT,
-	id_cliente INT,
-	id_comparecientes INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    plano TEXT,
+    dictamen_subdivision TEXT,
+    predial TEXT,
+    certificado_reserva_prioridad TEXT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE an (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	poder TEXT,
-	personalidad_empresa TEXT,
-	id_cliente INT,
-	id_comparecientes INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    poder TEXT,
+    personalidad_empresa TEXT,
+    id_cliente INT,
+    id_comparecientes INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE conjunto_archivos2 (
@@ -233,32 +260,162 @@ CREATE TABLE conjunto_archivos2 (
 );
 
 CREATE TABLE peyog (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente INT,
-	id_archivos INT,
-	poderante TEXT,
-	apoderado TEXT,
-	datos_empresa TEXT,
-	acta_constitutiva TEXT,
-	poder_representante TEXT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+    id_archivos INT,
+    id_datosIdentificacion INT,
+    poderante TEXT,
+    apoderado TEXT,
+    datos_empresa TEXT,
+    acta_constitutiva TEXT,
+    poder_representante TEXT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE cd (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente INT,
-	id_archivos INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+    id_archivos INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
 CREATE TABLE crd (
-	id INT AUTO_INCREMENT PRIMARY KEY,
-	id_cliente INT,
-	id_archivos INT,
-	certificado_reserva_prioridad TEXT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
-	FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id)
+    folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+    id_archivos INT,
+    certificado_reserva_prioridad TEXT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
 );
 
+CREATE TABLE ccvp (
+	folio VARCHAR(35) PRIMARY KEY,
+    id_cliente INT,
+	id_comparecientes INT,
+	id_testigos INT,
+	id_datosIdentificacion INT,
+	escritura TEXT,
+	predial TEXT,
+	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id),
+	FOREIGN KEY (id_testigos) REFERENCES testigos(id)
+);
+
+CREATE TABLE tpas (
+    folio VARCHAR(35) PRIMARY KEY,
+    ine TEXT,
+    curp TEXT,
+    rfc TEXT,
+    acta_nacimiento TEXT,
+    acta_matrimonio TEXT,
+    hoja_generales TEXT,
+    nombres_hijos TEXT,
+    id_cliente INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE eas (
+	folio VARCHAR(35) PRIMARY KEY,
+	escritura TEXT,
+	predial TEXT,
+	id_cliente INT, 
+    id_datosIdentificacion INT,
+	FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE caa (
+    folio VARCHAR(35) PRIMARY KEY,
+    acta_menor TEXT,
+    hoja_generales TEXT,
+    acta_defuncion TEXT,
+    domiclio_nuevo TEXT,
+    persona_a_cargo TEXT,
+    id_cliente INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE tpal (
+    folio VARCHAR(35) PRIMARY KEY,
+    ine TEXT,
+    curp TEXT,
+    rfc TEXT,
+    acta_nacimiento TEXT,
+    acta_matrimonio TEXT,
+    hoja_generales TEXT,
+    nombres_hijos TEXT,
+    escritura TEXT,
+    id_cliente INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE identificacion_persona (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+	primer_documento TEXT,
+	segundo_documento TEXT,
+	tercer_documento TEXT
+);
+
+CREATE TABLE ean (
+    folio VARCHAR(35) PRIMARY KEY,
+    id_identificacionPersona INT,
+    hoja_generales TEXT,
+    id_cliente INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE eaec (
+    folio VARCHAR(35) PRIMARY KEY,
+    id_identificacionPersona INT,
+    hoja_generales TEXT,
+    escritura TEXT,
+    id_cliente INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE dtsn (
+    folio VARCHAR(35) PRIMARY KEY,
+    id_identificacionPersona INT,
+    id_cliente INT,
+    id_testigos INT,
+    hoja_generales TEXT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_testigos) REFERENCES testigos(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
+
+CREATE TABLE dtsec (
+    folio VARCHAR(35) PRIMARY KEY,
+    acta_matrimonio TEXT,
+    id_cliente INT,
+    id_testigos INT,
+    hoja_generales TEXT,
+    id_identificacionPersona INT,
+    id_datosIdentificacion INT,
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id),
+    FOREIGN KEY (id_testigos) REFERENCES testigos(id),
+    FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id),
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)
+);
