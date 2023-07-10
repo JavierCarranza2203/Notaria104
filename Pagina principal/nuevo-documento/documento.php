@@ -670,7 +670,7 @@
                     <div class="file">
                         <span class="file-name">No se ha seleccionado ningún archivo</span>
                         <input type="file" name="documentoIdentificacion2Archivo" id="documentoIdentificacion2Archivo" class="fileUpload" >
-                        <label for="curpIdentificacionArchivo" class="archivo">
+                        <label for="documentoIdentificacion2Archivo" class="archivo">
                             <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir archivo
                         </label>
                     </div>
@@ -685,8 +685,8 @@
                     </div>
                     <div class="file">
                         <span class="file-name">No se ha seleccionado ningún archivo</span>
-                        <input type="file" name="documentoIdentificacion3" id="documentoIdentificacion3" class="fileUpload" >
-                        <label for="documentoIdentificacion3" class="archivo">
+                        <input type="file" name="documentoIdentificacion3Archivo" id="documentoIdentificacion3Archivo" class="fileUpload" >
+                        <label for="documentoIdentificacion3Archivo" class="archivo">
                             <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir archivo
                         </label>
                     </div>

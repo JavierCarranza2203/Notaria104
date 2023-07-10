@@ -218,6 +218,7 @@ try{
             NombreDocumento.textContent = "Escrito aclaratorio (Estado civil)";
             document.getElementById("Escritura").classList.remove("tramites-container__item-form-container-form-document");
             document.getElementById("Identificacion").classList.remove("tramites-container__item-form-container-form-document");
+            document.getElementById("hojaGenerales").classList.remove("tramites-container__item-form-container-form-document");
             break;
         //Carta de Autorizacion
         case "CaA":
