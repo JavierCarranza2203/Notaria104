@@ -43,7 +43,7 @@
         <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
-    <section class="section new-document" id="contenedorNuevoDocumento">
+    <section class="section new-document section--hidden" id="contenedorMisDocumentos">
         <nav class="section__nav">
             <h2 class="section__h2">Ver documentos guardados</h2>
 
@@ -59,7 +59,7 @@
         
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorContratos">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compraventa</h3>
                 <a id="CCV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -67,7 +67,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compraventa con reserva de dominio</h3>
                 <a id="CCVCRD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -75,7 +75,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de arrendamiento</h3>
                 <a uid="CoA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -83,7 +83,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de comodato</h3>
                 <a id="CCD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -91,7 +91,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compra venta a plazos</h3>
                 <a id="CCVP">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -99,7 +99,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de servidumbre de paso</h3>
                 <a id="CSP">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -107,7 +107,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de reconocimiento de adeudo con intereses y garantía hipotecaria</h3>
                 <a id="CRAIGH">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -117,7 +117,7 @@
 
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorEscritos">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Superficie)</h3>
                 <a id="EAS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -125,7 +125,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Nombre)</h3>
                 <a id="EAN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -133,7 +133,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Estado civil)</h3>
                 <a id="EAEC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -143,7 +143,7 @@
 
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorProtocolizaciones">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de acta de asamblea</h3>
                 <a id="PAA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -151,7 +151,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de juicio sucesorio</h3>
                 <a id="PJS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -159,7 +159,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de subdivisión o fusión</h3>
                 <a id="PSoF">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -169,7 +169,7 @@
 
         <article class="new-document__wrapper" id="contenedorActas">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Acta constitutiva</h3>
                 <a id="AC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -177,7 +177,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Acta notarial</h3>
                 <a id="AN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -187,7 +187,7 @@
 
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorDonaciones">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Donación gratuita pura y simple</h3>
                 <a id="DGPS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -195,7 +195,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Donación gratuita pura y simple con reserva de usufructo vitalicio</h3>
                 <a id="DGPSRUV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -205,7 +205,7 @@
 
         <article class="new-document__wrapper new-document__wrapper--hidden" id="contenedorOtros">
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Testamento público abierto sencillo</h3>
                 <a id="TPAS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -213,7 +213,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Testamento público abierto con legados</h3>
                 <a id="TPAL">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -221,7 +221,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Usufructo vitalicio</h3>
                 <a id="UV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -229,7 +229,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Convenio de transmisión de propiedad, en extinción parcial de fideicomiso</h3>
                 <a id="CTPEPF">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -237,7 +237,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Declaración testimonial sobre el nombre</h3>
                 <a id="DTSN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -245,7 +245,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Declaración testimonial sobre el estado civil</h3>
                 <a id="DTSEC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -253,7 +253,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Cancelación de reserva de dominio</h3>
                 <a id="CRD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -261,7 +261,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Poder especial y/o general</h3>
                 <a id="PEyoG">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -269,14 +269,14 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Cesión de derechos</h3>
                 <a id="CD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Carta de autorización</h3>
                 <a id="CaA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -284,7 +284,7 @@
             </div>
 
             <div class="new-document__item">
-                <i class="fa-solid fa-file"></i>
+                <i class="fa-solid fa-file-lines"></i>
                 <h3>Carta responsiva</h3>
                 <a id="CR">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
@@ -293,7 +293,7 @@
         </article>
     </section>
 
-    <section class="section">
+    <section class="section" id="contenedorTabla">
         <nav class="section__nav">
             <h2 class="section__h2">Tabla de <span id="tipoDocumento"></span></h2>
 
@@ -301,6 +301,20 @@
                 <li class="section__li section__li--active" id="btnActas">Ver otros documentos</li>
             </ul>
         </nav>
+
+        <table class="table">
+            <thead class="table__thead">
+                <th class="table__th">Folio</th>
+                <th class="table__th">Nombre del cliente</th>
+                <th class="table__th">Volumen</th>
+                <th class="table__th">Instrumento</th>
+                <th class="table__th">Ver archivos</th>
+                <th class="table__th">Descargar todos los archivos</th>
+            </thead>
+            <tbody class="table__tbody" id="tableBody">
+
+            </tbody>
+        </table>
     </section>
 
     <script src="../../js/js_pagina-principal/mostarTablaArchivos.js"></script>

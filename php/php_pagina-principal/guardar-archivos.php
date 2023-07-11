@@ -152,7 +152,7 @@ $estructuraDocumentos = [
     ],
     //Listo
     'tpas' => [
-        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo'],
+        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'NombresHijosArchivo'],
         'comparecientes' => false,
         'testigos' => false,
         'conjuntoArchivos1' => false,
@@ -161,7 +161,7 @@ $estructuraDocumentos = [
     ],
     //Listo
     'tpal' => [
-        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo', 'escrituraArchivo'],
+        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'NombresHijosArchivo', 'AntecedentesPropiedadesArchivo'],
         'comparecientes' => false,
         'testigos' => false,
         'conjuntoArchivos1' => false,
@@ -408,7 +408,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         'paa' => "INSERT INTO paa (folio, id_comparecientes, id_cliente, id_datosIdentificacion, acta_empresa, poder, personalidad_empresa) VALUES ('$folioDocumento', '$idComparecientes', '$idCliente','$idDatosArchivo' , '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$idCliente', '$idComparecientes', '$idDatosArchivo')",
         'pjs' => "INSERT INTO pjs (folio, constancia_expedida_juzgado, certificado_reserva_prioridad, predial, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]')",
         'psof' => "INSERT INTO psof (folio, plano, dictamen_subdivision, predial, certificado_reserva_prioridad, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$idCliente', '$idComparecientes', '$idDatosArchivo')",
-        'tpas' => "INSERT INTO tpas (folio, ine, curp, rfc, acta_nacimiento, acta_matrimonio, hoja_generales, nombres_hijos, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$arrayRutas[5]', '$arrayRutas[6]', '$arrayRutas[6]', '$idCliente', '$idDatosArchivo')",
+        'tpas' => "INSERT INTO tpas (folio, ine, curp, rfc, acta_nacimiento, acta_matrimonio, hoja_generales, nombres_hijos, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$arrayRutas[5]', '$arrayRutas[6]', '$idCliente', '$idDatosArchivo')",
         'tpal' => "INSERT INTO tpal (folio, ine, curp, rfc, acta_nacimiento, acta_matrimonio, hoja_generales, nombres_hijos, escritura, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$arrayRutas[5]', '$arrayRutas[6]', '$arrayRutas[7]', '$idCliente', '$idDatosArchivo')",
         'uv' => "INSERT INTO uv (folio, escritura, id_comparecientes, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$idComparecientes', '$idCliente', '$idDatosArchivo')",
         'ctpepf' => "INSERT INTO ctpepf (folio, id_conjuntoArchivos, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$idConjuntoArchivos1', '$idCliente', '$idComparecientes', '$idDatosArchivo')",

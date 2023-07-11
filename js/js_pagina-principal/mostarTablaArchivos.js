@@ -1,4 +1,8 @@
 const arrayBotones = document.querySelectorAll(".new-document__item a");
+const contenedorMisDocumentos = document.getElementById("conenedorMisDocumentos");
+const contenedorTabla = document.getElementById("contenedorTabla");
+const cuerpoTabla = document.getElementById("tableBody");
+const lblTipoDocumento = document.getElementById("tipoDocumento");
 
 //Recorre el array de botones para agregar el evento y mostrar los datos
 for(let i = 0; i < arrayBotones.length; i++){
@@ -23,8 +27,28 @@ for(let i = 0; i < arrayBotones.length; i++){
 
 
 function mostrarDatos(conjuntoDatos, tipoDocumento){
-    console.log(tipoDocumento);
+    lblTipoDocumento.textContent = tipoDocumento;
      conjuntoDatos.forEach(registro=>{
-        console.log(registro);
+        const fila = document.createElement('tr');
+
+        // Crear las celdas de la fila con los datos
+        const celdaFolio = document.createElement('td');
+        celdaFolio.textContent = registro.folio;
+        fila.appendChild(celdaFolio);
+  
+        const celdaNombreCliente = document.createElement('td');
+        celdaNombreCliente.textContent = registro.nombre_cliente;
+        fila.appendChild(celdaNombreCliente);
+  
+        const celdaVolumen = document.createElement('td');
+        celdaVolumen.textContent = registro.volumen;
+        fila.appendChild(celdaVolumen);
+  
+        const celdaInstrumento = document.createElement('td');
+        celdaInstrumento.textContent = registro.instrumento;
+        fila.appendChild(celdaInstrumento);
+  
+        // Agregar la fila al cuerpo de la tabla
+        cuerpoTabla.appendChild(fila);
      })
 }
