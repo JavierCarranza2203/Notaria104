@@ -1,27 +1,29 @@
 <?php
+    include '../conection.php';
 
-include 'conection.php';
+    // Verificar la conexión
+    if (!$conection) {
+        die("Error de conexión a la base de datos");
+    }
 
-if (isset($_POST["numero"])) {
-    // Se envio el formulario correctamente
-    $idCliente = $_POST["numero"];
-    $tabla = 'cliente';
-    $query = 'DELETE FROM '.$tabla.' WHERE id = '.$idCliente.'';
+    $id = $_GET["id"];
+
+
+    $query = "DELETE FROM cliente WHERE id = $id";
     $result = mysqli_query($conection, $query);
-    // Si se ejecuto, regresar al inicio
-    if ($result) {
-        header("Location: ../tabla-clientes.php");
-    }
-    else {
-        echo '
-        <script>
-            alert("No se pudo borrar el cliente. Intente de nuevo mas tarde")
-        </script>
-        ';
-    }
-}
-else {
-    // Mostrar el codigo de error
-}
 
-?>
+    if ($result) {
+
+        $registro = true;
+
+        $jsonRegistro = json_encode($registro);
+
+        header("Content-Type: application/json");
+
+        echo $jsonRegistro;
+    } else {
+        echo "Registro no encontrado";
+    }
+
+$conection->close();
+?> 

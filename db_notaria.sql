@@ -36,7 +36,9 @@ CREATE TABLE persona (
 	acta_matrimonio TEXT,
 	comprobante_domicilio TEXT,
 	recibo_agua TEXT,
-	hoja_generales TEXT
+	hoja_generales TEXT,
+    id_documento INT,
+    FOREIGN KEY (id_documento) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comparecientes (
@@ -66,7 +68,8 @@ CREATE TABLE ccvcrd (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE csp (
@@ -77,7 +80,8 @@ CREATE TABLE csp (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)  ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE craigh (
@@ -88,7 +92,8 @@ CREATE TABLE craigh (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)  ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE dgps (
@@ -99,7 +104,8 @@ CREATE TABLE dgps (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE dgpsruv (
@@ -110,7 +116,8 @@ CREATE TABLE dgpsruv (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 /* Lista */
@@ -122,7 +129,8 @@ CREATE TABLE ctpepf (
 	id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
 	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
-	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
+	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ccv (
@@ -133,7 +141,8 @@ CREATE TABLE ccv (
     id_datosIdentificacion INT,
     FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
+    FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
+    FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ccd (
@@ -414,3 +423,5 @@ CREATE TABLE dtsec (
     FOREIGN KEY (id_testigos) REFERENCES testigos(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
+
+CREATE VIEW vista_an AS

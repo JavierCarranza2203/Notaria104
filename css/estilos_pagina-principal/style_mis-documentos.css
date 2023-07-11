@@ -1,0 +1,26 @@
+*{
+    user-select: none;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 290px 1fr;
+}
+
+.section{
+    background-color: #fff;
+    color: #202020;
+}
+
+.section__nav{
+    background-color: #f0f0f0;
+    position: sticky;
+    top: 0;
+    right: 0;
+}
+
+.section__h2{
+    font-size: 1.3em;
+    padding: 0.5em 1em;
+    text-align: center;
+}

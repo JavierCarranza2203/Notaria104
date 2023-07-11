@@ -42,18 +42,18 @@ try{
 
     //Define un objeto para saber cuando todos los campos esten correctos
     const campos = {
-        Nombre: false,
-        ApellidoPaterno: false,
+        Nombre: true,
+        ApellidoPaterno: true,
         ApellidoMaterno: true,
         TelefonoParticular: true,
-        TelefonoCelular: false,
+        TelefonoCelular: true,
         CorreoElectronico: true,
-        Calle: false,
+        Calle: true,
         NumInterior: true,
-        NumExterior: false,
-        Colonia: false,
-        CodigoPostal: false,
-        RFC: false
+        NumExterior: true,
+        Colonia: true,
+        CodigoPostal: true,
+        RFC: true
     };
     /*    *********************************************************
     *    **    FIN DE LA DECLARACIÓN DE CONSTANTES Y VARIABLES   **

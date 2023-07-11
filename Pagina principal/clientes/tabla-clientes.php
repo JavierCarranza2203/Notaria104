@@ -99,7 +99,6 @@
         <div class="modal-container__modal">
             <i class="fa-solid fa-circle-xmark modal-container__icon" id="btnCloseModal"></i>
             <ul class="modal-container__ul">
-                <li><b>Folio: </b><span id="folioCliente"></span></li>
                 <li><b>Nombre: </b><span id="nombreCliente"></span></li>
                 <li><b>Apellido paterno: </b><span id="apellidoPaternoCliente"></span></li>
                 <li><b>Apellido materno: </b><span id="apellidoMaternoCliente"></span></li>
@@ -114,8 +113,8 @@
                 <li><b>RFC: </b><span id="rfcCliente"></span></li>
             </ul>
             <div class="modal-container__button-container">
-            <button class="modal-container__button"><i class="fa-solid fa-user-pen"></i> Editar datos</button>
-            <button class="modal-container__button modal-container__button--delete"><i class="fa-solid fa-user-xmark"></i> Borrar cliente</button>
+            <button class="modal-container__button" id="btnEditarCliente"><i class="fa-solid fa-user-pen"></i> Editar datos</button>
+            <button class="modal-container__button modal-container__button--delete" id="btnBorrarCliente"><i class="fa-solid fa-user-xmark"></i> Borrar cliente</button>
             </div>
         </div>
     </section>

@@ -8,7 +8,6 @@ const modal = document.getElementById("modal");
 const btnCloseModal = document.getElementById("btnCloseModal");
 
 //Busca los elementos para mostrar los datos del cliente
-const folioCliente = document.getElementById("folioCliente");
 const nombreCliente = document.getElementById("nombreCliente");
 const apellidoPaternoCliente = document.getElementById("apellidoPaternoCliente");
 const apellidoMaternoCliente = document.getElementById("apellidoMaternoCliente");
@@ -21,6 +20,8 @@ const numExtCliente = document.getElementById("numExtCliente");
 const coloniaCliente = document.getElementById("coloniaCliente");
 const codigoPostalCliente = document.getElementById("codigoPostalCliente");
 const rfcCliente = document.getElementById("rfcCliente");
+
+let idClienteBorrar = 0;
 
 btnCloseModal.addEventListener("click", ()=>{
     modal.classList.remove("modal-container--show");
@@ -39,8 +40,7 @@ for(let i = 0; i < arrayBotones.length; i++){
 
             if (httpRequest.readyState === 4 && httpRequest.status === 200) {
                 let cliente = JSON.parse(httpRequest.responseText);
-                
-                folioCliente.textContent = cliente.folio.toUpperCase();
+                idClienteBorrar = cliente.id;
                 nombreCliente.textContent = cliente.nombre;
                 apellidoPaternoCliente.textContent = cliente.apellido_paterno;
                 apellidoMaternoCliente.textContent = cliente.apellido_materno;
@@ -60,3 +60,31 @@ for(let i = 0; i < arrayBotones.length; i++){
         httpRequest.send();
     }); 
 }
+
+document.getElementById("btnBorrarCliente").addEventListener("click", ()=>{
+    let httpRequest = new XMLHttpRequest();
+
+    httpRequest.open("GET", "../../php/php_pagina-principal/borrar-clientes.php? id=" + idClienteBorrar, true);
+
+    httpRequest.onreadystatechange = function() {
+
+        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+            let eliminado = JSON.parse(httpRequest.responseText);
+            
+            if(eliminado){
+                alert("El cliente se ha eliminado");
+                modal.classList.remove("modal-container--show");
+                location.reload();
+            }
+            else{
+                alert("Hubo un error, intente más tarde");
+                modal.classList.remove("modal-container--show");
+            }
+        }
+    };
+    httpRequest.send();
+});
+
+document.getElementById("btnEditarCliente").addEventListener("click", ()=>{
+    window.location.href = `editar-clientes.php?id=${idClienteBorrar}`;
+});

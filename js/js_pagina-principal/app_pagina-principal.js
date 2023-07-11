@@ -3,16 +3,6 @@ try{
     *    **    DECLARACIÓN DE CONSTANTES Y VARIABLES   **
     *    ************************************************
     */
-    //Botones para el menu lateral
-    const btnMisDocumentos = document.getElementById("btnMisDocumentos");
-    const btnNuevoDocumento = document.getElementById("btnNuevoDocumento");
-    const btnCloseSession = document.getElementById("btnCloseSession");
-    let btnMenuLateralPresionado = btnNuevoDocumento;
-
-    //Contenedores principales de la página
-    const contenedorMisDocumentos = document.getElementById("contenedorMisDocumentos");
-    const contenedorNuevoDocumento = document.getElementById("contenedorNuevoDocumento");
-    let contenedorMenuLateralMostrado = contenedorNuevoDocumento;
 
     //Botones del menu de "new document"
     const btnActas = document.getElementById("btnActas");
@@ -35,35 +25,6 @@ try{
     /*    ***********************************************************
     *    **    FIN DE LA DECLARACIÓN DE CONSTANTES Y VARIABLES    **
     *    ***********************************************************
-    */
-    /*    ******************************************
-    *    **    FUNCIONAMIENTO DEL MENU LATERAL    **
-    *    *******************************************
-    */
-    function CambiarMenuLateral(container, button){
-        contenedorMenuLateralMostrado.classList.add("section--hidden");
-        container.classList.remove("section--hidden");
-        button.classList.add("header__link--active");
-        btnMenuLateralPresionado.classList.remove("header__link--active");
-        contenedorMenuLateralMostrado = container;
-        btnMenuLateralPresionado = button;
-    }
-    btnMisDocumentos.addEventListener("click", ()=>{
-        CambiarMenuLateral(contenedorMisDocumentos, btnMisDocumentos);
-    });
-
-    btnNuevoDocumento.addEventListener("click", ()=>{
-        CambiarMenuLateral(contenedorNuevoDocumento, btnNuevoDocumento);
-    });
-
-    btnCloseSession.addEventListener("click", ()=>{
-        let closeSession = new XMLHttpRequest();
-        closeSession.open("GET", "../php/logout.php", false);
-        closeSession.send();
-    });
-    /*    **************************************************
-    *    **    FIN DEL FUNCIONAMIENTO DEL MENU LATERAL    **
-    *    ***************************************************
     */
     /*    ****************************************************************
     *    **    FUNCIONAMIENTO DEL MENU DE LA SECCIÓN "NEW DOCUMENT"    **

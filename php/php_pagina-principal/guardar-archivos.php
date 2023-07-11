@@ -21,7 +21,7 @@ $estructuraComparecientes = ['ineComparecientesArchivo',
 
 $estructuraTestigos = ['ineTestigo1Archivo', 'curpTestigo1Archivo', 
 'rfcTestigo1Archivo', 'actanacTestigo1Archivo', 'actamatTestigo1Archivo',
-'compdomicilioTestigo1Archivo', 'reciboAguaTestigo1Archivo', 'hojageneralesTestigo1Archivo'];
+'compdomicilioTestigo1Archivo', 'reciboaguaTestigo1Archivo', 'hojageneralesTestigo1Archivo'];
 
 $estructuraDocumentos = [
     'ac' => [
@@ -39,7 +39,7 @@ $estructuraDocumentos = [
     //Listo
     'coa' => [
         'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 
-        'actnacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
+        'actanacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
         'reciboAguaArchivo', 'hojaGeneralesArchivo', 
         'identificacionInmuebleArchivo'],
         'comparecientes' => false,
@@ -51,7 +51,7 @@ $estructuraDocumentos = [
     //Listo
     'ccd' => [
         'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 
-        'actnacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
+        'actanacArchivo', 'ActaMatrimonioArchivo', 'comprobanteDomArchivo', 
         'reciboAguaArchivo', 'hojaGeneralesArchivo', 
         'identificacionInmuebleArchivo'],
         'comparecientes' => false,
@@ -152,7 +152,7 @@ $estructuraDocumentos = [
     ],
     //Listo
     'tpas' => [
-        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actnacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo'],
+        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo'],
         'comparecientes' => false,
         'testigos' => false,
         'conjuntoArchivos1' => false,
@@ -161,7 +161,7 @@ $estructuraDocumentos = [
     ],
     //Listo
     'tpal' => [
-        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actnacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo', 'escrituraArchivo'],
+        'documentos' => ['ineArchivo', 'curpArchivo', 'rfcArchivo', 'actanacArchivo', 'ActaMatrimonioArchivo', 'hojaGeneralesArchivo', 'nombresHijosArchivo', 'escrituraArchivo'],
         'comparecientes' => false,
         'testigos' => false,
         'conjuntoArchivos1' => false,
@@ -281,7 +281,7 @@ if($idCliente === "0"){
  $idDatosArchivo = mysqli_insert_id($conection);
 
 if (isset($estructuraDocumentos[$tipoDocumento])) {
-    $carpetaDestino = 'documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
+    $carpetaDestino = 'C:/xampp/htdocs/Ti/Notaria 104/php/php_pagina-principal/documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
 
     if (!is_dir($carpetaDestino)) {
         mkdir($carpetaDestino, 0755, true);
@@ -347,7 +347,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
             }
         }
 
-        $instertarPersona = "INSERT INTO persona (ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales) VALUES ('$arrayRutasComparecientes[0]', '$arrayRutasComparecientes[1]', '$arrayRutasComparecientes[2]', '$arrayRutasComparecientes[3]', '$arrayRutasComparecientes[4]', '$arrayRutasComparecientes[5]', '$arrayRutasComparecientes[6]', '$arrayRutasComparecientes[7]')";
+        $instertarPersona = "INSERT INTO persona (ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, id_documento) VALUES ('$arrayRutasComparecientes[0]', '$arrayRutasComparecientes[1]', '$arrayRutasComparecientes[2]', '$arrayRutasComparecientes[3]', '$arrayRutasComparecientes[4]', '$arrayRutasComparecientes[5]', '$arrayRutasComparecientes[6]', '$arrayRutasComparecientes[7]', '$idDatosArchivo')";
     
         if (mysqli_query($conection, $instertarPersona)) {
 
@@ -389,7 +389,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
 
             $idTestigos = mysqli_insert_id($conection);
             $insertarTestigos = "INSERT INTO testigos (id_persona) VALUES ('$idTestigos')";
-            mysqli_query($conection, $insertarComparecientes);
+            mysqli_query($conection, $insertarTestigos);
             $idTestigos = mysqli_insert_id($conection);
         }
     }
@@ -399,7 +399,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         'coa' => "INSERT INTO coa (folio, id_cliente, ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, identificacion_inmueble, id_datosIdentificacion) VALUES ('$folioDocumento', '$idCliente', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$arrayRutas[5]', '$arrayRutas[6]', '$arrayRutas[7]', '$arrayRutas[8]', '$idDatosArchivo')",
         'ccd' => "INSERT INTO ccd (folio, id_cliente, ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, identificacion_inmueble, id_datosIdentificacion) VALUES ('$folioDocumento', '$idCliente', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$arrayRutas[5]', '$arrayRutas[6]', '$arrayRutas[7]', '$arrayRutas[8]', '$idDatosArchivo')",
         'ccv' => "INSERT INTO ccv (folio, id_conjuntoArchivos, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$idConjuntoArchivos1','$idCliente', '$idComparecientes', '$idDatosArchivo')",
-        'ccvp' => "INSERT INTO ccvp (folio, id_cliente, id_comparecientes, id_testigos, id_datosIdentificacion, escritura, predial) VALUES ('$folioDocumento', '$idCliente', '$idTestigos', '$idDatosArchivo', '$arrayRutas[0]', '$arrayRutas[1]')",
+        'ccvp' => "INSERT INTO ccvp (folio, id_cliente, id_comparecientes, id_testigos, id_datosIdentificacion, escritura, predial) VALUES ('$folioDocumento', '$idCliente', '$idComparecientes', '$idTestigos', '$idDatosArchivo', '$arrayRutas[0]', '$arrayRutas[1]')",
         'ccvcrd' => "INSERT INTO ccvcrd (folio, id_conjuntoArchivos, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$idConjuntoArchivos1','$idCliente', '$idComparecientes', '$idDatosArchivo')",
         'craigh' => "INSERT INTO craigh (folio, id_conjuntoArchivos, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$idConjuntoArchivos1','$idCliente', '$idComparecientes', '$idDatosArchivo')",
         'csp' => "INSERT INTO csp (folio, id_conjuntoArchivos, id_cliente, id_comparecientes, id_datosIdentificacion) VALUES ('$folioDocumento', '$idConjuntoArchivos1','$idCliente', '$idComparecientes', '$idDatosArchivo')",
@@ -421,7 +421,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         'ean' => "INSERT INTO ean (folio, id_IdentificacionPersona, hoja_generales, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$idIdentificacionPersona', '$arrayRutas[3]', '$idCliente', '$idDatosArchivo')",
         'eaec' => "INSERT INTO eaec (folio, id_IdentificacionPersona, hoja_generales, escritura, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$idIdentificacionPersona', '$arrayRutas[3]', '$arrayRutas[4]', '$idCliente', '$idDatosArchivo')",
         'caa' => "INSERT INTO caa (folio, acta_menor, hoja_generales, acta_defuncion, domicilio_nuevo, persona_a_cargo, id_cliente, id_datosIdentificacion) VALUES ('$folioDocumento', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]', '$idCliente', '$idDatosArchivo')",
-        'cr' => "INSERT INTO cr (folio, id_compareciente, id_cliente, tarjeta_circulacion, titulo_vehiculo, id_datosIdentificacion) VALUES ('$folioDocumento', '$idComparecientes', '$idCliente', '$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$idDatosArchivo')"
+        'cr' => "INSERT INTO cr (folio, id_comparecientes, id_cliente, tarjeta_circulacion, titulo_vehiculo, id_datosIdentificacion) VALUES ('$folioDocumento', '$idComparecientes', '$idCliente', '$arrayRutas[0]', '$arrayRutas[1]', '$idDatosArchivo')"
     ];
 
     mysqli_query($conection, $estructuraQuerys[$tipoDocumento]);

@@ -1,5 +1,7 @@
 <?php
+
     include '../../php/conection.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -8,375 +10,185 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar clientes</title>
+    <title>Notaría 104 | Registrar Cliente</title>
 
-    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="../../css/style-reset.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_formulario-cliente.css">
-    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_error-page.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_message-box.css">
+    <link rel="stylesheet" href="../../css/style-error-page.css">
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
-    <script src="../../js/js_pagina-principal/mostrarError.js"></script>
 </head>
 <body>
-    <!--Mensaje de error-->
-    <div class="error-container" id="error-container">
-        <div class="error-container__icon-container">
-            <h1>¡Ocurrió un error!</h1>
-            <i class="fa-solid fa-triangle-exclamation"></i>
+    <?php
+        session_start();
+        $usuario = $_SESSION['usuario'];
+
+        if($usuario = null || $usuario == '')
+        {
+    ?>
+            <div class="error-container">
+                <div class="error-container__content-container">
+                <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
+                <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>
+                <a href="../../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
+                </div>
+            </div>
+    <?php  
+            die();
+        }
+
+        $idCliente = $_GET['id'];
+
+        $query = "SELECT * FROM cliente WHERE id = '$idCliente'";
+        $resultado = mysqli_query($conection, $query);
+
+        if ($resultado && mysqli_num_rows($resultado) > 0) {
+            // Obtener los datos del cliente
+            $cliente = mysqli_fetch_assoc($resultado);
+    ?>
+    <header class="header">
+        <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
+        <nav class="header__navbar" id="menu-container">
+            <a href="../pagina-principal.php" class="header__link"><i class="fa-solid fa-house-chimney"></i> Página principal</a>
+            <a class="header__link header__link--active"><i class="fa-solid fa-user-plus"></i> Editar cliente</a>
+            <a href="tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
+        </nav>
+
+        <a href="../../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
+    </header>
+
+    <section class="section" id="contenedorMisDocumentos">
+        <div class="section__header">
+            <h2 class="section__h2">Ingrese los datos del cliente</h2>
+            <h3 class="section__h3">Nota: Los campos marcados con * son obligatorios</h3>
         </div>
-        <div class="error-container__info">
-            <h3 id="solution">
-                Ocurrió un error al momento de recabar la información del cliente para editarlo. <br>
-                Por favor, regrese a la tabla y seleccione un cliente.
-            </h3>
-            <h3 class="error-container__info-error-code" id="CodigoError">Ocurrió un error desconocido</h3>
+
+        <form action="../../php/php_pagina-principal/editarcliente.php" class="section__form" id="frmNuevoCliente" method="POST">
+            <p class="form__p"><span></span>Datos de identificación<span></span></p>
+            
+            <!--==== Campo para el nombre ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Nombre de pila: *</span>
+                    <input type="text" name="txtNombre" autocomplete="off" id="txtNombre" required maxlength="35" value="<?php echo $cliente['nombre']?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el apellido paterno ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Apellido paterno: *</span>
+                    <input type="text" name="txtApellidoPaterno" autocomplete="off" id="txtApellidoPaterno" required maxlength="35" value="<?php echo $cliente['apellido_paterno'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el apellido materno ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Apellido materno:</span>
+                    <input type="text" name="txtApellidoMaterno" autocomplete="off" id="txtApellidoMaterno"maxlength="35" value="<?php echo $cliente['apellido_materno'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+
+            <p class="form__p"><span></span>Datos de contacto<span></span></p>
+
+            <!--==== Campo para el telefono particular ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Teléfono particular:</span>
+                    <input type="text" name="txtTelefonoParticular" autocomplete="off" id="txtTelefonoParticular" maxlength="20" value="<?php echo $cliente['telefono_particular'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el telefono celular ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Teléfono celular: *</span>
+                    <input type="text" name="txtTelefonoCelular" autocomplete="off" id="txtTelefonoCelular"maxlength="20" value="<?php echo $cliente['telefono_celular'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el correo electronico ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Correo electrónico:</span>
+                    <input type="email" name="txtCorreoElectronico" autocomplete="off" id="txtCorreoElectronico" value="<?php echo $cliente['correo'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+
+            <p class="form__p"><span></span>Datos del domicilio<span></span></p>
+
+            <!--==== Campo para la calle de domicilio ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Calle: *</span>
+                    <input type="text" name="txtCalle" autocomplete="off" id="txtCalle" required maxlength="30" value="<?php echo $cliente['domicilio_calle'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el num interior ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Número interior:</span>
+                    <input type="text" name="txtNumInterior" autocomplete="off" id="txtNumInterior" maxlength="8" value="<?php echo $cliente['num_interior'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para el num exterior ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Número exterior: *</span>
+                    <input type="text" name="txtNumExterior" autocomplete="off" id="txtNumExterior" maxlength="8" value="<?php echo $cliente['num_exterior'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para la colonia ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Colonia: *</span>
+                    <input type="text" name="txtColonia" autocomplete="off" id="txtColonia" required maxlength="80" value="<?php echo $cliente['domicilio_colonia'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+            <!--==== Campo para la colonia ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">Código postal: *</span>
+                    <input type="text" name="txtCodigoPostal" autocomplete="off" id="txtCodigoPostal" required maxlength="6" value="<?php echo $cliente['codigo_postal'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+
+            <p class="form__p"><span></span>Datos fiscales<span></span></p>
+
+            <!--==== Campo para el rfc ====-->
+            <div class="form__field">
+                <label>
+                    <span class="reubicar">RFC: *</span>
+                    <input type="text" name="txtRFC" autocomplete="off" id="txtRFC" required maxlength="20" value="<?php echo $cliente['rfc'] ?>">
+                    <i class="fa-regular form__icon"></i>
+                </label>
+            </div>
+
+            <input type="hidden" name="txtId" id="txtId" value="<?php echo $cliente['id'] ?>">
+            <button class="form__button" id="btnGuardar">Guardar cambios</button>
+        </form>
+    </section>
+    <?php } ?>
+
+    <div class="message-box" id="messageBox">
+        <div class="message-box__container">
+            <i class="fa-solid fa-circle-xmark message-box__i--close" id="messageBoxIconClose"></i>
+            <i class="fa-solid message-box__i" id="messageBoxIcon"></i>
+            <h2 class="message-box__h2" id="messageBoxMessage"></h2>
         </div>
     </div>
 
-    <header class="header-container">
-        <h2>Clientes</h2>
-
-        <div class="back">
-            <a href="../pagina-principal.php">Regresar</a>
-        </div>
-    </header>
-
-    <?php
-        if (isset($_POST["numero"])) {
-            // Si existen las variables. Puede proceder.
-            $NumeroCliente = $_POST["numero"];
-            $IdCliente = $_POST["idCliente".$NumeroCliente];
-            $query = "SELECT * FROM cliente WHERE id = '$IdCliente'";
-            $result = mysqli_query($conection, $query);
-            ?>
-            <section class="client-form-container" id="client-form-container">
-                <h1 class="client-form-container__title">
-                    Editar cliente
-                </h1>
-            <?php
-
-            while($mostrar = mysqli_fetch_assoc($result)) {
-            ?>
-            <form action="../../php/php_pagina-principal/guardarCambios.php" enctype="multipart/form-data" method="post" id="formCliente">
-                    <!--ID, NOMBRE COMPLETO-->
-                    <div class="client-form-container__row">
-                        <div class="client-form-container__row__group short">
-                            <div class="client-form-container__row__group__title">
-                                ID del cliente:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="idCliente" id="idCliente" placeholder="Ej.: 1, 28..." maxlength="5" readonly value="<?php echo $IdCliente;?>">
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message">
-                                        Campo no editable
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--NOMBRE COMPLETO-->
-                        <div class="client-form-container__row__group long">
-                            <div class="client-form-container__row__group__title">
-                                Nombre completo:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="nombreDePila" id="nombreDePila" required placeholder="Ej.: Juan, Miguel Angel..." maxlength="40" value="<?php echo $mostrar["nombre_de_pila"]?>">
-                                    <label for="nombreDePila">
-                                        Nombre de pila
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-nombreDePila">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-            
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="apellidoPaterno" id="apellidoPaterno" required placeholder="Ej.: Perez, Lopez..." maxlength="25" value="<?php echo $mostrar["apellido_paterno"]?>">
-                                    <label for="apellidoPaterno">
-                                        Apellido paterno
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-apellidoPaterno">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-            
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Ej.: Garcia, Castro..." maxlength="25" value="<?php echo $mostrar["apellido_materno"]?>">
-                                    <label for="apellidoMaterno">
-                                        Apellido materno
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message optional message-apellidoMaterno">
-                                        Campo opcional
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--FECHA DE NACIMIENTO, TELEFONO-->
-                    <div class="client-form-container__row">
-                        <!--FECHA DE NACIMIENTO-->
-                        <div class="client-form-container__row__group short">
-                            <div class="client-form-container__row__group__title">
-                                Fecha de nacimiento:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="date" name="fechaNacimiento" id="fechaNacimiento" required min="1900-01-01" max="2100-01-01" placeholder="Seleccione una fecha" value="<?php echo $mostrar["fecha_de_nacimiento"]?>">
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-fechaNacimiento">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--TELEFONO-->
-                        <div class="client-form-container__row__group long">
-                            <div class="client-form-container__row__group__title">
-                                Telefono:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control number">
-                                    <input type="text" name="telefonoParticular" id="telefonoParticular" placeholder="Ej.: 8677123456" maxlength="12" value="<?php echo $mostrar["telefono_particular"]?>">
-                                    <label for="telefonoParticular">
-                                        Particular
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message optional message-telefonoParticular">
-                                        Campo opcional
-                                    </p>
-                                </div>
-            
-                                <div class="client-form-container__row__group__controls__control number">
-                                    <input type="text" name="telefonoCelular" id="telefonoCelular" required placeholder="Ej.: 8673769156" maxlength="12" value="<?php echo $mostrar["telefono_celular"]?>">
-                                    <label for="telefonoCelular">
-                                        Celular
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-telefonoCelular">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--CORREO ELECTRONICO, ESTADO CIVIL-->
-                    <div class="client-form-container__row">
-                        <!--CORREO ELECTRONICO-->
-                        <div class="client-form-container__row__group long">
-                            <div class="client-form-container__row__group__title">
-                                Correo electronico:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="email" name="correoElectronico" id="correoElectronico" required placeholder="Ej.: user@mail.com..." maxlength="60" value="<?php echo $mostrar["correo_electronico"]?>">
-                                    <label for="correoElectronico">
-                                        Correo
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-correoElectronico">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--ESTADO CIVIL-->
-                        <div class="client-form-container__row__group">
-                            <div class="client-form-container__row__group__title">
-                                Estado civil:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <div class="client-form-container__row__group__controls__control__dropdown">
-                                        
-                                        <?php  $opciones = array("Soltero", "Casado", "Divorciado", "Separación en proceso", "Viudo", "Concubinato"); ?>
-
-                                        <select name="estadoCivil" id="estadoCivil">
-                                            <?php
-                                                foreach ($opciones as $opcion) {
-                                                    if ($opcion == $mostrar["estado_civil"]) {
-                                                        // Si la opción coincide con el rol del usuario, se selecciona
-                                                        echo "<option value=\"$opcion\" selected>$opcion</option>";
-                                                    } else {
-                                                        echo "<option value=\"$opcion\">$opcion</option>";
-                                                    }
-                                                }
-                                            ?>
-                                        </select>
-                                        <p class="client-form-container__row__group__controls__control__message message-estadoCivil">
-                                            Campo obligatorio
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--LUGAR DE NACIMIENTO-->
-                    <div class="client-form-container__row">
-                        <div class="client-form-container__row__group">
-                            <div class="client-form-container__row__group__title">
-                                Lugar de nacimiento:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="codigoPostalNacimiento" id="codigoPostalNacimiento" required placeholder="Ej.: 88210" maxlength="5" value="<?php echo $mostrar["codigo_postal_nacimiento"]?>">
-                                    <label for="codigoPostalNacimiento">
-                                        Codigo postal
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-codigoPostalNacimiento">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="municipioNacimiento" id="municipioNacimiento" required placeholder="Ej.: Nuevo Laredo" maxlength="40" value="<?php echo $mostrar["municipio_nacimiento"]?>">
-                                    <label for="municipioNacimiento">
-                                        Municipio
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-municipioNacimiento">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="estadoNacimiento" id="estadoNacimiento" required placeholder="Ej.: Tamaulipas" maxlength="40" value="<?php echo $mostrar["estado_nacimiento"]?>">
-                                    <label for="estadoNacimiento">
-                                        Estado
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-estadoNacimiento">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="paisNacimiento" id="paisNacimiento" required placeholder="Ej.: Mexico" maxlength="40" value="<?php echo $mostrar["pais_nacimiento"]?>">
-                                    <label for="paisNacimiento">
-                                        Pais
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-paisNacimiento">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--DOMICILIO-->
-                    <div class="client-form-container__row">
-                        <div class="client-form-container__row__group">
-                            <div class="client-form-container__row__group__title">
-                                Domicilio:
-                            </div>
-
-                            <div class="client-form-container__row__group__controls">
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="calleDomicilio" id="calleDomicilio" required placeholder="Ej.: Av. Reforma" maxlength="40" value="<?php echo $mostrar["calle_domicilio"]?>">
-                                    <label for="calleDomicilio">
-                                        Calle:
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-calleDomicilio">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control number">
-                                    <input type="text" name="numeroInteriorDomicilio" id="numeroInteriorDomicilio" placeholder="Ej.: 25-A" maxlength="4" value="<?php echo $mostrar["numero_interior_domicilio"]?>">
-                                    <label for="numeroInteriorDomicilio">
-                                        Num. int.
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message optional message-numeroInteriorDomicilio">
-                                        Campo opcional
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control number">
-                                    <input type="text" name="numeroExteriorDomicilio" id="numeroExteriorDomicilio" required placeholder="Ej.: Tamaulipas" maxlength="4" value="<?php echo $mostrar["numero_exterior_domicilio"]?>">
-                                    <label for="numeroExteriorDomicilio">
-                                        Num. ext.
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-numeroExteriorDomicilio">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                                
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="coloniaDomicilio" id="coloniaDomicilio" required placeholder="Ej.: Mexico" maxlength="40" value="<?php echo $mostrar["colonia_domicilio"]?>">
-                                    <label for="coloniaDomicilio">
-                                        Colonia
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-coloniaDomicilio">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-
-                                <div class="client-form-container__row__group__controls__control">
-                                    <input type="text" name="codigoPostalDomicilio" id="codigoPostalDomicilio" required placeholder="Ej.: 88210" maxlength="5" value="<?php echo $mostrar["codigo_postal_domicilio"]?>">
-                                    <label for="codigoPostalDomicilio">
-                                        Codigo postal
-                                    </label>
-                                    <div class="client-form-container__row__group__controls__control__underline"></div>
-                                    <p class="client-form-container__row__group__controls__control__message message-codigoPostalDomicilio">
-                                        Campo obligatorio
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--MENSAJE DE ENVIO DE FORM-->
-                    <div class="client-form-container__form-message">
-                        <p>
-                            Los datos se registraron exitosamente.
-                        </p>
-                    </div>
-
-                    <!--BOTONES DEL FORMULARIO-->
-                    <div class="client-form-container__cta">
-                        <input type="submit" value="Guardar" name="guardarCambios" id="guardarCambios">
-                        <label for="guardarCambios">
-                            <i class="fas fa-bookmark"></i> Guardar cambios
-                        </label>
-                        <input type="button" value="Cancelar" name="CancelarClienteEditar" id="CancelarClienteEditar">
-                        <label for="CancelarClienteEditar">
-                            <i class="fas fa-times"></i> Cancelar
-                        </label>
-                    </div>
-            </form>
-            <?php
-            }
-        }
-        else {
-            // No existen las variables. Se muestra el mensaje de error.
-            echo '
-            <script>
-                MostrarError("003")
-            </script>';
-        }
-    ?>
-</section>
-    <script src="../../js/js_pagina-principal/main.js"></script>
-    <script src="../../js/js_pagina-principal/validarCliente.js"></script>
-
-    <script>
-        document.getElementById('CancelarClienteEditar').addEventListener('click', () => {
-            window.history.back()
-        })
-    </script>
+    <script src="../../js/js_login/login-main.js"></script>
+    <script src="../../js/js_pagina-principal/validarEditarCliente.js"></script>
+    <script src="../../js/cerrar-sesion_v2.js"></script>
 </body>
 </html>

@@ -443,7 +443,7 @@
                     </label>
                 </div>
                 <div class="file"><span class="file-name">No se ha seleccionado ningún archivo</span>
-                    <input type="file" name="TarjetaCirculacionArchivo" id="TarjetaCirculacionArchivo" >
+                    <input type="file" name="TarjetaCirculacionArchivo" id="TarjetaCirculacionArchivo" class="fileUpload">
                     <label for="TarjetaCirculacionArchivo" class="archivo">
                         <i class="fa-solid fa-arrow-up-from-bracket"></i> Subir archivo
                     </label>

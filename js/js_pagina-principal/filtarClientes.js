@@ -18,7 +18,6 @@ if (searchText.length > 0) {
         if (xhr.readyState === 4 && xhr.status === 200) {
         const response = JSON.parse(xhr.responseText);
 
-        console.log(response);
         let i = 0;
 
         response.forEach(objeto => {

@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notaría 104 | Página principal</title>
-
-    <link rel="stylesheet" href="../css/style-reset.css">
-    <link rel="stylesheet" href="../css/estilos_pagina-principal/style_pagina-principal.css">
-    <link rel="stylesheet" href="../css/style-error-page.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_pagina-principal.css">
+    <link rel="stylesheet" href="../../css/style-reset.css">
+    <link rel="stylesheet" href="../../css/style-error-page.css">
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <?php
+<?php
         session_start();
         $usuario = $_SESSION['usuario'];
 
@@ -34,9 +32,10 @@
 
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
+
         <nav class="header__navbar" id="menu-container">
-            <a href="nuevo-documento/mis-documentos.php" class="header__link"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
-            <a class="header__link header__link--active"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
+            <a class="header__link header__link--active"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
+            <a href="../pagina-principal.php" class="header__link"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
             <a href="clientes/agregar-cliente.php" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
             <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
@@ -44,25 +43,9 @@
         <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
-    <section class="section section--hidden" id="contenedorMisDocumentos">
-            <nav class="section__nav">
-                <h2 class="section__h2">Documentos guardados</h2>
-
-                <ul class="section__ul">
-                    <li class="section__li section__li--active" id="btnActass">Actas</li>
-                    <li class="section__li" id="btnEscritoss">Escritos</li>
-                    <li class="section__li" id="btnContratoss">Contratos</li>
-                    <li class="section__li" id="btnDonacioness">Donaciones</li>
-                    <li class="section__li" id="btnProtocolizacioness">Protocolizaciones</li>
-                    <li class="section__li" id="btnOtross">Otros</li>
-                </ul>
-            </nav>
-    </section>
-
-    
     <section class="section new-document" id="contenedorNuevoDocumento">
         <nav class="section__nav">
-            <h2 class="section__h2">Crear nuevo documento</h2>
+            <h2 class="section__h2">Ver documentos guardados</h2>
 
             <ul class="section__ul">
                 <li class="section__li section__li--active" id="btnActas">Actas</li>
@@ -78,7 +61,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de compraventa</h3>
-                <a href="nuevo-documento/documento.php?documento=CCV">
+                <a id="CCV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -86,7 +69,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de compraventa con reserva de dominio</h3>
-                <a href="nuevo-documento/documento.php?documento=CCVCRD">
+                <a id="CCVCRD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -94,7 +77,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de arrendamiento</h3>
-                <a href="nuevo-documento/documento.php?documento=CoA">
+                <a uid="CoA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -102,7 +85,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de comodato</h3>
-                <a href="nuevo-documento/documento.php?documento=CCD">
+                <a id="CCD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -110,7 +93,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de compra venta a plazos</h3>
-                <a href="nuevo-documento/documento.php?documento=CCVP">
+                <a id="CCVP">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -118,7 +101,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de servidumbre de paso</h3>
-                <a href="nuevo-documento/documento.php?documento=CSP">
+                <a id="CSP">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -126,7 +109,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Contrato de reconocimiento de adeudo con intereses y garantía hipotecaria</h3>
-                <a href="nuevo-documento/documento.php?documento=CRAIGH">
+                <a id="CRAIGH">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -136,7 +119,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Escrito aclaratorio (Superficie)</h3>
-                <a href="nuevo-documento/documento.php?documento=EAS">
+                <a id="EAS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -144,7 +127,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Escrito aclaratorio (Nombre)</h3>
-                <a href="nuevo-documento/documento.php?documento=EAN">
+                <a id="EAN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -152,7 +135,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Escrito aclaratorio (Estado civil)</h3>
-                <a href="nuevo-documento/documento.php?documento=EAEC">
+                <a id="EAEC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -162,7 +145,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Protocolización de acta de asamblea</h3>
-                <a href="nuevo-documento/documento.php?documento=PAA">
+                <a id="PAA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -170,7 +153,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Protocolización de juicio sucesorio</h3>
-                <a href="nuevo-documento/documento.php?documento=PJS">
+                <a id="PJS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -178,7 +161,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Protocolización de subdivisión o fusión</h3>
-                <a href="nuevo-documento/documento.php?documento=PSoF">
+                <a id="PSoF">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -188,7 +171,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Acta constitutiva</h3>
-                <a href="nuevo-documento/documento.php?documento=AC">
+                <a id="AC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -196,7 +179,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Acta notarial</h3>
-                <a href="nuevo-documento/documento.php?documento=AN">
+                <a id="AN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -206,7 +189,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Donación gratuita pura y simple</h3>
-                <a href="nuevo-documento/documento.php?documento=DGPS">
+                <a id="DGPS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -214,7 +197,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Donación gratuita pura y simple con reserva de usufructo vitalicio</h3>
-                <a href="nuevo-documento/documento.php?documento=DGPSRUV">
+                <a id="DGPSRUV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -224,7 +207,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Testamento público abierto sencillo</h3>
-                <a href="nuevo-documento/documento.php?documento=TPAS">
+                <a id="TPAS">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -232,7 +215,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Testamento público abierto con legados</h3>
-                <a href="nuevo-documento/documento.php?documento=TPAL">
+                <a id="TPAL">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -240,7 +223,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Usufructo vitalicio</h3>
-                <a href="nuevo-documento/documento.php?documento=UV">
+                <a id="UV">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -248,7 +231,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Convenio de transmisión de propiedad, en extinción parcial de fideicomiso</h3>
-                <a href="nuevo-documento/documento.php?documento=CTPEPF">
+                <a id="CTPEPF">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -256,7 +239,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Declaración testimonial sobre el nombre</h3>
-                <a href="nuevo-documento/documento.php?documento=DTSN">
+                <a id="DTSN">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -264,7 +247,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Declaración testimonial sobre el estado civil</h3>
-                <a href="nuevo-documento/documento.php?documento=DTSEC">
+                <a id="DTSEC">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -272,7 +255,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Cancelación de reserva de dominio</h3>
-                <a href="nuevo-documento/documento.php?documento=CRD">
+                <a id="CRD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -280,7 +263,7 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Poder especial y/o general</h3>
-                <a href="nuevo-documento/documento.php?documento=PEyoG">
+                <a id="PEyoG">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -288,14 +271,14 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Cesión de derechos</h3>
-                <a href="nuevo-documento/documento.php?documento=CD">
+                <a id="CD">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Carta de autorización</h3>
-                <a href="nuevo-documento/documento.php?documento=CaA">
+                <a id="CaA">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
@@ -303,14 +286,25 @@
             <div class="new-document__item">
                 <i class="fa-solid fa-file"></i>
                 <h3>Carta responsiva</h3>
-                <a href="nuevo-documento/documento.php?documento=CR">
+                <a id="CR">
                     <i class="fa-regular fa-pen-to-square"></i> Llenar
                 </a>
             </div>
         </article>
     </section>
 
-    <script src="../js/js_pagina-principal/app_pagina-principal.js"></script>
-    <script src="../js/cerrar-sesion.js"></script>
+    <section class="section">
+        <nav class="section__nav">
+            <h2 class="section__h2">Tabla de <span id="tipoDocumento"></span></h2>
+
+            <ul class="section__ul--table">
+                <li class="section__li section__li--active" id="btnActas">Ver otros documentos</li>
+            </ul>
+        </nav>
+    </section>
+
+    <script src="../../js/js_pagina-principal/mostarTablaArchivos.js"></script>
+    <script src="../../js/js_pagina-principal/app_pagina-principal.js"></script>
+    <script src="../../js/cerrar-sesion_v2.js"></script>
 </body>
 </html>
