@@ -1,17 +1,21 @@
 <?php
 include '../conection.php';
 
-$tipoDocumento = $_POST['txtDocumento'];
-$folioDocumento = $_POST['txtFolio'];
-$nombreCliente = $_POST['txtNombre'];
-$volumenDocumento = $_POST['txtVolumen'];
-$instrumentoDocumento = $_POST['txtInstrumento'];
-$idCliente = $_POST['txtId'];
+$tipoDocumento = $_POST['txtDocumento'] ?? 'Desconocido';
+$folioDocumento = $_POST['txtFolio'] ?? 'Desconocido';
+$nombreCliente = $_POST['txtNombre'] ?? 'Desconocido';
+$volumenDocumento = $_POST['txtVolumen'] ?? 'Desconocido';
+$instrumentoDocumento = $_POST['txtInstrumento'] ?? 'Desconocido';
+$idCliente = $_POST['txtId'] ?? '0';
 
 
 $idClienteRegistrado= 0;
 $clienteRegistrado = true;
 $arrayRutas = [];
+
+for ($i = 0; $i < 10; $i++) {
+    $arrayRutas[$i] = 'Desconocida';
+}
 
 $estructuraComparecientes = ['ineComparecientesArchivo', 
 'curpComparecientesArchivo', 'rfcComparecientesArchivo', 
@@ -279,7 +283,7 @@ if($idCliente === "0"){
  mysqli_query($conection, $insertarDatosIdentificacion);
 
  $idDatosArchivo = mysqli_insert_id($conection);
-
+$contadorRutas = 0;
 if (isset($estructuraDocumentos[$tipoDocumento])) {
     $carpetaDestino = 'C:/xampp/htdocs/Ti/Notaria 104/php/php_pagina-principal/documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
 
@@ -298,11 +302,13 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
                 $rutaArchivo = $carpetaDestino . '/' . $nombreArchivo;
             }
             
-            array_push($arrayRutas, $rutaArchivo);
+            $arrayRutas[$contadorRutas] = $rutaArchivo;
             move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+            $contadorRutas++;
         }
     }
 
+    $idConjuntoArchivos1 = 0;
     if($estructuraDocumentos[$tipoDocumento]['conjuntoArchivos1'] === true){
         $query = "INSERT INTO conjuntoarchivos1 (escritura, certificado_reserva_prioridad, predial) VALUES ('$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]')";
 
@@ -310,6 +316,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         $idConjuntoArchivos1 = mysqli_insert_id($conection);
     }
 
+    $idConjuntoArchivos2 = 0;
     if($estructuraDocumentos[$tipoDocumento]['conjuntoArchivos2'] === true){
         $query = "INSERT INTO conjunto_archivos2 (escritura, ine, rfc, curp, hoja_generales) VALUES ('$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]', '$arrayRutas[3]', '$arrayRutas[4]')";
 
@@ -317,6 +324,7 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         $idConjuntoArchivos2 = mysqli_insert_id($conection);
     }
 
+    $idIdentificacionPersona = 0;
     if($estructuraDocumentos[$tipoDocumento]['identificacionPersona'] === true){
         $query = "INSERT INTO identificacion_persona (primer_documento, segundo_documento, tercer_documento) VALUES ('$arrayRutas[0]', '$arrayRutas[1]', '$arrayRutas[2]')";
 
@@ -324,6 +332,13 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
     }
 
     $arrayRutasComparecientes = [];
+    $idComparecientes = 0;
+
+    for ($i = 0; $i < 10; $i++) {
+        $arrayRutasComparecientes[$i] = 'Desconocida';
+    }
+
+    $contadorRutas = 0;
     if($estructuraDocumentos[$tipoDocumento]['comparecientes'] === true){
         $rutaComparecientes = $carpetaDestino . '/' .'comparecientes';
 
@@ -342,8 +357,9 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
                     $rutaArchivo = $rutaComparecientes. '/' . $nombreArchivo;
                 }
                 
-                array_push($arrayRutasComparecientes, $rutaArchivo);
+                $arrayRutasComparecientes[$contadorRutas] = $rutaArchivo;
                 move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+                $contadorRutas++;
             }
         }
 
@@ -360,6 +376,11 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
     }
 
     $arrayRutasTestigos = [];
+    $idTestigos = 0;
+    for ($i = 0; $i < 10; $i++) {
+        $arrayRutasTestigos[$i] = 'Desconocida';
+    }
+    $contadorRutas = 0;
     if($estructuraDocumentos[$tipoDocumento]['testigos'] === true){
         $rutaTestigos = $carpetaDestino . '/' .'testigos';
 
@@ -378,15 +399,15 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
                     $rutaArchivo = $rutaTestigos. '/' . $nombreArchivo;
                 }
                 
-                array_push($arrayRutasTestigos, $rutaArchivo);
+                $arrayRutasTestigos[$contadorRutas] = $rutaArchivo;
                 move_uploaded_file($_FILES[$documentos]['tmp_name'], $rutaArchivo);
+                $contadorRutas++;
             }
         }
 
         $instertarPersona = "INSERT INTO persona (ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales) VALUES ('$arrayRutasTestigos[0]', '$arrayRutasTestigos[1]', '$arrayRutasTestigos[2]', '$arrayRutasTestigos[3]', '$arrayRutasTestigos[4]', '$arrayRutasTestigos[5]', '$arrayRutasTestigos[6]', '$arrayRutasTestigos[7]')";
     
         if (mysqli_query($conection, $instertarPersona)) {
-
             $idTestigos = mysqli_insert_id($conection);
             $insertarTestigos = "INSERT INTO testigos (id_persona) VALUES ('$idTestigos')";
             mysqli_query($conection, $insertarTestigos);
@@ -424,8 +445,13 @@ if (isset($estructuraDocumentos[$tipoDocumento])) {
         'cr' => "INSERT INTO cr (folio, id_comparecientes, id_cliente, tarjeta_circulacion, titulo_vehiculo, id_datosIdentificacion) VALUES ('$folioDocumento', '$idComparecientes', '$idCliente', '$arrayRutas[0]', '$arrayRutas[1]', '$idDatosArchivo')"
     ];
 
-    mysqli_query($conection, $estructuraQuerys[$tipoDocumento]);
+    $result = mysqli_query($conection, $estructuraQuerys[$tipoDocumento]);
 
-    echo "Todo bien";
+    if($result){
+        echo true;
+    }
+    else{
+        echo false;
+    }
 }
 ?>

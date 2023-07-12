@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_tabla-clientes.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_pagina-principal.css">
-    <link rel="stylesheet" href="../../css/style-reset.css">
     <link rel="stylesheet" href="../../css/style-error-page.css">
+    <link rel="stylesheet" href="../../css/style-reset.css">
 
     <script src="https://kit.fontawesome.com/f8571caff0.js" crossorigin="anonymous"></script>
 </head>
@@ -36,14 +38,14 @@
         <nav class="header__navbar" id="menu-container">
             <a class="header__link header__link--active"><i class="fa-solid fa-box-archive"></i> Mis documentos</a>
             <a href="../pagina-principal.php" class="header__link"><i class="fa-solid fa-file-circle-plus"></i> Nuevo documento</a>
-            <a href="clientes/agregar-cliente.php" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
-            <a href="clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
+            <a href="../clientes/agregar-cliente.php" class="header__link"><i class="fa-solid fa-user-plus"></i> Registrar cliente</a>
+            <a href="../clientes/tabla-clientes.php" class="header__link"><i class="fa-solid fa-user-group"></i> Tabla de clientes</a>
         </nav>
 
-        <a href="../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
+        <a href="../../index.html" class="header__link header__link--close-sesion" id="btnCloseSession"><i class="fa-solid fa-user-lock"></i> Cerrar sesión</a>
     </header>
 
-    <section class="section new-document section--hidden" id="contenedorMisDocumentos">
+    <section class="section new-document" id="contenedorMisDocumentos">
         <nav class="section__nav">
             <h2 class="section__h2">Ver documentos guardados</h2>
 
@@ -293,32 +295,57 @@
         </article>
     </section>
 
-    <section class="section" id="contenedorTabla">
+    <section class="section section--hidden" id="contenedorTabla">
         <nav class="section__nav">
             <h2 class="section__h2">Tabla de <span id="tipoDocumento"></span></h2>
-
-            <ul class="section__ul--table">
-                <li class="section__li section__li--active" id="btnActas">Ver otros documentos</li>
-            </ul>
+            <h3 class="section__h3"></h3>
         </nav>
 
-        <table class="table">
-            <thead class="table__thead">
-                <th class="table__th">Folio</th>
-                <th class="table__th">Nombre del cliente</th>
-                <th class="table__th">Volumen</th>
-                <th class="table__th">Instrumento</th>
-                <th class="table__th">Ver archivos</th>
-                <th class="table__th">Descargar todos los archivos</th>
-            </thead>
-            <tbody class="table__tbody" id="tableBody">
+        <div class="section__table-container">
+            <table class="section__table" id="tablaArchivos">
+                <thead class="section__table-header">
+                    <th class="section__table-header-cell">Folio</th>
+                    <th class="section__table-header-cell">Nombre del cliente</th>
+                    <th class="section__table-header-cell">Volumen</th>
+                    <th class="section__table-header-cell">Instrumento</th>
+                    <th class="section__table-header-cell">Ver archivos</th>
+                    <th class="section__table-header-cell">Descargar archivos</th>
+                </thead>
+                <tbody class="table__tbody" id="tableBody">
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </section>
 
+    <script src="../../js/js_pagina-principal/dataTable_buscarCliente.js"></script>
     <script src="../../js/js_pagina-principal/mostarTablaArchivos.js"></script>
     <script src="../../js/js_pagina-principal/app_pagina-principal.js"></script>
     <script src="../../js/cerrar-sesion_v2.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", ()=>{
+            for(let i = 0; i < arrayBotones.length; i++){
+                arrayBotones[i].addEventListener("click", ()=>{
+                    let tipoDocumento = arrayBotones[i].id.toLowerCase();
+            
+                    let httpRequest = new XMLHttpRequest();
+            
+                    httpRequest.open("GET", "../../php/php_pagina-principal/buscarArchivos.php?tabla=" + tipoDocumento, true);
+            
+                    httpRequest.onreadystatechange = function() {
+            
+                        if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                            let consulta = JSON.parse(httpRequest.responseText);
+                            
+                            mostrarDatos(consulta, tipoDocumento);
+                            
+                            $('#tablaArchivos').DataTable( { ordering:false } );
+                        }
+                    };
+                    httpRequest.send();
+                }); 
+            }
+    })
+    </script>
 </body>
 </html>

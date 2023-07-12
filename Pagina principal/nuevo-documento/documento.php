@@ -54,7 +54,7 @@
             <h3 class="section__h3">Nota: Los campos marcados con * son obligatorios</h3>
         </div>
 
-        <form action="../../php/php_pagina-principal/guardar-archivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data">
+        <form action="../../php/php_pagina-principal/guardar-archivos.php" class="tramites-container__item-form-container-form" method="post" enctype="multipart/form-data" id="guardarNuevoDocumento">
             <input type="hidden" name="txtDocumento" id="txtDocumento" value="<?php echo $tipoTramite ?>">
             <input type="hidden" name="txtId" id="txtId" value="0">
             <div class="form__data">
@@ -983,5 +983,6 @@
 
     <script src="../../js/js_pagina-principal/mostrarControles.js"></script>
     <script src="../../js/js_pagina-principal/filtarClientes.js"></script>
+    <script src="../../js/js_pagina-principal/enviarDocumento.js"></script>
 </body>
 </html>
