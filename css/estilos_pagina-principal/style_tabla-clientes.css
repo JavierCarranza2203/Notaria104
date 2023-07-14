@@ -112,6 +112,24 @@ body{
 .section__add-client:hover{
     background-color: #004386;
 }
+
+.btnRegresar{
+    position: absolute;
+    top: 6px;
+    left: 298px;
+    background-color: #003366;
+    padding: 3px 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btnRegresar > i{
+    margin-right: 3px;
+}
+
+.btnRegresar:hover{
+    background-color: #004386;
+}
 /*    ********************************************
  *    **    FIN DE LOS ESTILOS PARA LA TABLA    **
  *    ********************************************

@@ -300,7 +300,7 @@
             <h2 class="section__h2">Tabla de <span id="tipoDocumento"></span></h2>
             <h3 class="section__h3"></h3>
         </nav>
-
+        <button class="btnRegresar" id="btnRegresar"><i class="fa-solid fa-circle-arrow-left"></i> Regresar</button>
         <div class="section__table-container">
             <table class="section__table" id="tablaArchivos">
                 <thead class="section__table-header">
@@ -333,13 +333,20 @@
                     httpRequest.open("GET", "../../php/php_pagina-principal/buscarArchivos.php?tabla=" + tipoDocumento, true);
             
                     httpRequest.onreadystatechange = function() {
-            
+                        
                         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-                            let consulta = JSON.parse(httpRequest.responseText);
+                            let consulta = JSON.parse(httpRequest.responseText);;
+
+                            // Destruir la instancia existente de DataTable
+                            if ($.fn.DataTable.isDataTable('#tablaArchivos')) {
+                                $('#tablaArchivos').DataTable().destroy();
+                            }
                             
                             mostrarDatos(consulta, tipoDocumento);
-                            
-                            $('#tablaArchivos').DataTable( { ordering:false } );
+
+                            // Inicializar la tabla DataTable nuevamente
+                            $('#tablaArchivos').DataTable({ ordering: false });
+                            }
                         }
                     };
                     httpRequest.send();

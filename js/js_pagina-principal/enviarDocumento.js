@@ -15,7 +15,7 @@ document.getElementById("guardarNuevoDocumento").addEventListener("submit", func
           let respuesta = httpRequest.responseText;
 
           if(respuesta){
-            alert("Los archivos se guardarom")
+            alert("Los archivos se guardaron");
           } 
         } else {
           // Hubo un error en la petición

@@ -73,8 +73,8 @@
             echo 'El cliente ya existe';
         }
         else {
-            $sql = "INSERT INTO cliente (nombre, apellido_paterno, apellido_materno, telefono_particular, telefono_celular, correo, domicilio_calle, num_interior, num_exterior, domicilio_colonia, codigo_postal, rfc, folio)
-            VALUES ('$nombre', '$apellido_paterno', '$apellido_materno', '$telefono_particular', '$telefono_celular', '$correo', '$domicilio_calle', '$num_interior', '$num_exterior', '$domicilio_colonia', '$codigo_postal', '$rfc', '$folio')";
+            $sql = "INSERT INTO cliente (nombre, apellido_paterno, apellido_materno, telefono_particular, telefono_celular, correo, domicilio_calle, num_interior, num_exterior, domicilio_colonia, codigo_postal, rfc)
+            VALUES ('$nombre', '$apellido_paterno', '$apellido_materno', '$telefono_particular', '$telefono_celular', '$correo', '$domicilio_calle', '$num_interior', '$num_exterior', '$domicilio_colonia', '$codigo_postal', '$rfc')";
 
             // Ejecutar la consulta
             if ($conection->query($sql) === TRUE) {

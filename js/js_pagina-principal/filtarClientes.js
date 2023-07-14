@@ -25,7 +25,7 @@ if (searchText.length > 0) {
                 return;
             }
  
-            let nombre = objeto.id + "-" +objeto.nombre;
+            let nombre = objeto.nombre + " " + objeto.apellido_paterno + " " + objeto.apellido_materno;
             let id = objeto.id;
             const liElement = document.createElement('li');
             liElement.textContent = nombre;
