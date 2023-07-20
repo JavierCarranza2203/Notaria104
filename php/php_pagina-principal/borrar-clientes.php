@@ -15,15 +15,15 @@
     if ($result) {
 
         $registro = true;
-
-        $jsonRegistro = json_encode($registro);
-
-        header("Content-Type: application/json");
-
-        echo $jsonRegistro;
     } else {
-        echo "Registro no encontrado";
+        $registro = false;
     }
+
+    $jsonRegistro = json_encode($registro);
+
+    header("Content-Type: application/json");
+
+    echo $jsonRegistro;
 
 $conection->close();
 ?> 

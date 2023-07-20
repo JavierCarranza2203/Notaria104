@@ -14,24 +14,23 @@
 </head>
 <body>
 <?php
-        session_start();
-        $usuario = $_SESSION['usuario'];
+    session_start();
+    $usuario = $_SESSION['usuario'];
 
-        if($usuario = null || $usuario == '')
-        {
-    ?>
-            <div class=error-container>
-                <div class="error-container__content-container">
+    if($usuario = null || $usuario == '')
+    {
+?>
+        <div class=error-container>
+            <div class="error-container__content-container">
                 <h1 class="error-container__h1">Usted no tiene autorización, por favor inicie sesión</h1>
                 <i class="fa-solid fa-triangle-exclamation error-container__icon"></i>
-                <a href="../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
-                </div>
+                <a href="../../index.html" class="error-container__back"><i class="fa-solid fa-rotate-left"></i> Iniciar sesión</a>
             </div>
-    <?php  
-            die();
-        }
-    ?>
-
+        </div>
+<?php  
+        die();
+    }
+?>
     <header class="header">
         <h1 class="header__h1"><i class="fa-solid fa-folder-open"></i> H.A.N.</h1>
 
@@ -64,7 +63,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compraventa</h3>
                 <a id="CCV">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -72,7 +71,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compraventa con reserva de dominio</h3>
                 <a id="CCVCRD">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -80,7 +79,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de arrendamiento</h3>
                 <a uid="CoA">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -88,7 +87,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de comodato</h3>
                 <a id="CCD">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -96,7 +95,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de compra venta a plazos</h3>
                 <a id="CCVP">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -104,7 +103,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de servidumbre de paso</h3>
                 <a id="CSP">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -112,7 +111,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Contrato de reconocimiento de adeudo con intereses y garantía hipotecaria</h3>
                 <a id="CRAIGH">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -122,7 +121,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Superficie)</h3>
                 <a id="EAS">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -130,7 +129,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Nombre)</h3>
                 <a id="EAN">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -138,7 +137,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Escrito aclaratorio (Estado civil)</h3>
                 <a id="EAEC">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -148,7 +147,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de acta de asamblea</h3>
                 <a id="PAA">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -156,7 +155,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de juicio sucesorio</h3>
                 <a id="PJS">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -164,7 +163,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Protocolización de subdivisión o fusión</h3>
                 <a id="PSoF">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -174,7 +173,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Acta constitutiva</h3>
                 <a id="AC">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -182,7 +181,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Acta notarial</h3>
                 <a id="AN">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -192,7 +191,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Donación gratuita pura y simple</h3>
                 <a id="DGPS">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -200,7 +199,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Donación gratuita pura y simple con reserva de usufructo vitalicio</h3>
                 <a id="DGPSRUV">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -210,7 +209,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Testamento público abierto sencillo</h3>
                 <a id="TPAS">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -218,7 +217,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Testamento público abierto con legados</h3>
                 <a id="TPAL">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -226,7 +225,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Usufructo vitalicio</h3>
                 <a id="UV">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -234,7 +233,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Convenio de transmisión de propiedad, en extinción parcial de fideicomiso</h3>
                 <a id="CTPEPF">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -242,7 +241,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Declaración testimonial sobre el nombre</h3>
                 <a id="DTSN">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -250,7 +249,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Declaración testimonial sobre el estado civil</h3>
                 <a id="DTSEC">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -258,7 +257,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Cancelación de reserva de dominio</h3>
                 <a id="CRD">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -266,7 +265,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Poder especial y/o general</h3>
                 <a id="PEyoG">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -274,14 +273,14 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Cesión de derechos</h3>
                 <a id="CD">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
             <div class="new-document__item">
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Carta de autorización</h3>
                 <a id="CaA">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
 
@@ -289,7 +288,7 @@
                 <i class="fa-solid fa-file-lines"></i>
                 <h3>Carta responsiva</h3>
                 <a id="CR">
-                    <i class="fa-regular fa-pen-to-square"></i> Llenar
+                    <i class="fa-solid fa-file-circle-question"></i> Ver todos
                 </a>
             </div>
         </article>
@@ -318,6 +317,14 @@
         </div>
     </section>
 
+    <section class="popup-container">
+        <article class="popup-container__modal" id="verArhivos">
+            <div class="contenedor-requisito">
+                <button></button>
+            </div>
+        </article>
+    </section>
+
     <script src="../../js/js_pagina-principal/dataTable_buscarCliente.js"></script>
     <script src="../../js/js_pagina-principal/mostarTablaArchivos.js"></script>
     <script src="../../js/js_pagina-principal/app_pagina-principal.js"></script>
@@ -335,17 +342,23 @@
                     httpRequest.onreadystatechange = function() {
                         
                         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-                            let consulta = JSON.parse(httpRequest.responseText);;
+                            let responeText = httpRequest.responseText;
 
-                            // Destruir la instancia existente de DataTable
-                            if ($.fn.DataTable.isDataTable('#tablaArchivos')) {
-                                $('#tablaArchivos').DataTable().destroy();
+                            if(responeText.trim() === "No se encontraron registros"){
+                                alert("No hay datos");
                             }
-                            
-                            mostrarDatos(consulta, tipoDocumento);
+                            else{
+                                let consulta = JSON.parse(httpRequest.responseText);
 
-                            // Inicializar la tabla DataTable nuevamente
-                            $('#tablaArchivos').DataTable({ ordering: false });
+                                // Destruir la instancia existente de DataTable
+                                if ($.fn.DataTable.isDataTable('#tablaArchivos')) {
+                                    $('#tablaArchivos').DataTable().destroy();
+                                }
+                                
+                                mostrarDatos(consulta, tipoDocumento);
+
+                                // Inicializar la tabla DataTable nuevamente
+                                $('#tablaArchivos').DataTable({ ordering: false });
                             }
                         }
                     };

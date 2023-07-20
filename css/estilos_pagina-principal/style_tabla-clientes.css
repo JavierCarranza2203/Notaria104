@@ -5,7 +5,6 @@
 body{
     display: grid;
     grid-template-columns: 290px 1fr;
-    overflow: hidden;
 }
 /*    ***********************************
  *    **    ESTILOS PARA EL SECTION    **
@@ -13,8 +12,7 @@ body{
  */
 .section{
     color: #202020;
-    overflow-x: hidden;
-    overflow-y: scroll;
+
     display: grid;
     grid-template-rows: 105px 1fr;
 }
@@ -24,7 +22,7 @@ body{
     top: 0;
     left: 0;
     background-color: #f0f0f0;
-    max-width: calc(100vw - 307px);
+    max-width: calc(100vw - 290px);
 }
 
 .section__h2{
@@ -114,7 +112,7 @@ body{
 }
 
 .btnRegresar{
-    position: absolute;
+    position: fixed;
     top: 6px;
     left: 298px;
     background-color: #003366;
@@ -243,7 +241,7 @@ body{
     float:left;
     text-align: left;
     margin: 13px 0;
-    position: absolute;
+    position: fixed;
     left: 303px;
     top: 43px;
     color: #202020;
@@ -264,7 +262,7 @@ body{
     float: right;
     text-align: right;
     padding: .5em 0;
-    position: absolute;
+    position: fixed;
     right: 13px;
     top: 46px;
     color: #202020

@@ -16,8 +16,10 @@ document.getElementById("guardarNuevoDocumento").addEventListener("submit", func
 
           if(respuesta){
             alert("Los archivos se guardaron");
+            location.reload();
           } 
-        } else {
+        } 
+        else {
           // Hubo un error en la petición
           alert("Hubo un error");
           console.error('Error en la petición');
@@ -26,5 +28,4 @@ document.getElementById("guardarNuevoDocumento").addEventListener("submit", func
     };
   
     httpRequest.send(datosFormulario); // Envía los datos del formulario a través de la petición
-  });
-    
+ });

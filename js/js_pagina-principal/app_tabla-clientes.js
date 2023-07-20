@@ -34,7 +34,7 @@ for(let i = 0; i < arrayBotones.length; i++){
 
         let httpRequest = new XMLHttpRequest();
 
-        httpRequest.open("GET", "../../php/php_pagina-principal/buscar-cliente.php? id=" + idCliente, true);
+        httpRequest.open("GET", "../../php/php_pagina-principal/buscar-cliente.php?id=" + idCliente, true);
 
         httpRequest.onreadystatechange = function() {
 
@@ -62,16 +62,17 @@ for(let i = 0; i < arrayBotones.length; i++){
 }
 
 document.getElementById("btnBorrarCliente").addEventListener("click", ()=>{
+    alert(idClienteBorrar)
     let httpRequest = new XMLHttpRequest();
 
-    httpRequest.open("GET", "../../php/php_pagina-principal/borrar-clientes.php? id=" + idClienteBorrar, true);
+    httpRequest.open("GET", "../../php/php_pagina-principal/borrar-clientes.php?id=" + idClienteBorrar, true);
 
     httpRequest.onreadystatechange = function() {
 
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
-            let eliminado = JSON.parse(httpRequest.responseText);
-            
-            if(eliminado){
+            let eliminado = httpRequest.responseText;
+            alert(eliminado)
+            if(eliminado === true){
                 alert("El cliente se ha eliminado");
                 modal.classList.remove("modal-container--show");
                 location.reload();

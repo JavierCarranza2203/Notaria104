@@ -63,10 +63,10 @@ CREATE TABLE conjuntoArchivos1 (
 CREATE TABLE ccvcrd (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -75,10 +75,10 @@ CREATE TABLE ccvcrd (
 CREATE TABLE csp (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)  ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -87,10 +87,10 @@ CREATE TABLE csp (
 CREATE TABLE craigh (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id)  ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id)  ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -99,10 +99,10 @@ CREATE TABLE craigh (
 CREATE TABLE dgps (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -111,10 +111,10 @@ CREATE TABLE dgps (
 CREATE TABLE dgpsruv (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -124,10 +124,10 @@ CREATE TABLE dgpsruv (
 CREATE TABLE ctpepf (
 	folio VARCHAR(35) PRIMARY KEY,
 	id_conjuntoArchivos INT,
-	id_cliente INT,
+	
 	id_comparecientes INT,
 	id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
 	FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
 	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -136,10 +136,10 @@ CREATE TABLE ctpepf (
 CREATE TABLE ccv (
     folio VARCHAR(35) PRIMARY KEY,
     id_conjuntoArchivos INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_conjuntoArchivos) REFERENCES conjuntoArchivos1(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE
@@ -147,7 +147,7 @@ CREATE TABLE ccv (
 
 CREATE TABLE ccd (
     folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
     ine TEXT,
     curp TEXT,
     rfc TEXT,
@@ -158,14 +158,14 @@ CREATE TABLE ccd (
     hoja_generales TEXT,
     identificacion_inmueble TEXT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 
 CREATE TABLE coa (
     folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
     ine TEXT,
     curp TEXT,
     rfc TEXT,
@@ -176,7 +176,7 @@ CREATE TABLE coa (
     hoja_generales TEXT,
     identificacion_inmueble TEXT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -185,9 +185,9 @@ CREATE TABLE uv (
     folio VARCHAR(35) PRIMARY KEY,
     escritura TEXT,
     id_comparecientes INT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -195,11 +195,11 @@ CREATE TABLE uv (
 CREATE TABLE cr (
     folio VARCHAR(35) PRIMARY KEY,
     id_comparecientes INT,
-    id_cliente INT,
+    
     tarjeta_circulacion TEXT,
     titulo_vehiculo TEXT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -207,12 +207,12 @@ CREATE TABLE cr (
 CREATE TABLE paa (
     folio VARCHAR(35) PRIMARY KEY,
     id_comparecientes INT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
     acta_empresa TEXT,
     poder TEXT,
     personalidad_empresa TEXT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -222,10 +222,10 @@ CREATE TABLE pjs (
     constancia_expedida_juzgado TEXT,
     certificado_reserva_prioridad TEXT,
     predial INT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -236,10 +236,10 @@ CREATE TABLE psof (
     dictamen_subdivision TEXT,
     predial TEXT,
     certificado_reserva_prioridad TEXT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -248,10 +248,10 @@ CREATE TABLE an (
     folio VARCHAR(35) PRIMARY KEY,
     poder TEXT,
     personalidad_empresa TEXT,
-    id_cliente INT,
+    
     id_comparecientes INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -267,7 +267,7 @@ CREATE TABLE conjunto_archivos2 (
 
 CREATE TABLE peyog (
     folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
     id_archivos INT,
     id_datosIdentificacion INT,
     poderante TEXT,
@@ -275,41 +275,41 @@ CREATE TABLE peyog (
     datos_empresa TEXT,
     acta_constitutiva TEXT,
     poder_representante TEXT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 CREATE TABLE cd (
     folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
     id_archivos INT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 CREATE TABLE crd (
     folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
     id_archivos INT,
     certificado_reserva_prioridad TEXT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_archivos) REFERENCES conjunto_archivos2(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ccvp (
 	folio VARCHAR(35) PRIMARY KEY,
-    id_cliente INT,
+    
 	id_comparecientes INT,
 	id_testigos INT,
 	id_datosIdentificacion INT,
 	escritura TEXT,
 	predial TEXT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+	
     FOREIGN KEY (id_comparecientes) REFERENCES comparecientes(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE,
 	FOREIGN KEY (id_testigos) REFERENCES testigos(id) ON DELETE CASCADE
@@ -324,9 +324,9 @@ CREATE TABLE tpas (
     acta_matrimonio TEXT,
     hoja_generales TEXT,
     nombres_hijos TEXT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -334,9 +334,9 @@ CREATE TABLE eas (
 	folio VARCHAR(35) PRIMARY KEY,
 	escritura TEXT,
 	predial TEXT,
-	id_cliente INT, 
+	 
     id_datosIdentificacion INT,
-	FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+	
 	FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -347,9 +347,9 @@ CREATE TABLE caa (
     acta_defuncion TEXT,
     domiclio_nuevo TEXT,
     persona_a_cargo TEXT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -363,9 +363,9 @@ CREATE TABLE tpal (
     hoja_generales TEXT,
     nombres_hijos TEXT,
     escritura TEXT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -380,10 +380,10 @@ CREATE TABLE ean (
     folio VARCHAR(35) PRIMARY KEY,
     id_identificacionPersona INT,
     hoja_generales TEXT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
     FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
@@ -392,22 +392,22 @@ CREATE TABLE eaec (
     id_identificacionPersona INT,
     hoja_generales TEXT,
     escritura TEXT,
-    id_cliente INT,
+    
     id_datosIdentificacion INT,
     FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
 
 CREATE TABLE dtsn (
     folio VARCHAR(35) PRIMARY KEY,
     id_identificacionPersona INT,
-    id_cliente INT,
+    
     id_testigos INT,
     hoja_generales TEXT,
     id_datosIdentificacion INT,
     FOREIGN KEY (id_identificacionPersona) REFERENCES identificacion_persona(id) ON DELETE CASCADE,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_testigos) REFERENCES testigos(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
@@ -415,13 +415,11 @@ CREATE TABLE dtsn (
 CREATE TABLE dtsec (
     folio VARCHAR(35) PRIMARY KEY,
     acta_matrimonio TEXT,
-    id_cliente INT,
+    
     id_testigos INT,
     hoja_generales TEXT,
     id_datosIdentificacion INT,
-    FOREIGN KEY (id_cliente) REFERENCES cliente(id) ON DELETE NO ACTION,
+    
     FOREIGN KEY (id_testigos) REFERENCES testigos(id) ON DELETE CASCADE,
     FOREIGN KEY (id_datosIdentificacion) REFERENCES datosIdentificacion(id) ON DELETE CASCADE
 );
-
-CREATE VIEW vista_an AS
