@@ -4,223 +4,242 @@ const contenedorTabla = document.getElementById("contenedorTabla");
 const cuerpoTabla = document.getElementById("tableBody");
 const lblTipoDocumento = document.getElementById("tipoDocumento");
 const btnRegresar = document.getElementById("btnRegresar");
+const btnCloseModal = document.getElementById("btnCloseModal");
 const estructuraDocumentos = {
     ac: {},
     an: {
       documentos: ['Poder', 'Personalidad empresa'],
       comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     coa: {
       documentos: ['INE', 'CURP', 'RFC', 'Acta de nacimiento', 'Acta de matrimonio', 'Comprobante de domicilio', 'Recibo de agua', 'Hoja de generales', 'Identificacion del inmueble'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     ccd: {
       documentos: ['INE', 'CURP', 'RFC', 'Acta de nacimiento', 'Acta de matrimonio', 'Comprobante de domicilio', 'Recibo agua', 'Hoja de generales', 'Identificacion inmueble'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     ccv: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+      documentos: [
+        "Escritura",
+        "Certificado",
+        "Predial",
+        "INE comparecientes",
+        "CURP comparecientes",
+        "RFC comparecientes",
+        "Acta de nacimiento comparecientes",
+        "Acta de matrimonio comparecientes",
+        "Comprobante de domicilio comparecientes",
+        "Recibo de agua comparecientes",
+        "Hoja de generales comparecientes"
+      ]
     },
     ccvp: {
-      documentos: ['Escritura', 'Predial'],
-      comparecientes: true,
-      testigos: true,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
+    documentos: [
+      "Escritura",
+      "Predial",
+      "INE comparecientes",
+      "CURP comparecientes",
+      "RFC comparecientes",
+      "Acta de nacimiento comparecientes",
+      "Acta de matrimonio comparecientes",
+      "Comprobante de domicilio comparecientes",
+      "Recibo de agua comparecientes",
+      "Hoja de generales comparecientes",
+      "INE testigos",
+      "CURP testigos",
+      "RFC testigos",
+      "Acta de nacimiento testigos",
+      "Acta de matrimonio testigos",
+      "Comprobante de domicilio testigos",
+      "Recibo de agua testigos",
+      "Hoja de generales testigos"
+    ]
+  },
     ccvcrd: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
+      documentos: [
+        "Escritura",
+        "Certificado",
+        "Predial",
+        "INE comparecientes",
+        "CURP comparecientes",
+        "RFC comparecientes",
+        "Acta de nacimiento comparecientes",
+        "Acta de matrimonio comparecientes",
+        "Comprobante de domicilio comparecientes",
+        "Recibo de agua comparecientes",
+        "Hoja de generales comparecientes"
+      ]
+  },
     craigh: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    csp: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    dgps: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    dgpsruv: {
-      documentos: ['Escritura', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    paa: {
-      documentos: ['Acta elaborada por la empresa', 'Poder', 'Personalidad de la empresa'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    pjs: {
-      documentos: ['Constancia elaborada por el juzgado', 'Certificado', 'Predial'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    psof: {
-      documentos: ['Plano', 'Dictamen de subdivision', 'Predial', 'Certificado'],
-      comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    tpas: {
-      documentos: ['INE', 'CURP', 'RFC', 'Acta de nacimiento', 'Acta de matrimonio', 'Hoja de generales', 'Nombres de los hijos'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
-    tpal: {
-      documentos: ['INE', 'CURP', 'RFC', 'actanac', 'ActaMatrimonio', 'Hoja de generales', 'NombresHijos', 'AntecedentesPropiedades'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
-    },
+      documentos: [
+        "Escritura",
+        "Certificado",
+        "Predial",
+        "INE comparecientes",
+        "CURP comparecientes",
+        "RFC comparecientes",
+        "Acta de nacimiento comparecientes",
+        "Acta de matrimonio comparecientes",
+        "Comprobante de domicilio comparecientes",
+        "Recibo de agua comparecientes",
+        "Hoja de generales comparecientes"
+      ]
+  },
+  csp: {
+    documentos: [
+      "Escritura",
+      "Certificado",
+      "Predial",
+      "INE comparecientes",
+      "CURP comparecientes",
+      "RFC comparecientes",
+      "Acta de nacimiento comparecientes",
+      "Acta de matrimonio comparecientes",
+      "Comprobante de domicilio comparecientes",
+      "Recibo de agua comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  dgps: {
+    documentos: [
+      "Escritura",
+      "Certificado",
+      "Predial",
+      "INE comparecientes",
+      "CURP comparecientes",
+      "RFC comparecientes",
+      "Acta de nacimiento comparecientes",
+      "Acta de matrimonio comparecientes",
+      "Comprobante de domicilio comparecientes",
+      "Recibo de agua comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  dgpsruv: {
+    documentos: [
+      "Escritura",
+      "Certificado",
+      "Predial",
+      "INE comparecientes",
+      "CURP comparecientes",
+      "RFC comparecientes",
+      "Acta de nacimiento comparecientes",
+      "Acta de matrimonio comparecientes",
+      "Comprobante de domicilio comparecientes",
+      "Recibo de agua comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  paa: {
+    documentos: [
+      "Acta elaborada por la empresa",
+      "Poder",
+      "Personalidad de la empresa",
+      "INE comparecientes",
+      "CURP comparecientes",
+      "RFC comparecientes",
+      "Acta de nacimiento comparecientes",
+      "Acta de matrimonio comparecientes",
+      "Comprobante de domicilio comparecientes",
+      "Recibo de agua comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  pjs: {
+    documentos: [
+      "Constancia elaborada por el juzgado",
+      "Certificado",
+      "Predial",
+      "Acta de matrimonio comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  psof: {
+    documentos: [
+      "Plano",
+      "Dictamen de subdivision",
+      "Predial",
+      "Certificado",
+      "Acta de matrimonio comparecientes",
+      "Hoja de generales comparecientes"
+    ]
+  },
+  tpas: {
+    documentos: [
+      "INE",
+      "CURP",
+      "RFC",
+      "Acta de nacimiento",
+      "Acta de matrimonio",
+      "Hoja de generales",
+      "Nombres de los hijos"
+    ]
+  },
+  tpal: {
+    documentos: [
+      "INE",
+      "CURP",
+      "RFC",
+      "actanac",
+      "ActaMatrimonio",
+      "Hoja de generales",
+      "NombresHijos",
+      "AntecedentesPropiedades"
+    ]
+  },
     uv: {
       documentos: 'Escritura',
       comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     ctpepf: {
       documentos: ['Escritura', 'Certificado', 'Predial', 'Poder', 'Personalidad de la empresa', 'Personalidad o poder'],
       comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
     },
     dtsn: {
       documentos: ['Documento de identificación 1', 'Documento de identificación 2', 'Documento de identificación 3', 'Hoja de generales'],
-      comparecientes: false,
       testigos: true,
-      conjuntoArchivos1: true,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
     },
     dtsec: {
       documentos: ['Acta de matrimonio', 'Hoja de generales'],
-      comparecientes: false,
+
       testigos: true,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     crd: {
       documentos: ['Escritura', 'INE', 'RFC', 'CURP', 'Hoja de generales', 'Certificado con reserva de prioridad'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: true,
-      identificacionPersona: false
+
     },
     peyog: {
       documentos: ['Escritura', 'INE', 'RFC', 'CURP', 'Hoja de generales', 'Poderante', 'Apoderado', 'Datos de la empresa', 'Acta constitutiva de la empresa', 'Poder del representante'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: true,
-      identificacionPersona: false
+
     },
     cd: {
       documentos: ['Escritura', 'INE', 'RFC', 'CURP', 'Hoja de generales'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: true,
-      identificacionPersona: false
+
+
     },
     eas: {
       documentos: ['Escritura', 'Predial'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     ean: {
       documentos: ['Escritura', 'Documento de identificación 1', 'Documento identificación 2', 'Documento de identificación 3', 'Hoja de generales'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: true
+
     },
     eaec: {
       documentos: ['Escritura', 'Documento de identificación 1', 'Documento identificación 2', 'Documento de identificación 3', 'Hoja de generales'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: true
+
     },
     caa: {
       documentos: ['Acta de nacimiento del menor', 'Datos generales de los padres', 'Acta de defunción', 'Domicilio de vivienda', 'Nombre de la persona a cargo'],
-      comparecientes: false,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
+
     },
     cr: {
       documentos: ['Título del vehículo', 'Tarjeta circulación'],
       comparecientes: true,
-      testigos: false,
-      conjuntoArchivos1: false,
-      conjuntoArchivos2: false,
-      identificacionPersona: false
     }
   };
   
@@ -235,7 +254,7 @@ const estructuraTestigos = ['INE', 'CURP', 'RFC',
 function mostrarDatos(conjuntoDatos, tipoDocumento){
     cuerpoTabla.innerHTML = ''
     lblTipoDocumento.textContent = nombrarEncabezadoTabla(tipoDocumento);
-     conjuntoDatos.forEach(registro=>{
+    conjuntoDatos.forEach(registro=>{
         let fila = document.createElement('tr');
         let icon = document.createElement('i');
         let icon2 = document.createElement('i');
@@ -285,7 +304,7 @@ function mostrarDatos(conjuntoDatos, tipoDocumento){
         fila.classList.add("section__table-row")
         // Agregar la fila al cuerpo de la tabla
         cuerpoTabla.appendChild(fila);
-     })
+    })
 
     contenedorMisDocumentos.classList.add("section--hidden");
     contenedorTabla.classList.remove("section--hidden");
@@ -369,7 +388,7 @@ function nombrarEncabezadoTabla(tipoDocumento){
             return "escrito aclaratorio (Nombre)";
         //Escrito Aclaratorio (Estado Civil)
         case "eaec":
-           return "escrito aclaratorio (Estado civil)";
+          return "escrito aclaratorio (Estado civil)";
         //Carta de Autorizacion
         case "caa":
             return "carta de autorización";
@@ -380,8 +399,11 @@ function nombrarEncabezadoTabla(tipoDocumento){
 }
 
 function mostraDocumentos(tipoDocumento, folioDocumento){
+
     const modal = document.getElementById("verArchivos");
     
+    document.getElementById("container").classList.add("modal-container--show");
+
     if(estructuraDocumentos.hasOwnProperty(tipoDocumento)){
       const requisitos = estructuraDocumentos[tipoDocumento].documentos;
       
@@ -404,4 +426,9 @@ function mostraDocumentos(tipoDocumento, folioDocumento){
 btnRegresar.addEventListener("click", ()=>{
     contenedorMisDocumentos.classList.remove("section--hidden");
     contenedorTabla.classList.add("section--hidden");
+});
+
+btnCloseModal.addEventListener("click", ()=>{
+  const modal = document.getElementById("container");
+  modal.classList.remove("modal-container--show");
 });

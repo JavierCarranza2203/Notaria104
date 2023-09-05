@@ -317,11 +317,9 @@
         </div>
     </section>
 
-    <section class="popup-container">
-        <article class="popup-container__modal" id="verArhivos">
-            <div class="contenedor-requisito">
-                <button></button>
-            </div>
+    <section class="modal-container" id="container">
+        <article class="modal-container__modal" id="verArchivos">
+            <i class="fa-solid fa-circle-xmark modal-container__icon" id="btnCloseModal"></i>
         </article>
     </section>
 
