@@ -9,11 +9,11 @@ if (!$conection) {
 $folioDocumento = $_GET['folio'];
 
 $estructuraQuerys = [
-    'an' => "SELECT an.folio, an.poder, an.personalidad_empresa, comparecientes.id_persona, persona.ine, persona.curp, persona.rfc, persona.acta_nacimiento, persona.acta_matrimonio, persona.comprobante_domicilio, persona.recibo_agua, persona.hoja_generales FROM an INNER JOIN comparecientes ON an.id_comparecientes = comparecientes.id INNER JOIN persona ON comparecientes.id_persona = persona.id WHERE an.folio = '$folioDocumento'",
+    /*'an' => "SELECT an.folio, an.poder, an.personalidad_empresa, comparecientes.id_persona, persona.ine, persona.curp, persona.rfc, persona.acta_nacimiento, persona.acta_matrimonio, persona.comprobante_domicilio, persona.recibo_agua, persona.hoja_generales FROM an INNER JOIN comparecientes ON an.id_comparecientes = comparecientes.id INNER JOIN persona ON comparecientes.id_persona = persona.id WHERE an.folio = '$folioDocumento'",
     'coa' => "SELECT ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, identificacion_inmueble FROM coa WHERE folio = '$folioDocumento'",
-    'ccd' => "SELECT ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, identificacion_inmueble FROM ccd WHERE folio = '$folioDocumento'",
+    'ccd' => "SELECT ine, curp, rfc, acta_nacimiento, acta_matrimonio, comprobante_domicilio, recibo_agua, hoja_generales, identificacion_inmueble FROM ccd WHERE folio = '$folioDocumento'",*/
     'ccv' => "SELECT conjuntoarchivos1.escritura, conjuntoarchivos1.certificado_reserva_prioridad, conjuntoarchivos1.predial, comparecientes.id_persona, persona.ine, persona.curp, persona.rfc, persona.acta_nacimiento, persona.acta_matrimonio, persona.comprobante_domicilio, persona.recibo_agua, persona.hoja_generales FROM ccv INNER JOIN comparecientes ON ccv.id_comparecientes = comparecientes.id INNER JOIN persona ON comparecientes.id_persona = persona.id INNER JOIN conjuntoarchivos1 ON ccv.id_conjuntoArchivos = conjuntoarchivos1.id WHERE folio = '$folioDocumento'",
-    'ccvp' => "SELECT id_comparecientes, id_testigos, id_datosIdentificacion, escritura, predial FROM ccvp WHERE folio = '$folioDocumento'",
+    /*'ccvp' => "SELECT id_comparecientes, id_testigos, id_datosIdentificacion, escritura, predial FROM ccvp WHERE folio = '$folioDocumento'",
     'ccvcrd' => "SELECT id_conjuntoArchivos, id_comparecientes, id_datosIdentificacion FROM ccvcrd WHERE folio = '$folioDocumento'",
     'craigh' => "SELECT id_conjuntoArchivos, id_comparecientes, id_datosIdentificacion FROM craigh WHERE folio = '$folioDocumento'",
     'csp' => "SELECT id_conjuntoArchivos, id_comparecientes, id_datosIdentificacion FROM csp WHERE folio = '$folioDocumento'",
@@ -30,32 +30,28 @@ $estructuraQuerys = [
     'dtsec' => "SELECT acta_matrimonio, id_testigos, hoja_generales, id_datosIdentificacion FROM dtsec WHERE folio = '$folioDocumento'",
     'crd' => "SELECT id_archivos, certificdo_reserva_prioridad, id_datosIdentificacion FROM crd WHERE folio = '$folioDocumento'",
     'peyog' => "SELECT id_archivos, id_datosIdentificacion, poderante, apoderado, datos_empresa, acta_constitutiva, poder_representante FROM peyog WHERE folio = '$folioDocumento'",
-    'cd' => "SELECT id_archivos, id_datosIdentificacion FROM cd WHERE folio = '$folioDocumento'",
-    'eas' => "SELECT escritura, predial FROM eas WHERE folio = '$folioDocumento'",
-    'ean' => "SELECT id_IdentificacionPersona, hoja_generales, id_datosIdentificacion FROM ean WHERE folio = '$folioDocumento'",
+    'cd' => "SELECT id_archivos, id_datosIdentificacion FROM cd WHERE folio = '$folioDocumento'",*/
+    'eas' => "SELECT escritura, predial FROM eas WHERE folio = '$folioDocumento'"
+    /*'ean' => "SELECT id_IdentificacionPersona, hoja_generales, id_datosIdentificacion FROM ean WHERE folio = '$folioDocumento'",
     'eaec' => "SELECT id_IdentificacionPersona, hoja_generales, escritura, id_datosIdentificacion FROM eaec WHERE folio = '$folioDocumento'",
     'caa' => "SELECT acta_menor, hoja_generales, acta_defuncion, domicilio_nuevo, persona_a_cargo, id_datosIdentificacion FROM caa WHERE folio = '$folioDocumento'",
-    'cr' => "SELECT id_comparecientes, tarjeta_circulacion, titulo_vehiculo, id_datosIdentificacion FROM cr WHERE folio = '$folioDocumento'"
+    'cr' => "SELECT id_comparecientes, tarjeta_circulacion, titulo_vehiculo, id_datosIdentificacion FROM cr WHERE folio = '$folioDocumento'"*/
 ];
 
 $tabla = $_GET["tabla"];
 
-$sql = "SELECT ".$tabla.".folio, datosidentificacion.nombre_cliente, datosidentificacion.volumen, datosidentificacion.instrumento FROM ".$tabla." INNER JOIN datosidentificacion ON ".$tabla.".id_datosIdentificacion = datosidentificacion.id";
+$sql = $estructuraQuerys[$tabla];
 
 $result = $conection->query($sql);
 
 if ($result->num_rows > 0) {
-    $registros = array();
-
-    while ($registro = $result->fetch_assoc()) {
-        $registros[] = $registro;
-    }
-
-    $jsonRegistros = json_encode($registros);
+    $registro = $result->fetch_assoc();
+    $valores = array_values($registro);
+    $jsonValores = json_encode($valores);
 
     header("Content-Type: application/json");
 
-    echo $jsonRegistros;
+    echo $jsonValores;
 } else {
     echo "No se encontraron registros";
 }

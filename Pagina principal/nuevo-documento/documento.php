@@ -977,7 +977,7 @@
             </div>
             
             <button class="section__button section__button--cancel">Cancelar</button>
-            <button class="section__button">Guardar documento</button>
+            <button class="section__button" id="btnGuardarNuevoDocumento">Guardar documento</button>
         </form>
     </secton>
 

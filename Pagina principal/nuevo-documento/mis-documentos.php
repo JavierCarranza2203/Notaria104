@@ -7,6 +7,7 @@
     
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_tabla-clientes.css">
     <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_pagina-principal.css">
+    <link rel="stylesheet" href="../../css/estilos_pagina-principal/style_mis-documentos.css">
     <link rel="stylesheet" href="../../css/style-error-page.css">
     <link rel="stylesheet" href="../../css/style-reset.css">
 
@@ -318,8 +319,9 @@
     </section>
 
     <section class="modal-container" id="container">
-        <article class="modal-container__modal" id="verArchivos">
+        <article class="modal-container__modal">
             <i class="fa-solid fa-circle-xmark modal-container__icon" id="btnCloseModal"></i>
+            <div id="verArchivos"></div>
         </article>
     </section>
 

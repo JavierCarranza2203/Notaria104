@@ -28,4 +28,4 @@ document.getElementById("guardarNuevoDocumento").addEventListener("submit", func
     };
   
     httpRequest.send(datosFormulario); // Envía los datos del formulario a través de la petición
- });
+});

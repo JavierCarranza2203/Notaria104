@@ -283,7 +283,7 @@ function mostrarDatos(conjuntoDatos, tipoDocumento){
 
         let celdaVerArchivos = document.createElement('td');
         icon.addEventListener("click", ()=>{
-            mostraDocumentos(tipoDocumento, registro.folio);
+            mostrarDocumentos(tipoDocumento, registro.folio);
         })
         celdaVerArchivos.appendChild(icon);
         fila.appendChild(celdaVerArchivos);
@@ -398,29 +398,53 @@ function nombrarEncabezadoTabla(tipoDocumento){
     }
 }
 
-function mostraDocumentos(tipoDocumento, folioDocumento){
+function mostrarDocumentos(tipoDocumento, folioDocumento){
 
-    const modal = document.getElementById("verArchivos");
-    
-    document.getElementById("container").classList.add("modal-container--show");
+  let response;
+  let httpRequest = new XMLHttpRequest();
 
-    if(estructuraDocumentos.hasOwnProperty(tipoDocumento)){
-      const requisitos = estructuraDocumentos[tipoDocumento].documentos;
-      
-      requisitos.forEach(archivo=>{
-        const divElement = document.createElement("div");
-        divElement.classList.add("contenedor-requisito");
 
-        const aElement = document.createElement("a");
-        aElement.textContent = archivo;
+  httpRequest.open("GET", "../../php/php_pagina-principal/buscarArchivoCompleto.php?folio=" + folioDocumento + "&tabla=" + tipoDocumento, true);
 
-        divElement.appendChild(aElement);
-        modal.appendChild(divElement);
+  httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+      response = JSON.parse(httpRequest.responseText);
+    }
+  };
+
+  httpRequest.send();
+
+  const modal = document.getElementById("verArchivos");
+  
+  document.getElementById("container").classList.add("modal-container--show");
+
+  if(estructuraDocumentos.hasOwnProperty(tipoDocumento)){
+    const requisitos = estructuraDocumentos[tipoDocumento].documentos;
+    i = 0;
+    requisitos.forEach((archivo, index)=>{
+      const divElement = document.createElement("div");
+      divElement.classList.add("contenedor-requisito");
+
+      const aElement = document.createElement("a");
+      aElement.textContent = archivo;
+
+      const aButtonElement = document.createElement("a");
+      aButtonElement.textContent = "Ver archivo";
+      aButtonElement.classList.add("buttonArchive");
+
+      aButtonElement.addEventListener("click", ()=>{
+        aButtonElement.href = "verDocumento.html?url=" + encodeURIComponent(response[index]);
       });
-    }
-    else{
-      alert("Hubo un error al cargar los archivos, recargue la página e intente de nuevo.")
-    }
+
+      divElement.appendChild(aElement);
+      divElement.appendChild(aButtonElement);
+      modal.appendChild(divElement);
+      i++
+    });
+  }
+  else{
+    alert("Hubo un error al cargar los archivos, recargue la página e intente de nuevo.")
+  }
 }
 
 btnRegresar.addEventListener("click", ()=>{
@@ -429,6 +453,9 @@ btnRegresar.addEventListener("click", ()=>{
 });
 
 btnCloseModal.addEventListener("click", ()=>{
-  const modal = document.getElementById("container");
-  modal.classList.remove("modal-container--show");
+  const modal = document.getElementById("verArchivos");
+
+  document.getElementById("container").classList.remove("modal-container--show");
+
+  modal.innerHTML = "";
 });
