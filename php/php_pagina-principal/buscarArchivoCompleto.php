@@ -45,11 +45,12 @@ $sql = $estructuraQuerys[$tabla];
 $result = $conection->query($sql);
 
 if ($result->num_rows > 0) {
+    
     $registro = $result->fetch_assoc();
     $valores = array_values($registro);
     $jsonValores = json_encode($valores);
 
-    header("Content-Type: application/json");
+    header("Content-Type: application/json; charset=UTF-8");
 
     echo $jsonValores;
 } else {

@@ -283,7 +283,7 @@ if ($result->num_rows == 0) {
     $idDatosArchivo = mysqli_insert_id($conection);
     $contadorRutas = 0;
     if (isset($estructuraDocumentos[$tipoDocumento])) {
-        $carpetaDestino = 'C:/xampp/htdocs/Ti/Notaria 104/php/php_pagina-principal/documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
+        $carpetaDestino = 'C:/xampp/htdocs/mywebsites/Notaria104/php/php_pagina-principal/documentos/' . $tipoDocumento . "_" . $nombreCliente . "_" . $folioDocumento;
 
         if (!is_dir($carpetaDestino)) {
             mkdir($carpetaDestino, 0755, true);

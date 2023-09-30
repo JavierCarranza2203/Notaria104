@@ -411,7 +411,7 @@ function mostrarDocumentos(tipoDocumento, folioDocumento){
       response = JSON.parse(httpRequest.responseText);
     }
   };
-
+  
   httpRequest.send();
 
   const modal = document.getElementById("verArchivos");
@@ -433,7 +433,7 @@ function mostrarDocumentos(tipoDocumento, folioDocumento){
       aButtonElement.classList.add("buttonArchive");
 
       aButtonElement.addEventListener("click", ()=>{
-        aButtonElement.href = "verDocumento.html?url=" + encodeURIComponent(response[index]);
+        aButtonElement.href = "verDocumento.php?url=" + encodeURIComponent(response[index]);
       });
 
       divElement.appendChild(aElement);
